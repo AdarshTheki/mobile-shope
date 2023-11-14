@@ -1,8 +1,10 @@
 import React from 'react';
 
-export default function Button({ children, className = '' }) {
+export default function Button({ children, className = '', ...props }) {
   return (
-    <button className={`py-2 w-full capitalize rounded-md cursor-pointer block font-semibold ${className}`}>
+    <button
+      {...props}
+      className={`text-white px-4 rounded-md p-2 cursor-pointer hover:opacity-80 duration-300 ${className}`}>
       {children}
     </button>
   );
