@@ -43,11 +43,19 @@ const ProductProvider = ({ children }) => {
     dispatch({ type: 'CLEAR_ALL_FILTER' });
   };
 
-  const updateCheckbox = (event) => {
-    const { name, checked } = event.target;
-    console.log(name, checked);
-    dispatch({ type: 'UPDATE_CHECKBOX', payload: { name, checked } });
+  const clearAllCheckbox = () => {
+    dispatch({ type: 'CLEAR_ALL_CHECKBOX' });
   };
+
+  const clearAllStorage = () => {
+    dispatch({ type: 'CLEAR_ALL_STORAGE' });
+  };
+
+  // const updateCheckbox = (event) => {
+  // const { name, checked } = event.target;
+  // console.log(name, checked);
+  // dispatch({ type: 'UPDATE_CHECKBOX', payload: { name, checked } });
+  // };
 
   const addToCart = (product) => {
     dispatch({ type: 'ADD_TO_CART', payload: { product } });
@@ -91,7 +99,8 @@ const ProductProvider = ({ children }) => {
         clearAllCart,
         increaseQty,
         decreaseQty,
-        updateCheckbox,
+        clearAllCheckbox,
+        clearAllStorage,
       }}>
       {children}
     </ProductContext.Provider>
