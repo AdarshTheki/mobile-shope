@@ -1,6 +1,7 @@
 import React from 'react';
-import Star from '../../utils/Starts';
 import { NavLink } from 'react-router-dom';
+
+import Star from '../../utils/Starts';
 
 export default function ProductItem({ products }) {
   const {
@@ -68,13 +69,13 @@ export default function ProductItem({ products }) {
           </span>
         </p>
         <div className='my-3'>
-          <span className='text-2xl text-black font-semibold'>
+          <h2>
             Price: &#8377;{current_price || '#NA'}
-          </span>
-          <span className='line-through text-red-400 mx-2'>{'Rs. ' + (lunch_price || 0)}</span>
-          <span className='bg-green-200 text-green-700 px-3 py-1 rounded-lg'>
-            {(exchange_off || 0) + ' % off'}
-          </span>
+            <span className='line-through text-red-400 mx-2 text-sm'>{'Rs. ' + (lunch_price || 0)}</span>
+            <span className='bg-green-200 text-green-700 px-3 py-1 text-sm rounded-lg'>
+              {(exchange_off || 0) + ' % off'}
+            </span>
+          </h2>
         </div>
       </div>
     </div>
