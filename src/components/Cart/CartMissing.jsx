@@ -1,6 +1,5 @@
 import React from 'react';
 import carts from '../../assets/carts.webp';
-// import carts from '../assets/carts.webp';
 import Button from '../../utils/Button';
 
 export default function CartMissing() {
@@ -10,7 +9,7 @@ export default function CartMissing() {
       <h1 className='text-xl'>Missing Cart items?</h1>
       <p>Login to see the items you added previously</p>
       <div className='w-1/2'>
-        <Button className='bg-orange-600 hover:bg-orange-700 text-white'>login</Button>
+        <Button  className='bg-orange-700'>Login</Button>
       </div>
     </div>
   );
