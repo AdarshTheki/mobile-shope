@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+
 import useProductContext from '../../context/useProductContext';
 
 export default function Header() {
@@ -18,10 +19,9 @@ export default function Header() {
       <div className='w-1/2 flex items-center justify-evenly font-medium'>
         <PageLink to={'/'}>Home</PageLink>
         <PageLink to={'/products'}>products</PageLink>
-        {/* <PageLink to={'/product/:id'}>details</PageLink> */}
         <PageLink to={'/wishlist'}>wishlist</PageLink>
-        <PageLink to={'/carts'}>
-          carts{' '}
+        <PageLink to={'/shopping-cart'}>
+          ShoppingCart{' '}
           {cartItems.length !== 0 && <span className='text-red-400'>({cartItems.length})</span>}
         </PageLink>
       </div>
