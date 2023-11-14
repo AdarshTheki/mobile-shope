@@ -5,7 +5,16 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import App from './App.jsx';
 import './index.css';
 import ProductProvider from './context/ProductProvider.jsx';
-import { CartPage, NotFound, ProductPage, ProductDetailPage, HomePage } from './pages/index.js';
+import {
+  OrderPayment,
+  OrderSuccess,
+  OrderTrack,
+  ShoppingCart,
+  NotFound,
+  ProductPage,
+  ProductDetailPage,
+  HomePage,
+} from './pages/index.js';
 
 const router = createBrowserRouter([
   {
@@ -15,7 +24,10 @@ const router = createBrowserRouter([
       { path: '/', element: <HomePage /> },
       { path: '/products', element: <ProductPage /> },
       { path: '/product/:id', element: <ProductDetailPage /> },
-      { path: '/carts', element: <CartPage /> },
+      { path: '/shopping-cart', element: <ShoppingCart /> },
+      { path: '/order-payment', element: <OrderPayment /> },
+      { path: '/order/success/:orderId', element: <OrderSuccess /> },
+      { path: '/order/track/:orderId', element: <OrderTrack /> },
       { path: '*', element: <NotFound /> },
     ],
   },

@@ -7,16 +7,10 @@ import SearchBar from './FilterOptions/SearchBar';
 import BatteryFilter from './FilterOptions/BatteryFilter';
 
 export default function ProductFilter() {
-  const { allProducts, clearAllFilter } = useContext();
-
-  const battery = [3300, 3700, 4270, 4300, 4400, 4500, 4600, 4926, 4980, 5000, 6000];
-
-  // const camera = allProducts?.map((product) => product?.processor);
-  // const uniquecamera = [...new Set(camera?.sort())];
-  // console.log(uniquecamera);
+  const { clearAllFilter } = useContext();
 
   return (
-    <div className='py-5 w-[250px] max-h-[580px] overflow-y-auto overflow-x-hidden'>
+    <div className='py-5 w-[250px] max-h-screen overflow-y-auto overflow-x-hidden'>
       <h2 className='text-xl font-semibold text-center text-pink-500 uppercase border-b-2 border-gray-300'>
         Filters
       </h2>

@@ -1,6 +1,7 @@
 import React from 'react';
-import Starts from '../../utils/Starts';
 import { NavLink } from 'react-router-dom';
+
+import Starts from '../../utils/Starts';
 
 export default function Items({ product }) {
   return (

@@ -4,9 +4,17 @@ import useProductContext from '../../context/useProductContext';
 
 export default function CartItem() {
   const { cartItems } = useProductContext();
-  console.log(cartItems)
+  
+  if (cartItems.length === 0) {
+    return (
+      <div className="text-center text-3xl capitalize font-medium text-gray-700 my-10">
+        Your Cart is empty
+      </div>
+    )
+  }
+
   return (
-    <div className='grid sm:grid-cols-3 gap-2 my-5'>
+    <div className='grid lg:grid-cols-2 gap-5 w-full'>
       {cartItems?.map((item) => (
         <Cart key={item?.id} {...item} />
       ))}

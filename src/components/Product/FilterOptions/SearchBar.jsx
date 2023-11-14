@@ -1,24 +1,20 @@
 import React, { useState } from 'react';
 import useProductContext from '../../../context/useProductContext';
+import Inputs from '../../../utils/Inputs';
 
 export default function SearchBar() {
-  const { filters, updateFilterValue, clearAllFilter } = useProductContext();
+  const { filters, updateFilterValue, clearAllFilter, allProducts } = useProductContext();
   const { text } = filters;
 
   const [show, setShow] = useState('');
 
   return (
     <div>
-      <label htmlFor='searchBox' className='font-medium cursor-pointer'>
-        Search:
-      </label>
-      <br />
       {text && <span className='text-sm text-red-500 capitalize'>{text}</span>}
-      <input
+      <Inputs
+        label='Search'
         type='text'
-        id='searchBox'
-        placeholder='search name, brand...'
-        className='border-b-2 border-blue-600 py-1 px-3 w-full placeholder:capitalize'
+        placeholder='Search name, brand...'
         name='text'
         value={show}
         autoComplete='off'
@@ -29,15 +25,13 @@ export default function SearchBar() {
           {allProducts
             .filter((item) => item.name.toLowerCase().includes(show.toLowerCase()))
             .map((item) => (
-              <div
-                key={item?.id}
-                className='flex hover:relative hover:scale-150 hover:translate-x-8 duration-300 w-full my-4'>
+              <div key={item?.id} className='flex hover:scale-110 duration-300 w-full my-4'>
                 <div className='w-8'>
                   <img src={item?.img_url} alt='mg' className='' />
                 </div>
                 <button
                   onClick={() => {
-                    updateFilterValue({ target: { name: 'text', value: item.name } });
+                    updateFilterValue({ target: { name: 'text', value: item.name.slice(0, 20) } });
                     setShow('');
                   }}
                   className='hover:bg-gray-800 text-xs text-left w-full hover:text-white px-2 font-semibold'>
@@ -47,9 +41,16 @@ export default function SearchBar() {
             ))}
         </div>
       )}
+      {show && (
+        <button
+          className='absolute top-5 right-5 hover:bg-gray-800 rounded-md font-medium'
+          onClick={() => setShow('')}>
+          ❌
+        </button>
+      )}
       {text && (
         <button
-          className='absolute top-5 right-5 hover:bg-red-400 font-medium'
+          className='absolute top-5 right-5 hover:bg-gray-800 rounded-md font-medium'
           onClick={() => clearAllFilter()}>
           ❌
         </button>

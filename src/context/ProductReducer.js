@@ -1,5 +1,3 @@
-import { v4 as uuidv4 } from 'uuid';
-
 const ProductReducer = (state, action) => {
   switch (action.type) {
     case 'GET_PRODUCTS':
@@ -49,7 +47,6 @@ const ProductReducer = (state, action) => {
         storage,
         battery,
         camera,
-        processor,
       } = state.filters;
       const filteredProducts = allProducts.filter((product) => {
         const nameMatch = !text || product.name.toLowerCase().includes(text.toLowerCase());
@@ -59,7 +56,6 @@ const ProductReducer = (state, action) => {
           !storage || product.storage.toLowerCase().includes(storage.toLowerCase());
         const batteryMatch = !battery || product.battery == battery;
         const cameraMatch = !camera || product.camera.toLowerCase().includes(camera.toLowerCase());
-        const processorMatch = !processor || product.processor.toLowerCase()?.includes(processor);
         const ratingMatch = !rating || product.ratings >= rating;
         const priceMatch = !price || product.current_price >= price;
         const reviewMatch = !review || product.reviews >= review;
@@ -68,9 +64,8 @@ const ProductReducer = (state, action) => {
           categoryMatch &&
           batteryMatch &&
           storageMatch &&
-          ratingMatch &&
           cameraMatch &&
-          processorMatch &&
+          ratingMatch &&
           priceMatch &&
           reviewMatch
         );
@@ -105,6 +100,16 @@ const ProductReducer = (state, action) => {
         filters: {
           ...state.filters,
           selectedCategories: [],
+        },
+      };
+    }
+
+    case 'CLEAR_ALL_STORAGE': {
+      return {
+        ...state,
+        filters: {
+          ...state.filters,
+          storage: '',
         },
       };
     }

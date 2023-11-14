@@ -5,7 +5,7 @@ import useProductContext from '../../context/useProductContext';
 export default function ProductList() {
   const { filterProducts } = useProductContext();
   return (
-    <div className='max-h-[580px] w-10/12 overflow-y-auto overflow-x-hidden py-5'>
+    <div className='max-h-screen w-10/12 overflow-y-auto overflow-x-hidden py-5'>
       <h2
         className={`text-xl font-semibold text-center uppercase border-b-2 border-gray-300 ${
           filterProducts.length > 10 ? 'text-pink-500' : 'text-red-500'

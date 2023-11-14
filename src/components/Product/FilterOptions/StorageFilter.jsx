@@ -3,7 +3,7 @@ import SelectOptions from '../../../utils/SelectOptions';
 import useProductContext from '../../../context/useProductContext';
 
 export default function StorageFilter() {
-  const { filters, clearAllFilter } = useProductContext();
+  const { filters, clearAllStorage } = useProductContext();
   const { storage } = filters;
 
   const ramStorage = ['2 GB RAM', '4 GB RAM', '6 GB RAM', '8 GB RAM', '12 GB RAM'];
@@ -12,15 +12,15 @@ export default function StorageFilter() {
 
   return (
     <div>
-      <h2 className='font-medium'>
+      <h4>
         Storage : <span className='text-red-500 text-xs '>{storage}</span>
-      </h2>
+      </h4>
       {storage && (
-        <p
-          onClick={clearAllFilter}
+        <button
+          onClick={clearAllStorage}
           className='text-blue-500 text-sm m-2 uppercase font-semibold cursor-pointer'>
           clear All
-        </p>
+        </button>
       )}
       <SelectOptions option={ramStorage} label={'RAM: '} name={'storage'} />
       <SelectOptions option={romStorage} label={'ROM: '} name={'storage'} />
