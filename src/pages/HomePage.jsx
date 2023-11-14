@@ -1,7 +1,9 @@
 import React from 'react';
-import useProductContext from '../context/useProductContext';
 import { useNavigate } from 'react-router-dom';
+
+import useProductContext from '../context/useProductContext';
 import Items from '../components/Product/Items';
+import Button from '../utils/Button';
 
 export default function HomePage() {
   const { allProducts } = useProductContext();
@@ -28,16 +30,12 @@ export default function HomePage() {
           Explore our collection of stylish mobiles and accessories to stay in vogue.
         </p>
         <div className='sm:flex'>
-          <button
-            onClick={() => navigates('/products')}
-            className='w-48 m-2 py-2 font-medium bg-blue-700 hover:opacity-80 text-white'>
+          <Button onClick={() => navigates('/products')} className='bg-blue-700 mx-2'>
             Shop now →
-          </button>
-          <button
-            onClick={() => navigates('/contact')}
-            className='w-48 m-2 py-2 font-medium bg-gray-700 hover:opacity-80 text-white border-white border'>
+          </Button>
+          <Button onClick={() => navigates('/contact')} className='bg-gray-700 border mx-2'>
             Contact us
-          </button>
+          </Button>
         </div>
       </div>
       {/* Category */}

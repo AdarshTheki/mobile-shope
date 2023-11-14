@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import toast, { Toaster } from 'react-hot-toast';
+
 import useProductContext from '../context/useProductContext';
-import { useLocation, useNavigate } from 'react-router-dom';
 import ProductItem from '../components/Product/ProductItem';
+import Button from '../utils/Button';
 
 export default function ProductDetailPage() {
   const { allProducts, addToCart } = useProductContext();
@@ -36,7 +38,7 @@ export default function ProductDetailPage() {
       <button
         onClick={(e) => setData(e.target.value)}
         value={storage}
-        className={`px-2 font-semibold border-2 mx-1 ${
+        className={`px-2 text-xs font-semibold border-2 mx-1 ${
           check === storage ? 'text-blue-700  border-blue-500' : 'text-gray-700  border-gray-300'
         }`}>
         {storage}
@@ -49,22 +51,28 @@ export default function ProductDetailPage() {
       <ProductItem products={items[0]} />
       <div className='max-w-[800px] sm:flex flex-wrap justify-evenly mx-auto'>
         <div>
-          <h2 className='font-medium'>
+          <h4>
             Select Color Variant: <span className='text-red-500 uppercase'>{color}</span>
-          </h2>
+          </h4>
           {getColor?.map((color) => (
             <ColorButton key={color} colors={color} />
           ))}
         </div>
-        <div>
-          <div className='flex m-2 font-medium'>
-            <h2>RAM: </h2>
+        <div className='space-y-2'>
+          <h4>
+            Storage:{' '}
+            <span className='text-red-500 text-sm'>
+              {RAM} | {ROM}
+            </span>
+          </h4>
+          <div className='flex'>
+            <h4>RAM: </h4>
             {getRam?.map((ram) => (
               <StorageButton key={ram} storage={ram} setData={setRam} check={RAM} />
             ))}
           </div>
-          <div className='flex m-2 font-medium'>
-            <h2>ROM:</h2>
+          <div className='flex'>
+            <h4>ROM: </h4>
             {getRom?.map((ram) => (
               <StorageButton key={ram} storage={ram} setData={setRom} check={ROM} />
             ))}
@@ -72,14 +80,14 @@ export default function ProductDetailPage() {
         </div>
       </div>
       <div className='mx-auto w-[150px] mt-2'>
-        <button
+        <Button
           onClick={() => {
             addToCart({ ...items[0], color, RAM, ROM });
             notify();
           }}
-          className='w-full bg-blue-600 hover:bg-blue-800 text-white font-medium rounded py-1'>
+          className='bg-blue-600'>
           Add to Cart
-        </button>
+        </Button>
       </div>
       <Toaster />
     </div>

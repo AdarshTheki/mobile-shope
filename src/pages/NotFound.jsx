@@ -1,5 +1,4 @@
 import React from 'react';
-import Button from '../utils/Button';
 import { NavLink } from 'react-router-dom';
 
 export default function NotFound() {
