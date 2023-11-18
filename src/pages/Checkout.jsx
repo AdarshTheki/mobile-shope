@@ -1,6 +1,7 @@
 import React from 'react';
-import ShippingAddress from '../components/order-payment/ShippingAddress';
-import OrderSummary from '../components/order-payment/OrderSummary';
+import { NavLink } from 'react-router-dom';
+import ShippingAddress from '../components/checkout/OrderSummary';
+import OrderSummary from '../components/checkout/ShippingAddress';
 
 export default function OrderPayment() {
   return (

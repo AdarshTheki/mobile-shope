@@ -1,13 +1,30 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
+import { getAllPosts } from '../appwrite/postService';
 
 export default function OrderTrack() {
   const { orderId } = useParams();
+  const [order, setOrder] = React.useState([]);
+
+  React.useEffect(() => {
+    const response = async () => {
+      await getAllPosts()
+        .then((data) => {
+          const item = data.documents[0].carts;
+          setOrder(JSON.parse(item));
+        })
+        .catch((error) => console.log(error));
+    };
+    response();
+  }, []);
+
+  console.log(order);
+
   return (
     <div className='container mx-auto py-10 px-5 space-y-5'>
       <div className='sm:flex justify-between'>
         <h1 className='text-3xl font-medium'>
-          Order #<span className='uppercase'>32j3df3{orderId}</span>
+          Order #<span className='uppercase'>{orderId}</span>
         </h1>
         <p className='text-blue-500'>Order placed Tue Nov 14 2023</p>
       </div>
@@ -16,13 +33,16 @@ export default function OrderTrack() {
           <h2>Products Purchased</h2>
           <div className='space-y-3'>
             <div>
-              <h4>your name</h4>
-              <p>$2500</p>
+              <h4>
+                {order?.firstName}, {order?.lastName}
+              </h4>
             </div>
-            <div>
-              <h4>product name</h4>
-              <p>$2500</p>
-            </div>
+            {order.map((item) => {
+              <div key={item?.id}>
+                <h4>{item.name}</h4>
+                <p>{item?.current_price}</p>
+              </div>;
+            })}
             <div>
               <h4>Delivery address</h4>
               <p className=' max-w-sm'>

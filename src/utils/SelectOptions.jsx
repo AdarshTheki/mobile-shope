@@ -1,8 +1,8 @@
 import React from 'react';
-import useContext from '../context/useProductContext';
+import GlobalContext from '../context/GlobalContext';
 
 export default function SelectOptions({ option, label, name }) {
-  const { updateFilterValue } = useContext();
+  const { updateFilterValue } = GlobalContext();
   return (
     <div className='flex items-center w-full gap-2 my-1'>
       <label htmlFor={label} className='w-14 text-sm text-right font-normal'>

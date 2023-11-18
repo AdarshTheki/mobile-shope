@@ -1,11 +1,11 @@
 import React from 'react';
 import toast, { Toaster } from 'react-hot-toast';
 
-import useCarts from '../../context/useProductContext';
+import GlobalContext from '../../context/GlobalContext';
 import Button from '../../utils/Button';
 
 export default function EmptyCartMessage() {
-  const { cartItems, clearAllCart } = useCarts();
+  const { cartItems, clearAllCart } = GlobalContext();
 
   const clearAllCartHandler = () => {
     clearAllCart();

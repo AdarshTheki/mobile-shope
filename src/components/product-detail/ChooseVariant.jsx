@@ -1,23 +1,17 @@
-import React, { useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import React from 'react';
 import toast, { Toaster } from 'react-hot-toast';
+import { Button } from '../../utils/index';
+import GlobalContext from '../../context/GlobalContext';
 
-import useProductContext from '../context/useProductContext';
-import ProductItem from '../components/Product/ProductItem';
-import Button from '../utils/Button';
-
-export default function ProductDetailPage() {
-  const { allProducts, addToCart } = useProductContext();
-  const { pathname } = useLocation();
-  const path = pathname.replace('/product/', '');
-  const items = allProducts?.filter((product) => product.id == path);
+export default function ChooseVariant({ items }) {
+  const { addToCart } = GlobalContext();
 
   const getColor = ['#0a4af4', '#90adfa', '#05267e', '#6b54a8', '#a1a8d4', '#3d3b72'];
   const getRam = ['4 GB', '6 GB', '8 GB', '12 GB'];
   const getRom = ['64 GB', '128 GB', '256 GB'];
-  const [color, setColor] = useState(getColor[0]);
-  const [RAM, setRam] = useState(getRam[0]);
-  const [ROM, setRom] = useState(getRom[0]);
+  const [color, setColor] = React.useState(getColor[0]);
+  const [RAM, setRam] = React.useState(getRam[0]);
+  const [ROM, setRom] = React.useState(getRom[0]);
 
   const notify = () => toast.success('successful Added to Cart');
 
@@ -47,9 +41,8 @@ export default function ProductDetailPage() {
   };
 
   return (
-    <div className='py-10'>
-      <ProductItem products={items[0]} />
-      <div className='max-w-[800px] sm:flex flex-wrap justify-evenly mx-auto'>
+    <div className='mx-10 flex gap-5 flex-col items-center justify-center sm:gap-10'>
+      <div className='max-w-[600px] grid gap-5 sm:grid-cols-2 justify-center items-end mx-auto'>
         <div>
           <h4>
             Select Color Variant: <span className='text-red-500 uppercase'>{color}</span>
@@ -79,10 +72,11 @@ export default function ProductDetailPage() {
           </div>
         </div>
       </div>
-      <div className='mx-auto w-[150px] mt-2'>
+      {/*  */}
+      <div className='mx-auto w-[150px]'>
         <Button
           onClick={() => {
-            addToCart({ ...items[0], color, RAM, ROM });
+            addToCart({ ...items, color, RAM, ROM });
             notify();
           }}
           className='bg-blue-600'>

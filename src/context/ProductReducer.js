@@ -1,5 +1,19 @@
 const ProductReducer = (state, action) => {
   switch (action.type) {
+    case 'LOGIN': {
+      const { data } = action.payload;
+      return {
+        ...state,
+        auth: { status: true, userData: data },
+      };
+    }
+
+    case 'LOGOUT':
+      return {
+        ...state,
+        auth: { status: false, userData: null },
+      };
+
     case 'GET_PRODUCTS':
       return {
         ...state,
@@ -38,16 +52,8 @@ const ProductReducer = (state, action) => {
 
     case 'FILTER_PRODUCTS': {
       const { allProducts } = state;
-      const {
-        text,
-        rating,
-        price,
-        selectedCategories,
-        review,
-        storage,
-        battery,
-        camera,
-      } = state.filters;
+      const { text, rating, price, selectedCategories, review, storage, battery, camera } =
+        state.filters;
       const filteredProducts = allProducts.filter((product) => {
         const nameMatch = !text || product.name.toLowerCase().includes(text.toLowerCase());
         const categoryMatch =
@@ -116,19 +122,7 @@ const ProductReducer = (state, action) => {
 
     case 'ADD_TO_CART': {
       const { product } = action.payload;
-      const {
-        color,
-        storage,
-        RAM,
-        ROM,
-        id,
-        name,
-        reviews,
-        stars,
-        lunch_price,
-        current_price,
-        img_url,
-      } = product;
+      const { color, RAM, ROM, id, name, current_price, img_url } = product;
       return {
         ...state,
         cartItems: state.cartItems.find((cart) => cart.id === product.id)
@@ -136,8 +130,6 @@ const ProductReducer = (state, action) => {
               cart.id === product.id
                 ? {
                     ...cart,
-                    color: color,
-                    storage: RAM + ' RAM | ' + ROM + ' ROM',
                     count: cart.count + 1,
                   }
                 : cart
@@ -146,12 +138,10 @@ const ProductReducer = (state, action) => {
               ...state.cartItems,
               {
                 color,
-                storage,
+                RAM,
+                ROM,
                 id,
                 name,
-                reviews,
-                stars,
-                lunch_price,
                 current_price,
                 img_url,
                 count: 1,

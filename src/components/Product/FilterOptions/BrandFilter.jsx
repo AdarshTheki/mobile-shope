@@ -1,9 +1,9 @@
 import React from 'react';
-import useProductContext from '../../../context/useProductContext';
+import GlobalContext from '../../../context/GlobalContext';
 import Checkboxes from '../../../utils/Checkboxes';
 
 export default function BrandFilter() {
-  const { allProducts, filterProducts, filters, clearAllCheckbox } = useProductContext();
+  const { allProducts, filterProducts, filters, clearAllCheckbox } = GlobalContext();
   const { selectedCategories } = filters;
 
   const categories = allProducts?.map((product) => product?.category);
