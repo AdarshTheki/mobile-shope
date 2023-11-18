@@ -1,8 +1,8 @@
 import React from 'react';
-import useContext from '../../../context/useProductContext';
+import GlobalContext from '../../../context/GlobalContext';
 
 export default function FilterRange() {
-  const { filters, updateFilterValue, allProducts } = useContext();
+  const { filters, updateFilterValue, allProducts } = GlobalContext();
   const { rating, price, review } = filters;
 
   const ratings = allProducts.map((product) => product?.ratings);

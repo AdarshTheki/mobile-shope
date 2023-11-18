@@ -1,5 +1,5 @@
 import React from 'react';
-import useContext from '../../context/useProductContext';
+import GlobalContext from '../../context/GlobalContext';
 import FilterRange from './FilterOptions/RangeFilter';
 import StorageFilter from './FilterOptions/StorageFilter';
 import BrandFilter from './FilterOptions/BrandFilter';
@@ -7,7 +7,7 @@ import SearchBar from './FilterOptions/SearchBar';
 import BatteryFilter from './FilterOptions/BatteryFilter';
 
 export default function ProductFilter() {
-  const { clearAllFilter } = useContext();
+  const { clearAllFilter } = GlobalContext();
 
   return (
     <div className='py-5 w-[250px] max-h-screen overflow-y-auto overflow-x-hidden'>

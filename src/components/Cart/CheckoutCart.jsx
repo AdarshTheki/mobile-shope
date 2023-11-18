@@ -1,12 +1,9 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
-
-import useProductContext from '../../context/useProductContext';
-import Inputs from '../../utils/Inputs';
-import Button from '../../utils/Button';
+import GlobalContext from '../../context/GlobalContext';
+import { Inputs, Navigation } from '../../utils/index';
 
 export default function CheckoutCart() {
-  const { cartItems } = useProductContext();
+  const { cartItems } = GlobalContext();
   const counts = cartItems.reduce((total, curr) => total + curr.count * curr.current_price, 0);
 
   let Rupees = new Intl.NumberFormat('en-US', {
@@ -14,9 +11,8 @@ export default function CheckoutCart() {
     currency: 'INR',
     maximumFractionDigits: 0,
   });
-  const totals = Rupees.format(counts);
 
-  const navigated = useNavigate();
+  const totals = Rupees.format(counts);
 
   return (
     <div className='grid min-w-[250px]'>
@@ -39,9 +35,9 @@ export default function CheckoutCart() {
         <h1 className='font-semibold text-2xl text-red-600'>{totals}</h1>
       </div>
       {cartItems.length !== 0 && (
-        <Button onClick={() => navigated('/order-payment')} className='bg-blue-600'>
+        <Navigation to='/order-payment' className='bg-blue-600 text-center'>
           Proceed to Checkout →
-        </Button>
+        </Navigation>
       )}
     </div>
   );

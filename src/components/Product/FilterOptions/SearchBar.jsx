@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import useProductContext from '../../../context/useProductContext';
+import GlobalContext from '../../../context/GlobalContext';
 import Inputs from '../../../utils/Inputs';
 
 export default function SearchBar() {
-  const { filters, updateFilterValue, clearAllFilter, allProducts } = useProductContext();
+  const { filters, updateFilterValue, clearAllFilter, allProducts } = GlobalContext();
   const { text } = filters;
 
   const [show, setShow] = useState('');

@@ -1,9 +1,9 @@
 import React from 'react';
-import useProductContext from '../../../context/useProductContext';
+import GlobalContext from '../../../context/GlobalContext';
 import SelectOptions from '../../../utils/SelectOptions';
 
 export default function BatteryFilter() {
-  const { filters } = useProductContext();
+  const { filters } = GlobalContext();
   const { battery, camera } = filters;
 
   const uniqueBattery = [3300, 3700, 4270, 4300, 4400, 4500, 4600, 4926, 4980, 5000, 6000];

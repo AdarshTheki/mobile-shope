@@ -1,9 +1,9 @@
 import React from 'react';
 import SelectOptions from '../../../utils/SelectOptions';
-import useProductContext from '../../../context/useProductContext';
+import GlobalContext from '../../../context/GlobalContext';
 
 export default function StorageFilter() {
-  const { filters, clearAllStorage } = useProductContext();
+  const { filters, clearAllStorage } = GlobalContext();
   const { storage } = filters;
 
   const ramStorage = ['2 GB RAM', '4 GB RAM', '6 GB RAM', '8 GB RAM', '12 GB RAM'];

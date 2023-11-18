@@ -6,7 +6,7 @@ import Starts from '../../utils/Starts';
 export default function Items({ product }) {
   return (
     <NavLink
-      to={`product/${product?.id}`}
+      to={`/product/${product?.id}`}
       key={product?.id}
       className='flex shadow-xl hover:scale-105 duration-300 flex-col justify-between gap-2 text-center border border-gray-300 rounded-2xl px-4 py-2'>
       <img

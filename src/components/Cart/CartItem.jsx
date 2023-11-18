@@ -1,16 +1,13 @@
 import React from 'react';
 import Cart from './Cart';
-import useProductContext from '../../context/useProductContext';
+import MissingCartItems from './MissingCartItems';
+import GlobalContext from '../../context/GlobalContext';
 
 export default function CartItem() {
-  const { cartItems } = useProductContext();
-  
+  const { cartItems } = GlobalContext();
+
   if (cartItems.length === 0) {
-    return (
-      <div className="text-center text-3xl capitalize font-medium text-gray-700 my-10">
-        Your Cart is empty
-      </div>
-    )
+    return <MissingCartItems />;
   }
 
   return (
