@@ -1,32 +1,22 @@
 import { createContext, useEffect, useReducer } from 'react';
 import ProductReducer from './ProductReducer';
+import { initialState } from './state';
 import { mobiles } from '../flipkart';
 
 // Create Context
-export const ProductContext = createContext();
+export const ContextProvider = createContext();
 
-// Define your Initial Product State Here
-const initialState = {
-  allProducts: [],
-  filterProducts: [],
-  cartItems: [],
-  filters: {
-    selectedCategories: [],
-    text: '',
-    price: '',
-    rating: '',
-    review: '',
-    battery: 0,
-    camera: '',
-    processor: '',
-    storage: '',
-    free_delivery: false,
-  },
-};
-
-const ProductProvider = ({ children }) => {
+const GlobalProvider = ({ children }) => {
   // This Method Run to ProductReducer With Pure Function
   const [state, dispatch] = useReducer(ProductReducer, initialState);
+
+  const login = (data) => {
+    dispatch({ type: 'LOGIN', payload: { data } });
+  };
+
+  const logout = () => {
+    dispatch({ type: 'LOGOUT' });
+  };
 
   // Get The Name & Value with Click Event or Input Event
   const updateFilterValue = (e) => {
@@ -50,12 +40,6 @@ const ProductProvider = ({ children }) => {
   const clearAllStorage = () => {
     dispatch({ type: 'CLEAR_ALL_STORAGE' });
   };
-
-  // const updateCheckbox = (event) => {
-  // const { name, checked } = event.target;
-  // console.log(name, checked);
-  // dispatch({ type: 'UPDATE_CHECKBOX', payload: { name, checked } });
-  // };
 
   const addToCart = (product) => {
     dispatch({ type: 'ADD_TO_CART', payload: { product } });
@@ -87,10 +71,17 @@ const ProductProvider = ({ children }) => {
     dispatch({ type: 'GET_PRODUCTS', payload: mobiles });
   }, []);
 
+  // user Authenticate
+  useEffect(() => {
+    dispatch({ type: 'LOGOUT' });
+  }, []);
+
   return (
-    <ProductContext.Provider
+    <ContextProvider.Provider
       value={{
         ...state,
+        login,
+        logout,
         updateFilterValue,
         toggleCategory,
         clearAllFilter,
@@ -103,8 +94,8 @@ const ProductProvider = ({ children }) => {
         clearAllStorage,
       }}>
       {children}
-    </ProductContext.Provider>
+    </ContextProvider.Provider>
   );
 };
 
-export default ProductProvider;
+export default GlobalProvider;
