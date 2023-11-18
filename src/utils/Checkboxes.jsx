@@ -1,11 +1,10 @@
 import React from 'react';
-import useProductContext from '../context/useProductContext';
+import GlobalContext from '../context/GlobalContext';
 
 export default function Checkboxes({ categories }) {
-  const {
-    toggleCategory,
-    filters: { selectedCategories },
-  } = useProductContext();
+  const { toggleCategory, filters } = GlobalContext();
+  const { selectedCategories } = filters;
+  
   return (
     <>
       {categories?.sort()?.map((category) => (
