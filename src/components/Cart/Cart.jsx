@@ -1,53 +1,47 @@
 import React from 'react';
-import GlobalContext from '../../context/GlobalContext';
-import Button from '../../utils/Button';
-import toast, { Toaster } from 'react-hot-toast';
+import useCartContext from '../../context/useCartContext';
+import { formatePrice } from '../../utils/helpers';
 
-export default function Cart({ id, name, img_url, count, current_price, color, RAM, ROM }) {
-  const { increaseQty, decreaseQty, removeFromCart } = GlobalContext();
-
-  const Rupees = new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'INR',
-    maximumFractionDigits: 0,
-  });
-
-  const price = Rupees.format(current_price || 0);
-  const totals = Rupees.format(count * current_price || 0);
-
-  const cartRemoveHandler = (id) => {
-    removeFromCart(id);
-    toast.success('Remove your cart items');
-  };
+export default function Cart({ id, name, image, amount, price, color, ram, rom }) {
+  const { increaseQty, decreaseQty, removeItem } = useCartContext();
 
   return (
-    <div className=' text-center space-y-1 border py-2 px-6 rounded-2xl shadow-xl'>
-      <img src={img_url} alt={name} className='w-[100px] mx-auto' />
-      <h4 className='text-blue-600 line-clamp-1'>{name}</h4>
-      <p>
-        Color:{' '}
-        <span style={{ backgroundColor: color }} className='px-2 py-1 text-white text-xs'>
-          {color}
-        </span>
-      </p>
-      <p>Storage: {RAM + ' | ' + ROM}</p>
-      <div className=' space-x-4'>
-        <Button className='bg-gray-600 py-1 px-2' onClick={() => increaseQty(id)}>
-          +
-        </Button>
-        <span className='outline-none focus:outline-none text-center w-8 bg-gray-100 font-semibold text-md hover:text-black focus:text-black md:text-base cursor-default text-gray-700'>
-          {count}
-        </span>
-        <Button className='bg-gray-600 py-1 px-2' onClick={() => decreaseQty(id)}>
-          -
-        </Button>
+    <div className='w-full mb-3 flex gap-4 relative border py-2 px-6 rounded-2xl hover:shadow-xl shadow duration-500'>
+      <div className='w-[120px]'>
+        <img src={image} className='w-full object-contain mx-auto' />
       </div>
-      <p>{count + ' × ' + price}</p>
-      <h4>Totals: {totals}</h4>
-      <Button onClick={() => cartRemoveHandler(id)} className='bg-red-600 uppercase text-xs'>
-        Remove
-      </Button>
-      <Toaster />
+      <div className='flex gap-2 text-slate-600 flex-col justify-between text-sm'>
+        <p className='text-blue-600'>{name}</p>
+        <p className='space-x-4'>
+          <span
+            style={{ backgroundColor: color }}
+            className='px-3 py-1 capitalize rounded-2xl text-white text-xs'>
+            {color}
+          </span>
+          <span>{ram + 'GB | ' + rom} GB</span>
+        </p>
+        <p>Price: {formatePrice(price, 'INR')}</p>
+        <div className='space-x-2'>
+          <span>Qty:</span>
+          <button
+            className='bg-slate-600 px-2 rounded text-white font-bold hover:opacity-90'
+            onClick={() => increaseQty(id)}>
+            +
+          </button>
+          <button className='border px-2 border-slate-300 rounded'>{amount}</button>
+          <button
+            className='bg-slate-600 px-2 rounded text-white font-bold hover:opacity-90'
+            onClick={() => decreaseQty(id)}>
+            -
+          </button>
+          <button
+            onClick={() => removeItem(id)}
+            className='hover:bg-gray-500 px-1 text-black text-2xl absolute top-2 right-5 rounded-xl duration-300 '>
+            ×
+          </button>
+        </div>
+        <p className='font-medium'>Totals: {formatePrice(amount * price, 'INR')}</p>
+      </div>
     </div>
   );
 }

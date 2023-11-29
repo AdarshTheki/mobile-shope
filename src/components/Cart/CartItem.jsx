@@ -1,18 +1,18 @@
 import React from 'react';
 import Cart from './Cart';
 import MissingCartItems from './MissingCartItems';
-import GlobalContext from '../../context/GlobalContext';
+import useCartContext from '../../context/useCartContext';
 
 export default function CartItem() {
-  const { cartItems } = GlobalContext();
+  const { cart, total_items } = useCartContext();
 
-  if (cartItems.length === 0) {
+  if (total_items === 0) {
     return <MissingCartItems />;
   }
 
   return (
-    <div className='grid lg:grid-cols-2 gap-5 w-full'>
-      {cartItems?.map((item) => (
+    <div className='w-full'>
+      {cart?.map((item) => (
         <Cart key={item?.id} {...item} />
       ))}
     </div>
