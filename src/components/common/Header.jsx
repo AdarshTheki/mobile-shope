@@ -1,11 +1,14 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import toast, { Toaster } from 'react-hot-toast';
-import GlobalContext from '../../context/GlobalContext';
+import GlobalContext from '../../context/useGlobalContext';
+import Logo from '../SVG/Logo';
+import useCartContext from '../../context/useCartContext';
 import { logoutAccount } from '../../appwrite/authService';
 
 export default function Header() {
   const { cartItems, auth, logout } = GlobalContext();
+  const { total_items } = useCartContext();
   const { status, userData } = auth;
 
   const logOutHandler = async () => {
@@ -20,44 +23,52 @@ export default function Header() {
 
   const PageLink = ({ children, to }) => {
     return (
-      <NavLink
-        to={to}
-        className={({ isActive }) => (isActive ? 'text-red-400 px-2 py-1' : 'text-gray-200')}>
-        {children}
-      </NavLink>
+      <li>
+        <NavLink
+          to={to}
+          className={({ isActive }) =>
+            isActive
+              ? 'text-blue-600 duration-300 hover:underline me-4 md:me-6'
+              : ' text-slate-800 duration-300 hover:text-blue-600 hover:underline me-4 md:me-6'
+          }>
+          {children}
+        </NavLink>
+      </li>
     );
   };
 
   return (
-    <div className='w-full px-14 h-14 shadow flex flex-wrap items-center justify-between bg-slate-900 capitalize'>
-      <div className='w-1/2 flex items-center justify-evenly font-medium'>
+    <div className='w-full px-14 h-14 shadow flex flex-wrap items-center justify-between capitalize'>
+      <Logo />
+      <ul className='hidden md:flex capitalize flex-wrap items-center mb-6 text-sm font-medium sm:mb-0'>
         <PageLink to={'/'}>Home</PageLink>
         <PageLink to={'/products'}>products</PageLink>
-        <PageLink to={'/wishlist'}>wishlist</PageLink>
+        <PageLink to={'/order-payment'}>payment</PageLink>
         <PageLink to={'/shopping-cart'}>
-          ShoppingCart{' '}
-          {cartItems.length !== 0 && <span className='text-red-400'>({cartItems.length})</span>}
+          ShoppingCart {total_items !== 0 && <span className='text-blue-600'>({total_items})</span>}
         </PageLink>
-      </div>
+      </ul>
       {status ? (
-        <div className='space-x-2'>
-          <NavLink to={'/profile'} title='User Name' className='text-white capitalize'>Hey, {userData?.name || userData?.email}</NavLink>
+        <ul className='flex text-sm items-center font-medium'>
+          <PageLink to={'/profile'} title='User Name'>
+            Hey, {userData?.name || userData?.email}
+          </PageLink>
           <button
-            onClick={logOutHandler}
-            className='px-3 py-1 font-semibold hover:bg-red-700 hover:text-gray-200 duration-300 text-red-600 border-red-600 border text-sm'>
+            onClick={() => logOutHandler()}
+            className='hover:opacity-80 font-medium duration-300 px-4 py-2 text-white bg-blue-600 rounded text-sm'>
             Logout
           </button>
-        </div>
+        </ul>
       ) : (
         <div className='space-x-4'>
           <NavLink
             to={'/register'}
-            className='hover:opacity-80 px-4 py-2 text-white bg-blue-700 border-blue-600 border text-sm'>
+            className='hover:opacity-80 duration-300 px-4 py-2 text-white bg-blue-600 border-blue-600 border rounded text-sm'>
             Register
           </NavLink>
           <NavLink
             to={'/login'}
-            className='hover:opacity-80 px-4 py-2 text-white bg-gray-700 border-white border text-sm'>
+            className='hover:opacity-80 duration-300 px-4 py-2 text-white bg-slate-700 border-white border rounded text-sm'>
             Login →
           </NavLink>
         </div>
