@@ -1,25 +1,32 @@
 import React from 'react';
-import { useLocation } from 'react-router-dom';
-
-import GlobalContext from '../context/GlobalContext';
+import { useProducts } from '../context/Products_Context';
 import ProductItem from '../components/Product/ProductItem';
-import ChooseVariant from '../components/product-detail/ChooseVariant';
+import ChooseVariant from '../components/detail/ChooseVariant';
 import Items from '../components/Product/Items';
+import { useParams } from 'react-router-dom';
 
 export default function ProductDetailPage() {
-  const { allProducts } = GlobalContext();
-  const { pathname } = useLocation();
-  const path = pathname.replace('/product/', '');
-  const items = allProducts?.filter((product) => product.id == path);
-  const categories = allProducts?.filter((product) => product.category == items[0]?.category);
+  const { products } = useProducts();
+  const [categories, setCategories] = React.useState(null);
+  const { id } = useParams();
+  const single_product = products?.filter((p) => p?.id === Number(id));
+
+  React.useEffect(() => {
+    const category = single_product[0]?.category;
+    if (category) {
+      const data = products?.filter((product) => product?.category === category);
+      setCategories(data);
+    }
+    window.scrollTo(0, 0);
+  }, [id]);
 
   return (
-    <div className='py-10'>
-      <ProductItem products={items[0]} />
-      <ChooseVariant items={items[0]} />
+    <div className='py-5'>
+      <ProductItem products={single_product[0]} />
+      <ChooseVariant items={single_product[0]} />
       <hr className='my-3 border-gray-300' />
-      <h4 className='m-2 capitalize'>“{items[0]?.category}” Related products</h4>
-      <div className='flex gap-4 py-2 justify-between overflow-x-scroll'>
+      <h4 className='m-2 capitalize'>“{single_product[0]?.category}” Related products</h4>
+      <div className='flex justify-between items-center overflow-x-scroll'>
         {categories?.map((category) => (
           <Items key={category?.id} product={category} />
         ))}

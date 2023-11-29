@@ -1,6 +1,6 @@
 import HomePage from './HomePage';
-import NotFound from './NotFound';
-import Checkout from './Checkout';
+import NotFound from './Error';
+import OrderPayment from './OrderPayment';
 import OrderSuccess from './OrderSuccess';
 import OrderTrack from './OrderTrack';
 import ShoppingCart from './ShoppingCart';
@@ -16,7 +16,7 @@ export {
   ProtectedRoute,
   Login,
   Register,
-  Checkout,
+  OrderPayment,
   OrderTrack,
   OrderSuccess,
   ShoppingCart,

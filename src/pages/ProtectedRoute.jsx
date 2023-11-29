@@ -1,6 +1,6 @@
 import React from 'react';
 import { Navigate, Outlet } from 'react-router-dom';
-import GlobalContext from '../context/GlobalContext';
+import GlobalContext from '../context/useGlobalContext';
 
 export default function ProtectedRoute({ children, redirect = '/login' }) {
   const { auth } = GlobalContext();
