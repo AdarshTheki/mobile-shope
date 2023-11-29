@@ -1,23 +1,24 @@
 import React from 'react';
-import GlobalContext from '../../../context/GlobalContext';
+import { useFilter } from '../../../context/Filter_Context';
 import SelectOptions from '../../../utils/SelectOptions';
+import { getUniqueValues } from '../../../utils/helpers';
 
 export default function BatteryFilter() {
-  const { filters } = GlobalContext();
-  const { battery, camera } = filters;
+  const { all_products } = useFilter();
 
-  const uniqueBattery = [3300, 3700, 4270, 4300, 4400, 4500, 4600, 4926, 4980, 5000, 6000];
-  const uniqueCamera = ['8MP', '12MP', '48MP', '50MP', '64MP', '100MP', '108MP'];
-  // const uniqueProcessor = ['snapdragon', 'bionic', 'helio', 'exynos', 'tensor', 'kirin'];
+  const batteries = getUniqueValues(all_products, 'battery');
+  const cameras = getUniqueValues(all_products, 'camera');
+  const Ram = getUniqueValues(all_products, 'ram');
+  const Rom = getUniqueValues(all_products, 'rom');
+  const display = getUniqueValues(all_products, 'display');
 
   return (
     <div>
-      <p className='text-xs text-red-600'>
-        {battery + ' mAh'}, {camera}
-      </p>
-      <SelectOptions option={uniqueCamera} name={'camera'} label={'Camera: '} />
-      {/* <SelectOptions option={uniqueProcessor} name={'processor'} label={'Processor: '} /> */}
-      <SelectOptions option={uniqueBattery} name={'battery'} label={'Battery: '} />
+      <SelectOptions option={batteries} name={'battery'} label={'Battery: '} />
+      <SelectOptions option={cameras} name={'camera'} label={'Camera: '} />
+      <SelectOptions option={Ram} name={'ram'} label={'RAM: '} />
+      <SelectOptions option={Rom} name={'rom'} label={'ROM: '} />
+      <SelectOptions option={display} name={'display'} label={'Display: '} />
     </div>
   );
 }

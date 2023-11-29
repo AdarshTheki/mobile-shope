@@ -1,25 +1,22 @@
 import React from 'react';
-import GlobalContext from '../../context/GlobalContext';
-import { Inputs, Navigation } from '../../utils/index';
+import useCartContext from '../../context/useCartContext';
+import { formatePrice } from '../../utils/helpers';
+import { Inputs } from '../../utils/index';
+import { NavLink } from 'react-router-dom';
 
 export default function CheckoutCart() {
-  const { cartItems } = GlobalContext();
-  const counts = cartItems.reduce((total, curr) => total + curr.count * curr.current_price, 0);
-
-  let Rupees = new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'INR',
-    maximumFractionDigits: 0,
-  });
-
-  const totals = Rupees.format(counts);
+  const { total_amount, shipping_fee } = useCartContext();
 
   return (
     <div className='grid min-w-[250px]'>
       <h1 className='font-medium text-xl mb-3'>Order summary</h1>
       <div className='flex justify-between'>
         <p>Subtotal</p>
-        <p>{totals}</p>
+        <p>{formatePrice(total_amount, 'INR')}</p>
+      </div>
+      <div className='flex justify-between text-sm mt-5'>
+        <p>Shipping fee</p>
+        <p className='text-red-500'>- {formatePrice(shipping_fee, 'INR')}</p>
       </div>
       <div className='border-y py-5'>
         <Inputs label='Have a coupon code?' placeholder='Enter coupon code' />
@@ -32,13 +29,13 @@ export default function CheckoutCart() {
       </div>
       <div className='flex justify-between mb-5'>
         <h3>Order Total</h3>
-        <h1 className='font-semibold text-2xl text-red-600'>{totals}</h1>
+        <h1 className='font-semibold text-2xl text-red-600'>{formatePrice(total_amount, 'INR')}</h1>
       </div>
-      {cartItems.length !== 0 && (
-        <Navigation to='/order-payment' className='bg-blue-600 text-center'>
-          Proceed to Checkout →
-        </Navigation>
-      )}
+      <NavLink
+        to='/checkout-cart'
+        className='bg-blue-500 duration-300 text-center py-1 text-white rounded-2xl hover:bg-blue-400'>
+        Proceed to Checkout
+      </NavLink>
     </div>
   );
 }

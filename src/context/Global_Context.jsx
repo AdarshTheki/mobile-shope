@@ -1,14 +1,36 @@
 import { createContext, useEffect, useReducer } from 'react';
-import ProductReducer from './ProductReducer';
-import { initialState } from './state';
+import { global_reducer } from '../reducers/global_reducer';
 import { mobiles } from '../flipkart';
 
 // Create Context
-export const ContextProvider = createContext();
+export const GlobalContext = createContext();
+// Define your Initial Product State Here
 
-const GlobalProvider = ({ children }) => {
+const initialState = {
+  allProducts: [],
+  filterProducts: [],
+  cartItems: [],
+  filters: {
+    selectedCategories: [],
+    text: '',
+    price: '',
+    rating: '',
+    review: '',
+    battery: 0,
+    camera: '',
+    processor: '',
+    storage: '',
+    free_delivery: false,
+  },
+  auth: {
+    status: false,
+    userData: null,
+  },
+};
+
+export const GlobalProvider = ({ children }) => {
   // This Method Run to ProductReducer With Pure Function
-  const [state, dispatch] = useReducer(ProductReducer, initialState);
+  const [state, dispatch] = useReducer(global_reducer, initialState);
 
   const login = (data) => {
     dispatch({ type: 'LOGIN', payload: { data } });
@@ -77,7 +99,7 @@ const GlobalProvider = ({ children }) => {
   }, []);
 
   return (
-    <ContextProvider.Provider
+    <GlobalContext.Provider
       value={{
         ...state,
         login,
@@ -94,8 +116,6 @@ const GlobalProvider = ({ children }) => {
         clearAllStorage,
       }}>
       {children}
-    </ContextProvider.Provider>
+    </GlobalContext.Provider>
   );
 };
-
-export default GlobalProvider;

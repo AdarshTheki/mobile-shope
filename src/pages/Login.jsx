@@ -4,7 +4,7 @@ import Inputs from '../utils/Inputs';
 import { useForm } from 'react-hook-form';
 import { loginAccount } from '../appwrite/authService';
 import toast, { Toaster } from 'react-hot-toast';
-import GlobalContext from '../context/GlobalContext';
+import GlobalContext from '../context/useGlobalContext';
 
 export default function Login() {
   const { register, handleSubmit, formState } = useForm();

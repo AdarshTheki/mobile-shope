@@ -1,28 +1,62 @@
 import React from 'react';
-import { FaFacebook, FaInstagram, FaTwitter, FaGithub, FaYoutube } from 'react-icons/fa';
+import Logo from '../SVG/Logo';
 
 export default function Footer() {
   const date = new Date().getFullYear();
   return (
-    <div className='bg-gray-900 sm:flex py-3 items-center px-20 justify-between'>
-      <p className='text-gray-400 sm:text-base text-xs'>© {date} Adarsh Verma. All rights reserved.</p>
-      <div className='list-none flex space-x-2 md:space-x-10 sm:space-x-4'>
-        <a href='#'>
-          <FaFacebook className='md:text-2xl text-xl text-gray-400' />
-        </a>
-        <a href='#'>
-          <FaInstagram className='md:text-2xl text-xl text-gray-400' />
-        </a>
-        <a href='#'>
-          <FaTwitter className='md:text-2xl text-xl text-gray-400' />
-        </a>
-        <a href='#'>
-          <FaGithub className='md:text-2xl text-xl text-gray-400' />
-        </a>
-        <a href='#'>
-          <FaYoutube className='md:text-2xl text-xl text-gray-400' />
-        </a>
-      </div>
+    <div>
+      <footer className='bg-gray-900 text-white dark:bg-gray-900 shadow-2xl'>
+        <div className='w-full max-w-screen-xl mx-auto p-4 md:py-8'>
+          <div className='sm:flex sm:items-center sm:justify-between'>
+            <Logo />
+            <ul className='flex capitalize flex-wrap items-center mb-6 text-sm font-medium text-gray-200 sm:mb-0 dark:text-gray-400'>
+              <li>
+                <a href='#' className='hover:underline me-4 md:me-6'>
+                  About
+                </a>
+              </li>
+              <li>
+                <a href='#' className='hover:underline me-4 md:me-6'>
+                  Privacy Policy
+                </a>
+              </li>
+              <li>
+                <a href='#' className='hover:underline me-4 md:me-6'>
+                  Licensing
+                </a>
+              </li>
+              <li>
+                <a className='hover:underline me-4 md:me-6' href='/order/success/'>
+                  success
+                </a>
+              </li>
+              <li>
+                <a className='hover:underline me-4 md:me-6' href='/order/track/'>
+                  track
+                </a>
+              </li>
+              <li>
+                <a className='hover:underline me-4 md:me-6' href='/order-payment'>
+                  order payment
+                </a>
+              </li>
+              <li>
+                <a className='hover:underline me-4 md:me-6' href='/shopping-cart'>
+                  shopping cart
+                </a>
+              </li>
+            </ul>
+          </div>
+          <hr className='my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8' />
+          <span className='block text-sm text-gray-200 sm:text-center dark:text-gray-400'>
+            © 2023{' '}
+            <a href='https://github.com/AdarshTheki' className='hover:underline'>
+              Adarsh Verma™
+            </a>
+            . All Rights Reserved.
+          </span>
+        </div>
+      </footer>
     </div>
   );
 }

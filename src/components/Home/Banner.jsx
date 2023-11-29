@@ -3,19 +3,19 @@ import { NavLink } from 'react-router-dom';
 
 export default function Banner() {
   return (
-    <section className='bg-gray-800'>
+    <section className='bg-gray-200'>
       <div className='grid max-w-screen-xl px-4 py-12 mx-auto gap-6 lg:gap-8 xl:gap-0 lg:py-36 lg:grid-cols-12'>
         <div className='lg:col-span-12 flex flex-col justify-center items-center text-center'>
-          <h1 className='max-w-3xl mb-3 text-3xl font-extrabold leading-none md:text-4xl xl:text-5xl text-white'>
+          <h1 className='max-w-3xl mb-3 text-3xl font-extrabold leading-none md:text-4xl xl:text-5xl text-gray-600'>
             Discover the Latest Mobile Trends
           </h1>
-          <p className='max-w-2xl mb-4 font-light text-lg lg:mb-6 md:text-base lg:text-lg text-gray-400'>
+          <p className='max-w-2xl mb-4 font-light text-lg lg:mb-6 md:text-base lg:text-lg text-gray-600'>
             Explore our collection of stylish Mobiles and accessories to stay in vogue.
           </p>
           <div className='flex space-x-3'>
             <NavLink
               to='/products'
-              className='inline-flex items-center justify-center px-4 py-2 text-base font-medium text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300'>
+              className='inline-flex duration-300 items-center justify-center px-4 py-2 text-base font-medium text-white rounded-lg bg-blue-600 border border-blue-600 hover:bg-transparent hover:text-blue-600'>
               Shop Now
               <svg
                 className='w-4 h-4 ml-2 -mr-1'
@@ -30,7 +30,7 @@ export default function Banner() {
             </NavLink>
             <NavLink
               to='/contact'
-              className='inline-flex items-center justify-center px-4 py-2 text-base font-medium border border-gray-300 rounded-lg focus:ring-4 focus:ring-gray-100 text-gray-300 hover:bg-gray-700'>
+              className='inline-flex duration-500 items-center justify-center px-4 py-2 text-base font-medium border border-gray-600 rounded-lg text-gray-600 hover:text-white hover:bg-gray-600'>
               Contact Us
             </NavLink>
           </div>

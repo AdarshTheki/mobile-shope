@@ -1,4 +1,4 @@
-const ProductReducer = (state, action) => {
+export const global_reducer = (state, action) => {
   switch (action.type) {
     case 'LOGIN': {
       const { data } = action.payload;
@@ -150,18 +150,6 @@ const ProductReducer = (state, action) => {
       };
     }
 
-    // case 'ADD_TO_CART': {
-    //   const { item } = action.payload;
-    //   return {
-    //     ...state,
-    //     cartItems: state.cartItems.find((cart) => cart.id === item?.id)
-    //       ? state.cartItems.map((cart) =>
-    //           cart.id === item?.id ? { ...cart, count: cart.count + 1 } : cart
-    //         )
-    //       : [...state.cartItems, { ...item, count: 1 }],
-    //   };
-    // }
-
     case 'REMOVE_FROM_CART': {
       const { id } = action.payload;
       return {
@@ -197,5 +185,3 @@ const ProductReducer = (state, action) => {
       return state; // Return the current state if the action type is not recognized.
   }
 };
-
-export default ProductReducer;

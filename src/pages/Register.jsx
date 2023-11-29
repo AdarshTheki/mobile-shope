@@ -3,7 +3,7 @@ import toast, { Toaster } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { createAccount } from '../appwrite/authService';
-import GlobalContext from '../context/GlobalContext';
+import GlobalContext from '../context/useGlobalContext';
 import Inputs from '../utils/Inputs';
 
 export default function Register() {

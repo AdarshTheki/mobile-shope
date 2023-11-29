@@ -1,6 +1,9 @@
 import React from 'react';
-import Inputs from '../../utils/Inputs';
 import { useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
+import { ID } from 'appwrite';
+import { createShippingAddress } from '../appwrite/postService';
+import Inputs from './Inputs';
 
 export default function AddressForm({ setToggle }) {
   const {
@@ -9,19 +12,26 @@ export default function AddressForm({ setToggle }) {
     formState: { errors },
   } = useForm();
 
-  const submitHandler = (data) => {
-    // console.log(data);
-    localStorage.setItem('shippingAddress', JSON.stringify(data));
-    setToggle(false);
+  const userId = ID.unique();
+
+  const submitHandler = async (data) => {
+    await createShippingAddress({ userId, ...data })
+      .then((address) => {
+        console.log(address);
+        localStorage.setItem('shippingAddress', JSON.stringify(address));
+        setToggle(false);
+        toast.success('you address successFull');
+      })
+      .catch((err) => toast.error(err.message));
   };
 
   return (
     <form className='grid grid-cols-2 gap-3 items-start' onSubmit={handleSubmit(submitHandler)}>
       <div>
         <Inputs
-          label='full name'
+          label='Full Name'
           placeholder='Enter your full name'
-          {...register('full_name', { required: true, pattern: /^[A-Za-z ]+$/i })}
+          {...register('name', { required: true, pattern: /^[A-Za-z ]+$/i })}
         />
         {errors.lastName && (
           <span className='text-red-600 text-xs capitalize'>Invalid full name</span>

@@ -7,60 +7,49 @@ export default function ProductItem({ products }) {
   const {
     id,
     name,
-    img_url,
+    url,
     stars,
     ratings,
     reviews,
-    storage,
+    ram,
+    rom,
     display,
     camera,
     battery,
-    processor,
-    lunch_price,
-    current_price,
-    exchange_off,
-    delivery,
-    emi_price,
+    price,
+    shipping,
   } = products;
 
   return (
-    <div className='mx-10 md:flex-row flex gap-5 flex-col items-center justify-center mb-10 sm:gap-10'>
-      <div className='min-w-[180px] relative'>
-        <img src={img_url} alt={id} />
-        {delivery && (
-          <p className='text-white bg-green-700 px-4 rounded-2xl absolute bottom-2'>
+    <div className='md:flex-row flex gap-5 flex-col items-center justify-center my-5 border-b-2'>
+      <div className='w-[180px] min-w-[160px] relative'>
+        <img src={url} alt={id} />
+        {shipping && (
+          <p className='text-white text-xs text-center w-full bg-green-700 rounded absolute bottom-2'>
             Free Shipping Available
           </p>
         )}
-        {emi_price && (
-          <p className='bg-blue-600 px-4 rounded-2xl capitalize absolute bottom-10 text-white left-1'>
-            upto <strong>&#8377;{emi_price}</strong> off
-          </p>
-        )}
       </div>
-      <div className='capitalize font-medium text-gray-800 max-w-[400px] sm:text-base text-sm'>
+      <div className='font-medium text-gray-800 max-w-[400px] text-sm'>
         <NavLink
           to={`/product/${id}`}
-          className='text-2xl underline font-semibold text-blue-600 hover:text-blue-800 line-clamp-1'>
+          className='text-xl cursor-pointer underline font-semibold text-blue-600 hover:text-blue-800 line-clamp-1'>
           {name}
         </NavLink>
         <h4 className='my-2'>
-          <Star starts={stars} /> {ratings} Ratings & {reviews} Reviews
+          <Star starts={stars} reviews={reviews} ratings={ratings} className='justify-start' />
         </h4>
         <p>
-          Storage: <span className='font-normal'>{storage || '#NA'} Storage</span>
+          Storage: <span className='font-normal'>{`${ram} GB RAM | ${rom} GB ROM`}</span>
         </p>
         <p>
-          Display: <span className='font-normal'>{display || '#NA'} Display</span>
+          Display: <span className='font-normal'>{`${display} Full HD+ Display`}</span>
         </p>
         <p>
-          camera: <span className='font-normal'>{camera || '#NA'}</span>
+          camera: <span className='font-normal'>{`${camera} MP Rear Camera`}</span>
         </p>
         <p>
-          battery: <span className='font-normal'>{battery || '#NA'} mAh Battery</span>
-        </p>
-        <p>
-          processor: <span className='font-normal'>{processor || '#NA'} processor</span>
+          battery: <span className='font-normal'>{`${battery} mAh Battery`} </span>
         </p>
         <p>
           Accessories:{' '}
@@ -69,13 +58,7 @@ export default function ProductItem({ products }) {
           </span>
         </p>
         <div className='my-3'>
-          <h2>
-            Price: &#8377;{current_price || '#NA'}
-            <span className='line-through text-red-400 mx-2 text-sm'>{'Rs. ' + (lunch_price || 0)}</span>
-            <span className='bg-green-200 text-green-700 px-3 py-1 text-sm rounded-lg'>
-              {(exchange_off || 0) + ' % off'}
-            </span>
-          </h2>
+          <h4>{`Price: ${price}/-`}</h4>
         </div>
       </div>
     </div>
