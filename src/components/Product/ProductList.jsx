@@ -1,22 +1,29 @@
 import React from 'react';
 import ProductItem from './ProductItem';
-import GlobalContext from '../../context/GlobalContext';
+import Items from './Items';
+import { useFilter } from '../../context/Filter_Context';
+import ProductSort from './ProductSort';
 
 export default function ProductList() {
-  const { filterProducts } = GlobalContext();
+  const { filtered_products, grid_view } = useFilter();
+
   return (
-    <div className='max-h-screen w-10/12 overflow-y-auto overflow-x-hidden py-5'>
-      <h2
-        className={`text-xl font-semibold text-center uppercase border-b-2 border-gray-300 ${
-          filterProducts.length > 10 ? 'text-pink-500' : 'text-red-500'
-        } `}>
-        Product availability: {filterProducts.length}
-      </h2>
-      <div className='pt-5'>
-        {filterProducts?.slice(0, 20)?.map((product) => (
-          <ProductItem key={product?.id} products={product} />
-        ))}
-      </div>
+    <div className='max-h-[150vh] min-h-[150vh] border-l-2 w-full overflow-y-auto relative'>
+      <ProductSort />
+      <hr className=' border-gray-300 mb-4' />
+      {grid_view ? (
+        <div className='flex flex-wrap'>
+          {filtered_products?.slice(0, 20)?.map((product) => {
+            return <Items key={product?.id} product={product} />;
+          })}
+        </div>
+      ) : (
+        <div>
+          {filtered_products?.slice(0, 20)?.map((product) => {
+            return <ProductItem key={product?.id} products={product} />;
+          })}
+        </div>
+      )}
     </div>
   );
 }
