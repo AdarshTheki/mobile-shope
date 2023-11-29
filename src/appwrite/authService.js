@@ -2,8 +2,13 @@ import { ID } from 'appwrite';
 import { account } from './config';
 
 const createAccount = async (email, password, name) => {
-  await account.create(ID.unique(), email, password, name);
-  await loginAccount(email, password);
+  await account
+    .create(ID.unique(), email, password, name)
+    .then((user) => {
+      loginAccount(email, password);
+      account.createVerification(email);
+    })
+    .catch((err) => alert(err.message));
 };
 
 const loginAccount = async (email, password) => {
