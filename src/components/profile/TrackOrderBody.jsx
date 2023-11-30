@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { MdOutlineVisibility } from 'react-icons/md';
 import { formatePrice } from '../../utils/helpers';
 import Visible from '../SVG/Visible';
 
@@ -24,7 +25,7 @@ export default function TrackOrderBody({ body, $id, $updatedAt, payment }) {
         <NavLink
           className='px-2 py-1 text-blue-600 rounded hover:text-gray-700'
           to={`/order-track/${$id}`}>
-          <Visible />
+          <MdOutlineVisibility fontSize={25}/>
         </NavLink>
       </td>
     </tr>
