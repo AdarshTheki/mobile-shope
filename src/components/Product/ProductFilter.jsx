@@ -1,33 +1,62 @@
 import React from 'react';
-import { FaStar } from 'react-icons/fa';
+import { FaCheck } from 'react-icons/fa';
 import { useFilter } from '../../context/Filter_Context';
 import { getUniqueValues, formatePrice } from '../../utils/helpers';
-import BatteryFilter from './FilterOptions/BatteryFilter';
+import SelectOptions from '../../utils/SelectOptions';
+import RadioInputs from '../../utils/RadioInputs';
 
 export default function ProductFilter() {
   const { filters, updateFilters, all_products, clearFilters } = useFilter();
-  const { text, category, stars, min_price, price, max_price, shipping } = filters;
+  const {
+    text,
+    category,
+    color,
+    battery,
+    camera,
+    display,
+    min_price,
+    price,
+    max_price,
+    shipping,
+    stars,
+  } = filters;
 
+  const batteries = getUniqueValues(all_products, 'battery');
+  const cameras = getUniqueValues(all_products, 'camera');
+  const displays = getUniqueValues(all_products, 'display');
   const categories = getUniqueValues(all_products, 'category');
+  const colors = getUniqueValues(all_products, 'color');
+  console.log(color);
+
+  const NameShow = ({ name }) => {
+    return (
+      <div className='flex gap-1 items-center mt-2 mb-1 text-sm'>
+        <hr className='border-gray-400 flex-grow' />
+        <span className='uppercase text-gray-600 font-semibold'>{name}</span>
+        <hr className='border-gray-400 flex-grow' />
+      </div>
+    );
+  };
 
   return (
-    <div className='py-5 w-[250px] max-h-screen'>
-      <div className='relative px-4 flex flex-col gap-5 pt-5'>
+    <div className='pb-5 min-w-[205px] max-w-[210px] max-h-screen'>
+      <div className='relative px-4 flex flex-col gap-5'>
         <form onSubmit={(e) => e.preventDefault()} className='space-y-4 capitalize'>
           {/* search */}
           <div>
+            <NameShow name={'search'} />
             <input
-              className='border border-gray-500 w-full px-5 rounded'
+              className='border border-gray-500 w-full px-2 rounded placeholder:text-sm placeholder:text-gray-400'
               type='text'
               name='text'
               value={text}
-              placeholder='Search...'
+              placeholder='brand, name & more...'
               onChange={updateFilters}
             />
           </div>
           {/* category */}
           <div>
-            <p>category:</p>
+            <NameShow name={'category'} />
             <div className='flex flex-wrap items-start gap-2'>
               {categories.map((c, index) => (
                 <button
@@ -35,8 +64,8 @@ export default function ProductFilter() {
                   onClick={updateFilters}
                   name='category'
                   type='button'
-                  className={`flex-grow text-sm rounded capitalize px-2 border ${
-                    category === c ? 'bg-gray-800 text-white' : 'border-gray-500'
+                  className={`flex-grow text-sm rounded-lg capitalize shadow hover:bg-blue-600 hover:text-white duration-300 px-2 border ${
+                    category === c ? 'bg-blue-600 text-white' : 'border-gray-400'
                   }`}>
                   {c}
                 </button>
@@ -44,17 +73,87 @@ export default function ProductFilter() {
             </div>
           </div>
           {/* battery */}
-          <BatteryFilter />
+          <SelectOptions
+            option={batteries}
+            name={'battery'}
+            label={'Battery: '}
+            more='mAh'
+            value={battery}
+          />
+          {/* camera */}
+          <SelectOptions
+            option={cameras}
+            name={'camera'}
+            label={'Camera: '}
+            more='MP camera'
+            value={camera}
+          />
+          {/* display */}
+          <div>
+            <NameShow name={'display'} />
+            {displays.map((size) => (
+              <RadioInputs key={size} label={size} item={size} name={'display'} value={display} />
+            ))}
+          </div>
+
+          {/* stars */}
+          <div>
+            <NameShow name={'ratings'} />
+            <RadioInputs label={'All'} name='stars' item={'all'} value={stars} />
+            <RadioInputs label={'below & 4.0 ★'} name='stars' item={4} value={stars} />
+            <RadioInputs label={'4.1 & 4.2 ★'} name='stars' item={4.2} value={stars} />
+            <RadioInputs label={'4.3 & 4.4 ★'} name='stars' item={4.4} value={stars} />
+            <RadioInputs label={'4.6 & above ★'} name='stars' item={4.6} value={stars} />
+          </div>
+
+          {/* color */}
+          <div>
+            <NameShow name={'colors'} />
+            <div className='flex items-center justify-start gap-x-3.5'>
+              {colors.map((c, index) => {
+                if (c === 'all') {
+                  return (
+                    <button
+                      key={index}
+                      name='color'
+                      onClick={updateFilters}
+                      data-color='all'
+                      style={{ backgroundColor: c }}
+                      className={`${color === 'all' ? 'text-red-500 p-0' : ''}`}>
+                      All
+                    </button>
+                  );
+                }
+                return (
+                  <button
+                    title={c}
+                    key={index}
+                    name='color'
+                    style={{ background: c }}
+                    className={`${
+                      color === c
+                        ? 'p-1 text-red-500 flex-grow rounded-full border border-black/60'
+                        : 'p-2 bg-gray-800 flex-grow border border-black/60 rounded-full'
+                    }`}
+                    data-color={c}
+                    onClick={updateFilters}>
+                    {color === c ? <FaCheck fontSize={10}/> : null}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
           {/* price */}
           <div>
-            <p className='text-gray-900'>Price:</p>
-            <p>{formatePrice(price)}</p>
+            <NameShow name={'price'} />
+            <p className='text-gray-800 text-sm'>{formatePrice(price)}</p>
             <input
               type='range'
               name='price'
               min={min_price}
               max={max_price}
-              step={(min_price + max_price) / 6}
+              step={(min_price + max_price) / 10}
               value={price}
               onChange={updateFilters}
             />
@@ -70,84 +169,7 @@ export default function ProductFilter() {
               onChange={updateFilters}
             />
           </div>
-          {/* stars */}
-          <div>
-            <p className='text-gray-900'>Ratings:</p>
-            <div className='space-y-1 capitalize'>
-              <div className='space-x-3 flex'>
-                <input
-                  type='radio'
-                  name='stars'
-                  checked={stars === 'all'}
-                  id='all'
-                  value={'all'}
-                  onChange={updateFilters}
-                />
-                <label htmlFor='all' className='flex cursor-pointer items-center gap-1'>
-                  all
-                </label>
-              </div>
-              <div className='space-x-3 flex'>
-                <input
-                  type='radio'
-                  name='stars'
-                  checked={stars === '4'}
-                  id='3'
-                  value={4}
-                  onChange={updateFilters}
-                />
-                <label htmlFor='3' className='flex cursor-pointer items-center gap-1'>
-                  3.0 & 4.0 <FaStar color='orange' />
-                </label>
-              </div>
-              <div className='space-x-3 flex'>
-                <input
-                  type='radio'
-                  name='stars'
-                  checked={stars === '4.2'}
-                  id='4'
-                  value={4.2}
-                  onChange={updateFilters}
-                />
-                <label htmlFor='4' className='flex cursor-pointer items-center gap-1'>
-                  4.1 & 4.2 <FaStar color='orange' />
-                </label>
-              </div>
-              <div className='space-x-3 flex'>
-                <input
-                  type='radio'
-                  name='stars'
-                  checked={stars === '4.4'}
-                  id='5'
-                  value={4.4}
-                  onChange={updateFilters}
-                />
-                <label htmlFor='5' className='flex cursor-pointer items-center gap-1'>
-                  4.4 & 4.4 <FaStar color='orange' />
-                </label>
-              </div>
-              <div className='space-x-3 flex'>
-                <input
-                  type='radio'
-                  name='stars'
-                  checked={stars === '4.6'}
-                  id='6'
-                  value={4.6}
-                  onChange={updateFilters}
-                />
-                <label htmlFor='6' className='flex cursor-pointer items-center gap-1'>
-                  4.5 & 5.0 <FaStar color='orange' />
-                </label>
-              </div>
-            </div>
-          </div>
         </form>
-
-        {/* <SearchBar /> */}
-        {/* <BrandFilter /> */}
-        {/* <StorageFilter /> */}
-        {/* <FilterRange /> */}
-        {/* <BatteryFilter /> */}
 
         {/* Clear all filters */}
         <button
