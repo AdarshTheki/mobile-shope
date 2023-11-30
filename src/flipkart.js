@@ -121,7 +121,7 @@ export const mobiles = [
   {
     id: 5,
     url: 'https://rukminim2.flixcart.com/image/312/312/kg8avm80/mobile/q/8/f/apple-iphone-12-dummyapplefsn-original-imafwg8dbzv8vh7t.jpeg?q=70',
-    color: 'midnight',
+    color: 'silver',
     category: 'apple',
     name: 'APPLE iPhone 12 (Red, 64 GB)',
     stars: 4.4,
@@ -138,7 +138,7 @@ export const mobiles = [
   {
     id: 2,
     url: 'https://rukminim2.flixcart.com/image/312/312/kg8avm80/mobile/j/f/9/apple-iphone-12-dummyapplefsn-original-imafwg8dkyh2zgrh.jpeg?q=70',
-    color: 'white',
+    color: 'silver',
     category: 'apple',
     name: 'APPLE iPhone 12 (White, 128 GB)',
     stars: 4.4,
@@ -155,7 +155,7 @@ export const mobiles = [
   {
     id: 1,
     url: 'https://rukminim2.flixcart.com/image/312/312/kg8avm80/mobile/j/f/9/apple-iphone-12-dummyapplefsn-original-imafwg8dkyh2zgrh.jpeg?q=70',
-    color: 'white',
+    color: 'silver',
     category: 'apple',
     name: 'APPLE iPhone 12 (White, 64 GB)',
     stars: 4.4,
@@ -189,7 +189,7 @@ export const mobiles = [
   {
     id: 14,
     url: 'https://rukminim2.flixcart.com/image/312/312/ktketu80/mobile/s/l/c/iphone-13-mlpf3hn-a-apple-original-imag6vzz5qvejz8z.jpeg?q=70',
-    color: 'midnight',
+    color: 'silver',
     category: 'apple',
     name: 'APPLE iPhone 13 (Midnight, 128 GB)',
     stars: 4.7,
@@ -206,7 +206,7 @@ export const mobiles = [
   {
     id: 13,
     url: 'https://rukminim2.flixcart.com/image/312/312/ktketu80/mobile/8/z/w/iphone-13-mlph3hn-a-apple-original-imag6vzzhrxgazsg.jpeg?q=70',
-    color: 'midnight',
+    color: 'silver',
     category: 'apple',
     name: 'APPLE iPhone 13 (Pink, 128 GB)',
     stars: 4.7,
@@ -223,7 +223,7 @@ export const mobiles = [
   {
     id: 12,
     url: 'https://rukminim2.flixcart.com/image/312/312/ktketu80/mobile/6/n/d/iphone-13-mlpg3hn-a-apple-original-imag6vpyghayhhrh.jpeg?q=70',
-    color: 'midnight',
+    color: 'silver',
     category: 'apple',
     name: 'APPLE iPhone 13 (Starlight, 128 GB)',
     stars: 4.7,
@@ -240,9 +240,9 @@ export const mobiles = [
   {
     id: 262,
     url: 'https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/r/k/o/-original-imaghx9qtwbnhwvy.jpeg?q=70',
-    color: 'midnight',
+    color: 'silver',
     category: 'apple',
-    name: 'APPLE iPhone 14 ((PRODUCT)RED, 128 GB)',
+    name: 'APPLE iPhone 14 (RED, 128 GB)',
     stars: 4.4,
     ratings: 211699,
     reviews: 7928,
@@ -274,7 +274,7 @@ export const mobiles = [
   {
     id: 85,
     url: 'https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/9/e/e/-original-imaghx9q5rvcdghy.jpeg?q=70',
-    color: 'midnight',
+    color: 'silver',
     category: 'apple',
     name: 'APPLE iPhone 14 (Midnight, 128 GB)',
     stars: 4.4,
@@ -291,7 +291,7 @@ export const mobiles = [
   {
     id: 86,
     url: 'https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/9/e/e/-original-imaghx9q5rvcdghy.jpeg?q=70',
-    color: 'midnight',
+    color: 'silver',
     category: 'apple',
     name: 'APPLE iPhone 14 (Midnight, 256 GB)',
     stars: 4.4,
@@ -308,7 +308,7 @@ export const mobiles = [
   {
     id: 119,
     url: 'https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/b/u/f/-original-imaghxa5hvapbfds.jpeg?q=70',
-    color: 'midnight',
+    color: 'silver',
     category: 'apple',
     name: 'APPLE iPhone 14 (Purple, 128 GB)',
     stars: 4.4,
@@ -325,7 +325,7 @@ export const mobiles = [
   {
     id: 219,
     url: 'https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/m/o/b/-original-imaghx9qkugtbfrn.jpeg?q=70',
-    color: 'midnight',
+    color: 'silver',
     category: 'apple',
     name: 'APPLE iPhone 14 (Starlight, 128 GB)',
     stars: 4.4,
@@ -342,7 +342,7 @@ export const mobiles = [
   {
     id: 220,
     url: 'https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/m/o/b/-original-imaghx9qkugtbfrn.jpeg?q=70',
-    color: 'midnight',
+    color: 'silver',
     category: 'apple',
     name: 'APPLE iPhone 14 (Starlight, 256 GB)',
     stars: 4.4,
@@ -376,7 +376,7 @@ export const mobiles = [
   {
     id: 93,
     url: 'https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/a/b/0/-original-imaghx9qnhzxegu2.jpeg?q=70',
-    color: 'midnight',
+    color: 'silver',
     category: 'apple',
     name: 'APPLE iPhone 14 Plus (Midnight, 128 GB)',
     stars: 4.4,
@@ -393,7 +393,7 @@ export const mobiles = [
   {
     id: 293,
     url: 'https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/v/0/t/-original-imaghxa5rgcv5enm.jpeg?q=70',
-    color: 'midnight',
+    color: 'silver',
     category: 'apple',
     name: 'APPLE iPhone 14 Plus (Purple, 128 GB)',
     stars: 4.4,
@@ -410,7 +410,7 @@ export const mobiles = [
   {
     id: 214,
     url: 'https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/l/v/8/-original-imaghx9qudmydgc4.jpeg?q=70',
-    color: 'midnight',
+    color: 'silver',
     category: 'apple',
     name: 'APPLE iPhone 14 Plus (Starlight, 128 GB)',
     stars: 4.4,
@@ -478,7 +478,7 @@ export const mobiles = [
   {
     id: 94,
     url: 'https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/a/c/k/-original-imagtc5fuzkvczr7.jpeg?q=70',
-    color: 'midnight',
+    color: 'silver',
     category: 'apple',
     name: 'APPLE iPhone 15 (Pink, 128 GB)',
     stars: 4.7,
@@ -495,7 +495,7 @@ export const mobiles = [
   {
     id: 209,
     url: 'https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/l/2/y/-original-imaggswcffkgcupp.jpeg?q=70',
-    color: 'midnight',
+    color: 'silver',
     category: 'google',
     name: 'Google Pixel 7 (Lemongrass, 128 GB)',
     stars: 4.3,
@@ -512,7 +512,7 @@ export const mobiles = [
   {
     id: 315,
     url: 'https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/y/u/3/-original-imaggsuddwubypxp.jpeg?q=70',
-    color: 'midnight',
+    color: 'silver',
     category: 'google',
     name: 'Google Pixel 7 (Obsidian, 128 GB)',
     stars: 4.3,
@@ -529,7 +529,7 @@ export const mobiles = [
   {
     id: 165,
     url: 'https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/g/x/9/-original-imaggsudg5fufyte.jpeg?q=70',
-    color: 'midnight',
+    color: 'silver',
     category: 'google',
     name: 'Google Pixel 7 (Snow, 128 GB)',
     stars: 4.3,
@@ -546,7 +546,7 @@ export const mobiles = [
   {
     id: 228,
     url: 'https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/n/i/d/-original-imagpgx4erjqnpzx.jpeg?q=70',
-    color: 'midnight',
+    color: 'silver',
     category: 'google',
     name: 'Google Pixel 7a (Charcoal, 128 GB)',
     stars: 4.1,
@@ -563,7 +563,7 @@ export const mobiles = [
   {
     id: 180,
     url: 'https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/i/a/r/-original-imagtrf9qm3dufq9.jpeg?q=70',
-    color: 'midnight',
+    color: 'silver',
     category: 'google',
     name: 'Google Pixel 7a (Coral, 128 GB)',
     stars: 4.1,
@@ -580,7 +580,7 @@ export const mobiles = [
   {
     id: 323,
     url: 'https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/z/b/d/-original-imagpgx48f4szdvf.jpeg?q=70',
-    color: 'midnight',
+    color: 'silver',
     category: 'google',
     name: 'Google Pixel 7a (Sea, 128 GB)',
     stars: 4.1,
@@ -597,7 +597,7 @@ export const mobiles = [
   {
     id: 294,
     url: 'https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/v/f/d/-original-imagpgx4g2m63gfh.jpeg?q=70',
-    color: 'midnight',
+    color: 'silver',
     category: 'google',
     name: 'Google Pixel 7a (Snow, 128 GB)',
     stars: 4.1,
@@ -682,7 +682,7 @@ export const mobiles = [
   {
     id: 115,
     url: 'https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/b/k/d/-original-imagrgpkyyrjzdxz.jpeg?q=70',
-    color: 'midnight',
+    color: 'silver',
     category: 'infinix',
     name: 'Infinix HOT 30 5G (Miami Orange, 128 GB)',
     stars: 4.2,
@@ -699,7 +699,7 @@ export const mobiles = [
   {
     id: 116,
     url: 'https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/b/k/d/-original-imagrgpkyyrjzdxz.jpeg?q=70',
-    color: 'midnight',
+    color: 'silver',
     category: 'infinix',
     name: 'Infinix HOT 30 5G (Miami Orange, 128 GB)',
     stars: 4.1,
@@ -716,7 +716,7 @@ export const mobiles = [
   {
     id: 18,
     url: 'https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/0/3/4/-original-imagz3cuyhmc45pc.jpeg?q=70',
-    color: 'white',
+    color: 'silver',
     category: 'infinix',
     name: 'Infinix HOT 30i (Diamond White, 128 GB)',
     stars: 4.2,
@@ -733,7 +733,7 @@ export const mobiles = [
   {
     id: 19,
     url: 'https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/0/3/4/-original-imagz3cuyhmc45pc.jpeg?q=70',
-    color: 'white',
+    color: 'silver',
     category: 'infinix',
     name: 'Infinix HOT 30i (Diamond White, 64 GB)',
     stars: 4.2,
@@ -1107,7 +1107,7 @@ export const mobiles = [
   {
     id: 248,
     url: 'https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/p/u/h/-original-imagsf4rcgqz6mbh.jpeg?q=70',
-    color: 'white',
+    color: 'silver',
     category: 'motorola',
     name: 'MOTOROLA e13 (Creamy White, 128 GB)',
     stars: 4.1,
@@ -1124,7 +1124,7 @@ export const mobiles = [
   {
     id: 83,
     url: 'https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/8/u/c/-original-imagmmmh6ezhc2wu.jpeg?q=70',
-    color: 'white',
+    color: 'silver',
     category: 'motorola',
     name: 'MOTOROLA e13 (Creamy White, 64 GB)',
     stars: 3.3,
@@ -1175,7 +1175,7 @@ export const mobiles = [
   {
     id: 134,
     url: 'https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/d/f/z/-original-imaghjjuadpggm7a.jpeg?q=70',
-    color: 'midnight',
+    color: 'silver',
     category: 'motorola',
     name: 'MOTOROLA Edge 30 Fusion (Viva Magenta, 128 GB)',
     stars: 4.3,
@@ -1226,7 +1226,7 @@ export const mobiles = [
   {
     id: 166,
     url: 'https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/h/a/k/-original-imagqx45wnzbh25s.jpeg?q=70',
-    color: 'midnight',
+    color: 'silver',
     category: 'motorola',
     name: 'MOTOROLA Edge 40 (Viva Magenta, 256 GB)',
     stars: 4.2,
@@ -1243,7 +1243,7 @@ export const mobiles = [
   {
     id: 226,
     url: 'https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/n/f/n/-original-imagsmshun6anugu.jpeg?q=70',
-    color: 'midnight',
+    color: 'silver',
     category: 'motorola',
     name: 'MOTOROLA g14 (Butter Cream, 128 GB)',
     stars: 3.3,
@@ -1294,7 +1294,7 @@ export const mobiles = [
   {
     id: 320,
     url: 'https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/z/3/e/g14-payf0010in-motorola-original-imagrtypwf5m6kqw.jpeg?q=70',
-    color: 'gray',
+    color: 'silver',
     category: 'motorola',
     name: 'MOTOROLA g14 (Steel Gray, 128 GB)',
     stars: 3.7,
@@ -1498,7 +1498,7 @@ export const mobiles = [
   {
     id: 139,
     url: 'https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/d/p/l/g73-5g-paux0024in-motorola-original-imagngjhg3bjmazu.jpeg?q=70',
-    color: 'white',
+    color: 'silver',
     category: 'motorola',
     name: 'MOTOROLA g73 5G (Lucent White, 128 GB)',
     stars: 3.3,
@@ -1532,7 +1532,7 @@ export const mobiles = [
   {
     id: 45,
     url: 'https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/5/e/3/g84-5g-paym0018in-motorola-original-imagsy5zmhvkcfsx.jpeg?q=70',
-    color: 'midnight',
+    color: 'silver',
     category: 'motorola',
     name: 'MOTOROLA g84 5G (Viva Magneta, 256 GB)',
     stars: 4.2,
@@ -1651,7 +1651,7 @@ export const mobiles = [
   {
     id: 247,
     url: 'https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/p/r/b/nord-ce-3-lite-5g-ce2099-oneplus-original-imagzj42cctpjjze.jpeg?q=70',
-    color: 'gray',
+    color: 'silver',
     category: 'oneplus',
     name: 'OnePlus Nord CE 3 Lite 5G (Chromatic Gray, 128 GB)',
     stars: 4.4,
@@ -1668,7 +1668,7 @@ export const mobiles = [
   {
     id: 306,
     url: 'https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/w/z/u/-original-imagtxvtmxpagdpn.jpeg?q=70',
-    color: 'gray',
+    color: 'silver',
     category: 'oneplus',
     name: 'OnePlus Nord CE 3 Lite 5G (Chromatic Gray, 256 GB)',
     stars: 4.4,
@@ -1685,7 +1685,7 @@ export const mobiles = [
   {
     id: 307,
     url: 'https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/w/z/u/-original-imagtxvtmxpagdpn.jpeg?q=70',
-    color: 'gray',
+    color: 'silver',
     category: 'oneplus',
     name: 'OnePlus Nord CE 3 Lite 5G (Chromatic Gray, 256 GB)',
     stars: 4.4,
@@ -1702,7 +1702,7 @@ export const mobiles = [
   {
     id: 300,
     url: 'https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/w/b/d/nord-ce-3-lite-5g-cph2466-oneplus-original-imagprzvhqgpq5zf.jpeg?q=70',
-    color: 'gray',
+    color: 'silver',
     category: 'oneplus',
     name: 'OnePlus Nord CE 3 Lite 5G (Gray, 256 GB)',
     stars: 4.4,
@@ -1719,7 +1719,7 @@ export const mobiles = [
   {
     id: 301,
     url: 'https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/w/b/d/nord-ce-3-lite-5g-cph2466-oneplus-original-imagprzvhqgpq5zf.jpeg?q=70',
-    color: 'gray',
+    color: 'silver',
     category: 'oneplus',
     name: 'OnePlus Nord CE 3 Lite 5G (Gray, 256 GB)',
     stars: 4.4,
@@ -1736,7 +1736,7 @@ export const mobiles = [
   {
     id: 210,
     url: 'https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/l/7/k/-original-imagtxvur9yrxvru.jpeg?q=70',
-    color: 'midnight',
+    color: 'silver',
     category: 'oneplus',
     name: 'OnePlus Nord CE 3 Lite 5G (Pastel Lime, 128 GB)',
     stars: 4.4,
@@ -1753,7 +1753,7 @@ export const mobiles = [
   {
     id: 98,
     url: 'https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/a/o/z/nord-ce-3-lite-5g-ce2099-oneplus-original-imagzj3wqxzgquah.jpeg?q=70',
-    color: 'midnight',
+    color: 'silver',
     category: 'oneplus',
     name: 'OnePlus Nord CE 3 Lite 5G (Pastel Lime, 256 GB)',
     stars: 4.4,
@@ -1770,7 +1770,7 @@ export const mobiles = [
   {
     id: 99,
     url: 'https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/a/o/z/nord-ce-3-lite-5g-ce2099-oneplus-original-imagzj3wqxzgquah.jpeg?q=70',
-    color: 'midnight',
+    color: 'silver',
     category: 'oneplus',
     name: 'OnePlus Nord CE 3 Lite 5G (Pastel Lime, 256 GB)',
     stars: 4.4,
@@ -1787,7 +1787,7 @@ export const mobiles = [
   {
     id: 241,
     url: 'https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/o/6/1/nord-ce3-5g-nord-ce3-5g-oneplus-original-imags44dzvsqjkw6.jpeg?q=70',
-    color: 'midnight',
+    color: 'silver',
     category: 'oneplus',
     name: 'OnePlus Nord CE3 5G (Aqua Surge, 128 GB)',
     stars: 4.4,
@@ -1804,7 +1804,7 @@ export const mobiles = [
   {
     id: 240,
     url: 'https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/o/6/1/nord-ce3-5g-nord-ce3-5g-oneplus-original-imags44dzvsqjkw6.jpeg?q=70',
-    color: 'midnight',
+    color: 'silver',
     category: 'oneplus',
     name: 'OnePlus Nord CE3 5G (Aqua Surge, 256 GB)',
     stars: 4.4,
@@ -1821,7 +1821,7 @@ export const mobiles = [
   {
     id: 187,
     url: 'https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/j/k/v/nord-ce3-5g-nord-ce3-5g-oneplus-original-imags44nffzykjsw.jpeg?q=70',
-    color: 'midnight',
+    color: 'silver',
     category: 'oneplus',
     name: 'OnePlus Nord CE3 5G (Grey Shimmer, 128 GB)',
     stars: 4.4,
@@ -1838,7 +1838,7 @@ export const mobiles = [
   {
     id: 188,
     url: 'https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/j/k/v/nord-ce3-5g-nord-ce3-5g-oneplus-original-imags44nffzykjsw.jpeg?q=70',
-    color: 'midnight',
+    color: 'silver',
     category: 'oneplus',
     name: 'OnePlus Nord CE3 5G (Grey Shimmer, 256 GB)',
     stars: 4.4,
@@ -1991,7 +1991,7 @@ export const mobiles = [
   {
     id: 36,
     url: 'https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/3/a/x/f5-5g-mzb0e7kin-poco-original-imagpep3dcnkbxp4.jpeg?q=70',
-    color: 'white',
+    color: 'silver',
     category: 'poco',
     name: 'POCO F5 5G (Snowstorm White, 256 GB)',
     stars: 4.3,
@@ -2025,7 +2025,7 @@ export const mobiles = [
   {
     id: 16,
     url: 'https://rukminim2.flixcart.com/image/312/312/l2jcccw0/mobile/g/l/5/-original-imagdu8j9k3ejjc3.jpeg?q=70',
-    color: 'yellow',
+    color: 'gold',
     category: 'poco',
     name: 'POCO M4 5G (Yellow, 64 GB)',
     stars: 4.2,
@@ -2042,7 +2042,7 @@ export const mobiles = [
   {
     id: 15,
     url: 'https://rukminim2.flixcart.com/image/312/312/l0fm07k0/mobile/a/6/b/-original-imagc7tdwfp2gz4h.jpeg?q=70',
-    color: 'yellow',
+    color: 'gold',
     category: 'poco',
     name: 'POCO M4 Pro (Yellow, 128 GB)',
     stars: 4.2,
@@ -2093,7 +2093,7 @@ export const mobiles = [
   {
     id: 280,
     url: 'https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/t/w/e/-original-imaghsptc24wahms.jpeg?q=70',
-    color: 'yellow',
+    color: 'gold',
     category: 'poco',
     name: 'POCO M5 (Yellow, 128 GB)',
     stars: 4.2,
@@ -2110,7 +2110,7 @@ export const mobiles = [
   {
     id: 281,
     url: 'https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/t/w/e/-original-imaghsptc24wahms.jpeg?q=70',
-    color: 'yellow',
+    color: 'gold',
     category: 'poco',
     name: 'POCO M5 (Yellow, 128 GB)',
     stars: 4.2,
@@ -2127,7 +2127,7 @@ export const mobiles = [
   {
     id: 282,
     url: 'https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/t/w/e/-original-imaghsptc24wahms.jpeg?q=70',
-    color: 'yellow',
+    color: 'gold',
     category: 'poco',
     name: 'POCO M5 (Yellow, 64 GB)',
     stars: 4.1,
@@ -2637,7 +2637,7 @@ export const mobiles = [
   {
     id: 142,
     url: 'https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/d/s/8/-original-imagmkjf9wqjurgf.jpeg?q=70',
-    color: 'yellow',
+    color: 'gold',
     category: 'poco',
     name: 'POCO X5 Pro 5G (Yellow, 128 GB)',
     stars: 4.3,
@@ -2654,7 +2654,7 @@ export const mobiles = [
   {
     id: 144,
     url: 'https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/d/s/8/-original-imagmkjf9wqjurgf.jpeg?q=70',
-    color: 'yellow',
+    color: 'gold',
     category: 'poco',
     name: 'POCO X5 Pro 5G (Yellow, 128 GB)',
     stars: 4.3,
@@ -2671,7 +2671,7 @@ export const mobiles = [
   {
     id: 140,
     url: 'https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/d/s/8/-original-imagmkjf9wqjurgf.jpeg?q=70',
-    color: 'yellow',
+    color: 'gold',
     category: 'poco',
     name: 'POCO X5 Pro 5G (Yellow, 256 GB)',
     stars: 4.3,
@@ -2688,7 +2688,7 @@ export const mobiles = [
   {
     id: 141,
     url: 'https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/d/s/8/-original-imagmkjf9wqjurgf.jpeg?q=70',
-    color: 'yellow',
+    color: 'gold',
     category: 'poco',
     name: 'POCO X5 Pro 5G (Yellow, 256 GB)',
     stars: 4.3,
@@ -2705,7 +2705,7 @@ export const mobiles = [
   {
     id: 143,
     url: 'https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/d/s/8/-original-imagmkjf9wqjurgf.jpeg?q=70',
-    color: 'yellow',
+    color: 'gold',
     category: 'poco',
     name: 'POCO X5 Pro 5G (Yellow, 256 GB)',
     stars: 4.3,
@@ -2875,7 +2875,7 @@ export const mobiles = [
   {
     id: 212,
     url: 'https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/l/8/d/-original-imagqadpnygfnn2v.jpeg?q=70',
-    color: 'midnight',
+    color: 'silver',
     category: 'realme',
     name: 'realme 11 Pro 5G (Sunrise Beige, 128 GB)',
     stars: 4.4,
@@ -2892,7 +2892,7 @@ export const mobiles = [
   {
     id: 211,
     url: 'https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/l/8/d/-original-imagqadpnygfnn2v.jpeg?q=70',
-    color: 'midnight',
+    color: 'silver',
     category: 'realme',
     name: 'realme 11 Pro 5G (Sunrise Beige, 256 GB)',
     stars: 4.4,
@@ -2994,7 +2994,7 @@ export const mobiles = [
   {
     id: 277,
     url: 'https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/t/k/m/11-pro-5g-rmx3741-realme-original-imagq6asfa6hg5eu.jpeg?q=70',
-    color: 'midnight',
+    color: 'silver',
     category: 'realme',
     name: 'realme 11 Pro+ 5G (Sunrise Beige, 256 GB)',
     stars: 4.3,
@@ -3011,7 +3011,7 @@ export const mobiles = [
   {
     id: 278,
     url: 'https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/t/k/m/11-pro-5g-rmx3741-realme-original-imagq6asfa6hg5eu.jpeg?q=70',
-    color: 'midnight',
+    color: 'silver',
     category: 'realme',
     name: 'realme 11 Pro+ 5G (Sunrise Beige, 256 GB)',
     stars: 4.3,
@@ -3062,7 +3062,7 @@ export const mobiles = [
   {
     id: 152,
     url: 'https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/e/q/g/-original-imagtqqd4vcdzqdg.jpeg?q=70',
-    color: 'midnight',
+    color: 'silver',
     category: 'realme',
     name: 'realme 11x 5G (Purple Dawn, 128 GB)',
     stars: 4.3,
@@ -3079,7 +3079,7 @@ export const mobiles = [
   {
     id: 153,
     url: 'https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/e/q/g/-original-imagtqqd4vcdzqdg.jpeg?q=70',
-    color: 'midnight',
+    color: 'silver',
     category: 'realme',
     name: 'realme 11x 5G (Purple Dawn, 128 GB)',
     stars: 4.4,
@@ -3215,7 +3215,7 @@ export const mobiles = [
   {
     id: 73,
     url: 'https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/8/d/b/-original-imagp9s9wfzp8ghf.jpeg?q=70',
-    color: 'midnight',
+    color: 'silver',
     category: 'realme',
     name: 'realme C55 (Rainforest, 128 GB)',
     stars: 4.3,
@@ -3232,7 +3232,7 @@ export const mobiles = [
   {
     id: 74,
     url: 'https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/8/d/b/-original-imagp9s9wfzp8ghf.jpeg?q=70',
-    color: 'midnight',
+    color: 'silver',
     category: 'realme',
     name: 'realme C55 (Rainforest, 64 GB)',
     stars: 4.3,
@@ -3249,7 +3249,7 @@ export const mobiles = [
   {
     id: 75,
     url: 'https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/8/d/b/-original-imagp9s9wfzp8ghf.jpeg?q=70',
-    color: 'midnight',
+    color: 'silver',
     category: 'realme',
     name: 'realme C55 (Rainforest, 64 GB)',
     stars: 4.4,
@@ -3266,7 +3266,7 @@ export const mobiles = [
   {
     id: 95,
     url: 'https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/a/l/m/-original-imagp55fu6uq2jch.jpeg?q=70',
-    color: 'midnight',
+    color: 'silver',
     category: 'realme',
     name: 'realme C55 (Rainy Night, 128 GB)',
     stars: 4.3,
@@ -3283,7 +3283,7 @@ export const mobiles = [
   {
     id: 96,
     url: 'https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/a/l/m/-original-imagp55fu6uq2jch.jpeg?q=70',
-    color: 'midnight',
+    color: 'silver',
     category: 'realme',
     name: 'realme C55 (Rainy Night, 64 GB)',
     stars: 4.4,
@@ -3300,7 +3300,7 @@ export const mobiles = [
   {
     id: 97,
     url: 'https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/a/l/m/-original-imagp55fu6uq2jch.jpeg?q=70',
-    color: 'midnight',
+    color: 'silver',
     category: 'realme',
     name: 'realme C55 (Rainy Night, 64 GB)',
     stars: 4.3,
@@ -3317,7 +3317,7 @@ export const mobiles = [
   {
     id: 325,
     url: 'https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/z/x/x/-original-imagp55frhhddu6n.jpeg?q=70',
-    color: 'midnight',
+    color: 'silver',
     category: 'realme',
     name: 'realme C55 (Sunshower, 128 GB)',
     stars: 4.3,
@@ -3334,7 +3334,7 @@ export const mobiles = [
   {
     id: 326,
     url: 'https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/z/x/x/-original-imagp55frhhddu6n.jpeg?q=70',
-    color: 'midnight',
+    color: 'silver',
     category: 'realme',
     name: 'realme C55 (Sunshower, 128 GB)',
     stars: 4.3,
@@ -3351,7 +3351,7 @@ export const mobiles = [
   {
     id: 327,
     url: 'https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/z/x/x/-original-imagp55frhhddu6n.jpeg?q=70',
-    color: 'midnight',
+    color: 'silver',
     category: 'realme',
     name: 'realme C55 (Sunshower, 64 GB)',
     stars: 4.4,
@@ -3368,7 +3368,7 @@ export const mobiles = [
   {
     id: 328,
     url: 'https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/z/x/x/-original-imagp55frhhddu6n.jpeg?q=70',
-    color: 'midnight',
+    color: 'silver',
     category: 'realme',
     name: 'realme C55 (Sunshower, 64 GB)',
     stars: 4.3,
@@ -3436,7 +3436,7 @@ export const mobiles = [
   {
     id: 218,
     url: 'https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/m/m/3/11-prime-mzb0ceoin-redmi-original-imagzqvrz4mvf6tx.jpeg?q=70',
-    color: 'midnight',
+    color: 'silver',
     category: 'redmi',
     name: 'REDMI 11 Prime (Peppy Purple, 128 GB)',
     stars: 4.3,
@@ -3725,7 +3725,7 @@ export const mobiles = [
   {
     id: 196,
     url: 'https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/k/b/0/-original-imagvfgjnkhtcuhm.jpeg?q=70',
-    color: 'midnight',
+    color: 'silver',
     category: 'redmi',
     name: 'REDMI 12C (Lavender Purple, 128 GB)',
     stars: 4.1,
@@ -3742,7 +3742,7 @@ export const mobiles = [
   {
     id: 197,
     url: 'https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/k/b/0/-original-imagvfgjnkhtcuhm.jpeg?q=70',
-    color: 'midnight',
+    color: 'silver',
     category: 'redmi',
     name: 'REDMI 12C (Lavender Purple, 128 GB)',
     stars: 4.2,
@@ -4167,7 +4167,7 @@ export const mobiles = [
   {
     id: 265,
     url: 'https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/r/o/o/-original-imaghkvuzxkcna4n.jpeg?q=70',
-    color: 'midnight',
+    color: 'silver',
     category: 'redmi',
     name: 'REDMI Note 12 Pro 5G (Stardust Purple, 256 GB)',
     stars: 4.2,
@@ -4184,7 +4184,7 @@ export const mobiles = [
   {
     id: 266,
     url: 'https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/r/o/o/-original-imaghkvuzxkcna4n.jpeg?q=70',
-    color: 'midnight',
+    color: 'silver',
     category: 'redmi',
     name: 'REDMI Note 12 Pro 5G (Stardust Purple, 256 GB)',
     stars: 3.3,
@@ -4235,7 +4235,7 @@ export const mobiles = [
   {
     id: 63,
     url: 'https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/6/c/5/-original-imagmefcgvntdtha.jpeg?q=70',
-    color: 'midnight',
+    color: 'silver',
     category: 'samsung',
     name: 'SAMSUNG Galaxy A14 5G (Dark Red, 128 GB)',
     stars: 4.1,
@@ -4252,7 +4252,7 @@ export const mobiles = [
   {
     id: 64,
     url: 'https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/6/c/5/-original-imagmefcgvntdtha.jpeg?q=70',
-    color: 'midnight',
+    color: 'silver',
     category: 'samsung',
     name: 'SAMSUNG Galaxy A14 5G (Dark Red, 64 GB)',
     stars: 4.1,
@@ -4269,7 +4269,7 @@ export const mobiles = [
   {
     id: 92,
     url: 'https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/a/a/v/galaxy-a34-5g-sm-a346ezkeins-samsung-original-imagnpz4h7xg6pgg.jpeg?q=70',
-    color: 'midnight',
+    color: 'silver',
     category: 'samsung',
     name: 'SAMSUNG Galaxy A34 5G (Awesome Graphite, 128 GB)',
     stars: 4.2,
@@ -4286,7 +4286,7 @@ export const mobiles = [
   {
     id: 21,
     url: 'https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/0/h/m/galaxy-a34-5g-sm-a346elgains-samsung-original-imagnpz52hphfccb.jpeg?q=70',
-    color: 'midnight',
+    color: 'silver',
     category: 'samsung',
     name: 'SAMSUNG Galaxy A34 5G (Awesome Lime, 256 GB)',
     stars: 4.2,
@@ -4303,7 +4303,7 @@ export const mobiles = [
   {
     id: 22,
     url: 'https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/0/h/m/galaxy-a34-5g-sm-a346elgains-samsung-original-imagnpz52hphfccb.jpeg?q=70',
-    color: 'midnight',
+    color: 'silver',
     category: 'samsung',
     name: 'SAMSUNG Galaxy A34 5G (Awesome Lime, 256 GB)',
     stars: 4.2,
@@ -4320,7 +4320,7 @@ export const mobiles = [
   {
     id: 71,
     url: 'https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/7/j/y/galaxy-a34-5g-sm-a346elvcins-samsung-original-imagnpz5dhysxrgw.jpeg?q=70',
-    color: 'midnight',
+    color: 'silver',
     category: 'samsung',
     name: 'SAMSUNG Galaxy A34 5G (Awesome Violet, 128 GB)',
     stars: 4.2,
@@ -4337,7 +4337,7 @@ export const mobiles = [
   {
     id: 70,
     url: 'https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/7/j/y/galaxy-a34-5g-sm-a346elvcins-samsung-original-imagnpz5dhysxrgw.jpeg?q=70',
-    color: 'midnight',
+    color: 'silver',
     category: 'samsung',
     name: 'SAMSUNG Galaxy A34 5G (Awesome Violet, 256 GB)',
     stars: 4.2,
@@ -4354,7 +4354,7 @@ export const mobiles = [
   {
     id: 37,
     url: 'https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/3/g/1/-original-imaguechpztrxtgh.jpeg?q=70',
-    color: 'midnight',
+    color: 'silver',
     category: 'samsung',
     name: 'SAMSUNG Galaxy F04 (Jade Purple, 64 GB)',
     stars: 3.3,
@@ -4422,7 +4422,7 @@ export const mobiles = [
   {
     id: 160,
     url: 'https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/g/d/y/-original-imagueey98xhezph.jpeg?q=70',
-    color: 'midnight',
+    color: 'silver',
     category: 'samsung',
     name: 'SAMSUNG Galaxy F13 (Sunrise Copper, 128 GB)',
     stars: 4.3,
@@ -4439,7 +4439,7 @@ export const mobiles = [
   {
     id: 159,
     url: 'https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/g/d/y/-original-imagueey98xhezph.jpeg?q=70',
-    color: 'midnight',
+    color: 'silver',
     category: 'samsung',
     name: 'SAMSUNG Galaxy F13 (Sunrise Copper, 64 GB)',
     stars: 4.3,
@@ -4473,7 +4473,7 @@ export const mobiles = [
   {
     id: 158,
     url: 'https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/g/c/x/-original-imagtyxdm82fsv6m.jpeg?q=70',
-    color: 'midnight',
+    color: 'silver',
     category: 'samsung',
     name: 'SAMSUNG Galaxy F14 5G (B.A.E. Purple, 128 GB)',
     stars: 4.2,
@@ -4490,7 +4490,7 @@ export const mobiles = [
   {
     id: 195,
     url: 'https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/k/2/x/-original-imagtyxg7mdjhfqm.jpeg?q=70',
-    color: 'midnight',
+    color: 'silver',
     category: 'samsung',
     name: 'SAMSUNG Galaxy F14 5G (B.A.E. Purple, 128 GB)',
     stars: 4.2,
@@ -4643,7 +4643,7 @@ export const mobiles = [
   {
     id: 263,
     url: 'https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/r/k/x/-original-imagtrrqkxprtd4n.jpeg?q=70',
-    color: 'midnight',
+    color: 'silver',
     category: 'samsung',
     name: 'SAMSUNG Galaxy F34 5G (Orchid Violet, 128 GB)',
     stars: 4.3,
@@ -4660,7 +4660,7 @@ export const mobiles = [
   {
     id: 264,
     url: 'https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/r/k/x/-original-imagtrrqkxprtd4n.jpeg?q=70',
-    color: 'midnight',
+    color: 'silver',
     category: 'samsung',
     name: 'SAMSUNG Galaxy F34 5G (Orchid Violet, 128 GB)',
     stars: 4.2,
@@ -4847,7 +4847,7 @@ export const mobiles = [
   {
     id: 146,
     url: 'https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/e/6/d/galaxy-m14-5g-sm-m146b-samsung-original-imagzvnkybtue5da.jpeg?q=70',
-    color: 'midnight',
+    color: 'silver',
     category: 'samsung',
     name: 'SAMSUNG Galaxy M14 5G (Smoky Teal, 128 GB)',
     stars: 4.2,
@@ -4898,7 +4898,7 @@ export const mobiles = [
   {
     id: 138,
     url: 'https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/d/o/r/-original-imagu4haetzha9bj.jpeg?q=70',
-    color: 'midnight',
+    color: 'silver',
     category: 'samsung',
     name: 'SAMSUNG Galaxy S21 FE 5G (Graphite, 128 GB)',
     stars: 4.3,
@@ -4932,7 +4932,7 @@ export const mobiles = [
   {
     id: 136,
     url: 'https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/d/o/c/-original-imagtnqjmfqxxbj2.jpeg?q=70',
-    color: 'midnight',
+    color: 'silver',
     category: 'samsung',
     name: 'Samsung Galaxy S21 FE 5G with Snapdragon 888 (Graphite, 128 GB)',
     stars: 4.3,
@@ -4949,7 +4949,7 @@ export const mobiles = [
   {
     id: 137,
     url: 'https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/d/o/c/-original-imagtnqjmfqxxbj2.jpeg?q=70',
-    color: 'midnight',
+    color: 'silver',
     category: 'samsung',
     name: 'Samsung Galaxy S21 FE 5G with Snapdragon 888 (Graphite, 256 GB)',
     stars: 4.3,
@@ -4966,7 +4966,7 @@ export const mobiles = [
   {
     id: 43,
     url: 'https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/4/x/0/-original-imagtnqjjfgxzpz4.jpeg?q=70',
-    color: 'midnight',
+    color: 'silver',
     category: 'samsung',
     name: 'Samsung Galaxy S21 FE 5G with Snapdragon 888 (Navy, 128 GB)',
     stars: 4.3,
@@ -4983,7 +4983,7 @@ export const mobiles = [
   {
     id: 44,
     url: 'https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/4/x/0/-original-imagtnqjjfgxzpz4.jpeg?q=70',
-    color: 'midnight',
+    color: 'silver',
     category: 'samsung',
     name: 'Samsung Galaxy S21 FE 5G with Snapdragon 888 (Navy, 256 GB)',
     stars: 4.3,
@@ -5000,7 +5000,7 @@ export const mobiles = [
   {
     id: 110,
     url: 'https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/a/y/g/-original-imagtnqkutcyzhgq.jpeg?q=70',
-    color: 'midnight',
+    color: 'silver',
     category: 'samsung',
     name: 'Samsung Galaxy S21 FE 5G with Snapdragon 888 (Olive, 128 GB)',
     stars: 4.3,
@@ -5017,7 +5017,7 @@ export const mobiles = [
   {
     id: 109,
     url: 'https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/a/y/g/-original-imagtnqkutcyzhgq.jpeg?q=70',
-    color: 'midnight',
+    color: 'silver',
     category: 'samsung',
     name: 'Samsung Galaxy S21 FE 5G with Snapdragon 888 (Olive, 256 GB)',
     stars: 4.3,
@@ -5085,7 +5085,7 @@ export const mobiles = [
   {
     id: 55,
     url: 'https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/5/r/x/-original-imagth5xf4shxcuv.jpeg?q=70',
-    color: 'white',
+    color: 'silver',
     category: 'samsung',
     name: 'SAMSUNG Galaxy S22 5G (Phantom White, 128 GB)',
     stars: 4.4,
@@ -5102,7 +5102,7 @@ export const mobiles = [
   {
     id: 194,
     url: 'https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/k/1/o/-original-imagmg6gz3bsgan7.jpeg?q=70',
-    color: 'midnight',
+    color: 'silver',
     category: 'samsung',
     name: 'SAMSUNG Galaxy S23 Ultra 5G (Cream, 256 GB)',
     stars: 4.5,
@@ -5119,7 +5119,7 @@ export const mobiles = [
   {
     id: 267,
     url: 'https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/r/s/r/-original-imagpfbtmrr7spgc.jpeg?q=70',
-    color: 'midnight',
+    color: 'silver',
     category: 'vivo',
     name: 'vivo T2 5G (Velocity Wave, 128 GB)',
     stars: 4.4,
@@ -5136,7 +5136,7 @@ export const mobiles = [
   {
     id: 268,
     url: 'https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/r/s/r/-original-imagpfbtmrr7spgc.jpeg?q=70',
-    color: 'midnight',
+    color: 'silver',
     category: 'vivo',
     name: 'vivo T2 5G (Velocity Wave, 128 GB)',
     stars: 4.4,
@@ -5391,7 +5391,7 @@ export const mobiles = [
   {
     id: 290,
     url: 'https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/u/q/f/-original-imagtyw2vfzzwzgs.jpeg?q=70',
-    color: 'midnight',
+    color: 'silver',
     category: 'vivo',
     name: 'vivo V29 5G (Red, 128 GB)',
     stars: 4.5,
@@ -5408,7 +5408,7 @@ export const mobiles = [
   {
     id: 289,
     url: 'https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/u/q/f/-original-imagtyw2vfzzwzgs.jpeg?q=70',
-    color: 'midnight',
+    color: 'silver',
     category: 'vivo',
     name: 'vivo V29 5G (Red, 256 GB)',
     stars: 4.4,
@@ -5527,7 +5527,7 @@ export const mobiles = [
   {
     id: 177,
     url: 'https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/h/o/e/-original-imagstfsbhaaxbeb.jpeg?q=70',
-    color: 'midnight',
+    color: 'silver',
     category: 'vivo',
     name: 'vivo V29e 5G (Artistic Red, 128 GB)',
     stars: 4.3,
@@ -5544,7 +5544,7 @@ export const mobiles = [
   {
     id: 178,
     url: 'https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/h/o/e/-original-imagstfsbhaaxbeb.jpeg?q=70',
-    color: 'midnight',
+    color: 'silver',
     category: 'vivo',
     name: 'vivo V29e 5G (Artistic Red, 256 GB)',
     stars: 4.3,
