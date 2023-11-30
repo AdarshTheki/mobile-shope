@@ -4,11 +4,6 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  primary: #3963dc;
-  secondary: #464555;
-  light: #aaaabc;
-}
 
 * {
   margin: 0;
