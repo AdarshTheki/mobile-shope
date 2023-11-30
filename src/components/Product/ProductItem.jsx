@@ -2,6 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 import Star from '../../utils/Starts';
+import {formatePrice} from '../../utils/helpers';
 
 export default function ProductItem({ products }) {
   const {
@@ -58,7 +59,7 @@ export default function ProductItem({ products }) {
           </span>
         </p>
         <div className='my-3'>
-          <h4>{`Price: ${price}/-`}</h4>
+          <h4>{`Price: ${formatePrice(price)}/-`}</h4>
         </div>
       </div>
     </div>
