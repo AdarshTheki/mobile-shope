@@ -20,6 +20,10 @@ const initialState = {
   filters: {
     text: '',
     battery: 'all',
+    camera: 'all',
+    ram: 'all',
+    rom: 'all',
+    display: 'all',
     category: 'all',
     color: 'all',
     stars: 'all',
@@ -59,16 +63,16 @@ export const FilterProvider = ({ children }) => {
     if (name === 'category') {
       value = e.target.textContent;
     }
-    if (name === 'colors') {
+    if (name === 'color') {
       value = e.target.dataset.color;
     }
-    if (name === ('price')) {
+    if (name === 'price') {
       value = Number(value);
     }
     if (name === 'shipping') {
       value = e.target.checked;
     }
-    console.log(name, value);
+    console.log(name, value, typeof value);
     dispatch({ type: UPDATE_FILTERS, payload: { name, value } });
   };
   const clearFilters = () => {

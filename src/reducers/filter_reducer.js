@@ -63,7 +63,8 @@ const filter_reducer = (state, action) => {
 
     case FILTER_PRODUCTS: {
       const { all_products } = state;
-      const { text, stars, category, battery, color, price, shipping } = state.filters;
+      const { text, stars, category, battery, camera, display, color, price, shipping } =
+        state.filters;
       let tempProducts = [...all_products];
       if (text) {
         tempProducts = tempProducts.filter((product) => product.name.toLowerCase().includes(text));
@@ -74,10 +75,14 @@ const filter_reducer = (state, action) => {
       if (battery !== 'all') {
         tempProducts = tempProducts.filter((product) => product.battery == battery);
       }
+      if (camera !== 'all') {
+        tempProducts = tempProducts.filter((product) => product.camera == camera);
+      }
+      if (display !== 'all') {
+        tempProducts = tempProducts.filter((product) => product.display == display);
+      }
       if (color !== 'all') {
-        tempProducts = tempProducts.filter((product) => {
-          return product.colors.find((c) => c === color);
-        });
+        tempProducts = tempProducts.filter((product) => product.color === color);
       }
       // filter by price
       tempProducts = tempProducts.filter((product) => product.price <= price);
@@ -107,6 +112,10 @@ const filter_reducer = (state, action) => {
           ...state.filters,
           text: '',
           battery: 'all',
+          camera: 'all',
+          ram: 'all',
+          rom: 'all',
+          display: 'all',
           category: 'all',
           color: 'all',
           stars: 'all',
