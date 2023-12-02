@@ -2,7 +2,6 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { MdOutlineVisibility } from 'react-icons/md';
 import { formatePrice } from '../../utils/helpers';
-import Visible from '../SVG/Visible';
 
 export default function TrackOrderBody({ body, $id, $updatedAt, payment }) {
   const carts = JSON.parse(body);

@@ -3,12 +3,12 @@ import { NavLink } from 'react-router-dom';
 import toast, { Toaster } from 'react-hot-toast';
 import GlobalContext from '../../context/useGlobalContext';
 import Logo from '../SVG/Logo';
-import useCartContext from '../../context/useCartContext';
+import { useCart } from '../../context/Cart_Context';
 import { logoutAccount } from '../../appwrite/authService';
 
 export default function Header() {
-  const { cartItems, auth, logout } = GlobalContext();
-  const { total_items } = useCartContext();
+  const { auth, logout } = GlobalContext();
+  const { total_items } = useCart();
   const { status, userData } = auth;
 
   const logOutHandler = async () => {
