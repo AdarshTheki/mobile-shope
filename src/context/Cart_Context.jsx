@@ -6,6 +6,7 @@ import {
   COUNT_CART_TOTALS,
   INCREASE_CART_QUANTITY,
   DECREASE_CART_QUANTITY,
+  COUPON_USE_TOTALS,
 } from '../action';
 import reducers from '../reducers/cart_reducer';
 
@@ -22,6 +23,8 @@ const initialState = {
   cart: getLocalStorage(),
   total_items: 0,
   total_amount: 0,
+  coupon_amount: 0,
+  coupon_code: '',
   shipping_fee: 180,
 };
 
@@ -30,8 +33,8 @@ export const CartContext = React.createContext();
 export const CartProvider = ({ children }) => {
   const [state, dispatch] = React.useReducer(reducers, initialState);
   // add to cart
-  const addToCart = ({ id, color, name, amount, ram, rom, image, price }) => {
-    dispatch({ type: ADD_TO_CART, payload: { id, color, name, amount, ram, rom, image, price } });
+  const addToCart = (item) => {
+    dispatch({ type: ADD_TO_CART, payload: item });
   };
   // remove item
   const removeItem = (id) => {
@@ -49,6 +52,10 @@ export const CartProvider = ({ children }) => {
   const decreaseQty = (id) => {
     dispatch({ type: DECREASE_CART_QUANTITY, payload: { id } });
   };
+  // use coupon code
+  const couponCode = (coupon) => {
+    dispatch({ type: COUPON_USE_TOTALS, payload: { coupon } });
+  };
 
   React.useEffect(() => {
     localStorage.setItem('cart', JSON.stringify(state.cart));
@@ -64,9 +71,14 @@ export const CartProvider = ({ children }) => {
         clearCart,
         increaseQty,
         decreaseQty,
-        dispatch,
+        couponCode,
       }}>
       {children}
     </CartContext.Provider>
   );
+};
+
+// use context
+export const useCart = () => {
+  return React.useContext(CartContext);
 };

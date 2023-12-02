@@ -7,7 +7,7 @@ import Loading from '../utils/LoadingSpinner';
 import { formatePrice } from '../utils/helpers';
 import OrderStatus from '../components/order/OrderStatus';
 import RemoveOrder from '../components/order/RemoveOrder';
-import AddressDisplay from '../components/order/AddressDisplay';
+import AddressDisplay from '../utils/AddressDisplay';
 
 export default function OrderTrack() {
   const { orderId } = useParams();

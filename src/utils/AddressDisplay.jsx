@@ -9,21 +9,20 @@ export default function AddressDisplay() {
     country: 'Indonashia',
     postal_code: '4422100',
   });
+
+  const item = localStorage.getItem('shippingAddress');
   React.useEffect(() => {
-    const item = localStorage.getItem('shippingAddress');
     if (item) {
-      setAddress(JSON.parse(localStorage.getItem('shippingAddress')));
+      setAddress(JSON.parse(localStorage.getItem('shippingAddress').toLowerCase()));
     }
-  }, []);
+  }, [item]);
 
   return (
-    <>
+    <div className='capitalize'>
       <h5>{address?.name}</h5>
-      <p className='capitalize'>{address.address.toLowerCase()}</p>
-      <h5 className='capitalize mt-2'>
-        {address.city}, {address.country} - {address.postal_code}
-      </h5>
+      <p>{address.address}</p>
+      <h5 className='mt-2'>{`${address.city}, ${address.country} - ${address.postal_code}`}</h5>
       <p>Phone: +91 {address.phone}</p>
-    </>
+    </div>
   );
 }
