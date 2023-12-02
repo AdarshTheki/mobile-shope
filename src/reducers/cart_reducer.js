@@ -5,40 +5,23 @@ import {
   COUNT_CART_TOTALS,
   INCREASE_CART_QUANTITY,
   DECREASE_CART_QUANTITY,
+  COUPON_USE_TOTALS,
 } from '../action';
 
 const cart_reducer = (state, action) => {
   switch (action.type) {
     case ADD_TO_CART: {
-      const { id, color, name, amount, ram, rom, image, price } = action.payload;
-      const tempItem = state.cart.find((i) => i.id === id + color + ram + rom);
-      if (tempItem) {
-        const tempCart = state.cart.map((cartItem) => {
-          if (cartItem.id === id + color + ram + rom) {
-            return { ...cartItem, amount: cartItem.amount + amount };
-          } else {
-            return cartItem;
-          }
-        });
-        return { ...state, cart: tempCart };
-      } else {
-        const newItem = {
-          id: id + color + ram + rom,
-          name,
-          color,
-          amount,
-          image,
-          price,
-          ram,
-          rom,
-        };
-        return { ...state, cart: [...state.cart, newItem] };
-      }
+      const { id, name, price } = action.payload;
+      return {
+        ...state,
+        cart: state.cart.find((cartItem) => cartItem.id === id)
+          ? state.cart.map((item) => (item.id === id ? { ...item, amount: item.amount + 1 } : item))
+          : [...state.cart, { id, name, price, amount: 1 }],
+      };
     }
 
     case REMOVE_CART_ITEM: {
-      const tempCart = state.cart.filter((item) => item.id !== action.payload.id);
-      return { ...state, cart: tempCart };
+      return { ...state, cart: state.cart.filter((item) => item.id !== action.payload.id) };
     }
 
     case CLEAR_CART: {
@@ -46,16 +29,15 @@ const cart_reducer = (state, action) => {
     }
 
     case COUNT_CART_TOTALS: {
-      const { total_items, total_amount } = state.cart.reduce(
+      const { items, amounts } = state.cart.reduce(
         (total, cartItem) => {
-          const { amount, price } = cartItem;
-          total.total_items += amount;
-          total.total_amount += price * amount;
+          total.items += cartItem.amount;
+          total.amounts += cartItem.price * cartItem.amount;
           return total;
         },
-        { total_items: 0, total_amount: 0 }
+        { items: 0, amounts: 0 }
       );
-      return { ...state, total_items, total_amount };
+      return { ...state, total_items: items, total_amount: amounts };
     }
 
     case INCREASE_CART_QUANTITY: {
@@ -77,9 +59,26 @@ const cart_reducer = (state, action) => {
         ),
       };
     }
-  }
 
-  // check to console what to action trigger
-  throw new Error(`"${action.type}" - action type`);
+    case COUPON_USE_TOTALS: {
+      const { coupon } = action.payload;
+      let tempPrice = 0;
+      if (coupon === 'BUY5') {
+        tempPrice = state.total_amount / 5;
+      }
+      if (coupon === 'BUY10') {
+        tempPrice = state.total_amount / 10;
+      }
+      if (coupon === 'BUY20') {
+        tempPrice = state.total_amount / 20;
+      }
+      return {
+        ...state,
+        coupon_amount: tempPrice,
+        coupon_code: coupon,
+      };
+    }
+  }
 };
+
 export default cart_reducer;
