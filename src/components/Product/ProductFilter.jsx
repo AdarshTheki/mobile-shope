@@ -39,11 +39,11 @@ export default function ProductFilter() {
   };
 
   return (
-    <div className='pb-5 min-w-[205px] max-w-[210px] max-h-screen'>
-      <div className='relative px-4 flex flex-col gap-5'>
+    <div className='min-w-[205px] max-w-[250px] bg-gray-200 p-2'>
+      <div className='relative flex flex-col gap-5'>
         <form onSubmit={(e) => e.preventDefault()} className='space-y-4 capitalize'>
           {/* search */}
-          <div>
+          <div className='bg-white p-2 rounded-lg'>
             <NameShow name={'search'} />
             <input
               className='border border-gray-500 w-full px-2 rounded placeholder:text-sm placeholder:text-gray-400'
@@ -55,7 +55,7 @@ export default function ProductFilter() {
             />
           </div>
           {/* category */}
-          <div>
+          <div className='bg-white p-2 rounded-lg'>
             <NameShow name={'category'} />
             <div className='flex flex-wrap items-start gap-2'>
               {categories.map((c, index) => (
@@ -72,24 +72,29 @@ export default function ProductFilter() {
               ))}
             </div>
           </div>
+
           {/* battery */}
-          <SelectOptions
-            option={batteries}
-            name={'battery'}
-            label={'Battery: '}
-            more='mAh'
-            value={battery}
-          />
+          <div className='bg-white p-2 rounded-lg'>
+            <SelectOptions
+              option={batteries}
+              name={'battery'}
+              label={'Battery: '}
+              more='mAh'
+              value={battery}
+            />
+          </div>
           {/* camera */}
-          <SelectOptions
-            option={cameras}
-            name={'camera'}
-            label={'Camera: '}
-            more='MP camera'
-            value={camera}
-          />
+          <div className='bg-white p-2 rounded-lg'>
+            <SelectOptions
+              option={cameras}
+              name={'camera'}
+              label={'Camera: '}
+              more='MP camera'
+              value={camera}
+            />
+          </div>
           {/* display */}
-          <div>
+          <div className='bg-white p-2 rounded-lg'>
             <NameShow name={'display'} />
             {displays.map((size) => (
               <RadioInputs key={size} label={size} item={size} name={'display'} value={display} />
@@ -97,7 +102,7 @@ export default function ProductFilter() {
           </div>
 
           {/* stars */}
-          <div>
+          <div className='bg-white p-2 rounded-lg'>
             <NameShow name={'ratings'} />
             <RadioInputs label={'All'} name='stars' item={'all'} value={stars} />
             <RadioInputs label={'below & 4.0 ★'} name='stars' item={4} value={stars} />
@@ -107,7 +112,7 @@ export default function ProductFilter() {
           </div>
 
           {/* color */}
-          <div>
+          <div className='bg-white p-2 rounded-lg'>
             <NameShow name={'colors'} />
             <div className='flex items-center justify-start gap-x-3.5'>
               {colors.map((c, index) => {
@@ -137,7 +142,7 @@ export default function ProductFilter() {
                     }`}
                     data-color={c}
                     onClick={updateFilters}>
-                    {color === c ? <FaCheck fontSize={10}/> : null}
+                    {color === c ? <FaCheck fontSize={10} /> : null}
                   </button>
                 );
               })}
@@ -145,7 +150,7 @@ export default function ProductFilter() {
           </div>
 
           {/* price */}
-          <div>
+          <div className='bg-white p-2 rounded-lg'>
             <NameShow name={'price'} />
             <p className='text-gray-800 text-sm'>{formatePrice(price)}</p>
             <input
@@ -159,7 +164,7 @@ export default function ProductFilter() {
             />
           </div>
           {/* shipping */}
-          <div>
+          <div className='bg-white p-2 rounded-lg'>
             <label htmlFor='shipping'>free shipping: </label>
             <input
               type='checkbox'
@@ -172,11 +177,13 @@ export default function ProductFilter() {
         </form>
 
         {/* Clear all filters */}
-        <button
-          className='block bg-red-600 hover:bg-red-800 py-1 px-3 rounded-lg text-white capitalize text-sm font-medium'
-          onClick={() => clearFilters()}>
-          clear all
-        </button>
+        <div className='bg-white p-2 rounded-lg'>
+          <button
+            className='w-full bg-red-600 hover:bg-red-800 py-1 px-3 rounded-lg text-white capitalize text-sm font-medium'
+            onClick={() => clearFilters()}>
+            clear all
+          </button>
+        </div>
       </div>
     </div>
   );

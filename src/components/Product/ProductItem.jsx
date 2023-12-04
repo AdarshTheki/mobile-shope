@@ -22,7 +22,7 @@ export default function ProductItem({ products }) {
   } = products;
 
   return (
-    <div className='md:flex-row flex gap-5 flex-col items-center justify-center my-5 border-b-2'>
+    <div className='md:flex-row gap-5 flex flex-col bg-white items-center justify-center mx-2 my-4 py-4 rounded-xl'>
       <div className='w-[180px] min-w-[160px] relative'>
         <img src={url} alt={id} />
         {shipping && (

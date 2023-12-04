@@ -5,7 +5,7 @@ import { useFilter } from '../../context/Filter_Context';
 export default function ProductSort() {
   const { filtered_products, updateSort, sort, grid_view, setGridView, setListView } = useFilter();
   return (
-    <div className='w-full text-sm capitalize flex gap-4 items-center justify-between px-10 py-5'>
+    <div className='text-sm m-2 capitalize flex gap-4 items-center justify-between px-10 py-5 bg-white rounded-lg'>
       <div className='flex gap-2'>
         <button onClick={setGridView} className={`border p-1 rounded border-gray-800 ${grid_view ? 'text-white bg-gray-800' : null}`}>
           <BsFillGridFill fontSize={15} />

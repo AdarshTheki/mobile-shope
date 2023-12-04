@@ -8,9 +8,8 @@ export default function ProductList() {
   const { filtered_products, grid_view } = useFilter();
 
   return (
-    <div className='max-h-[150vh] min-h-[150vh] border-l-2 w-full overflow-y-auto relative'>
+    <div className='max-h-[200vh] min-h-[150vh] bg-gray-200 w-full overflow-y-auto relative'>
       <ProductSort />
-      <hr className=' border-gray-300 mb-4' />
       {grid_view ? (
         <div className='flex flex-wrap'>
           {filtered_products?.slice(0, 20)?.map((product) => {
