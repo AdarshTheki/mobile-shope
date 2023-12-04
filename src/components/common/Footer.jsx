@@ -1,62 +1,62 @@
+// eslint-disable-next-line no-unused-vars
 import React from 'react';
 import Logo from '../SVG/Logo';
+import { Link } from 'react-router-dom';
+import { IoLogoFacebook, IoLogoTwitter, IoLogoGithub, IoLogoYoutube } from 'react-icons/io5';
 
 export default function Footer() {
   const date = new Date().getFullYear();
   return (
-    <div>
-      <footer className='bg-gray-900 text-white dark:bg-gray-900 shadow-2xl'>
-        <div className='w-full max-w-screen-xl mx-auto p-4 md:py-8'>
-          <div className='sm:flex sm:items-center sm:justify-between'>
-            <Logo />
-            <ul className='flex capitalize flex-wrap items-center mb-6 text-sm font-medium text-gray-200 sm:mb-0 dark:text-gray-400'>
-              <li>
-                <a href='#' className='hover:underline me-4 md:me-6'>
-                  About
-                </a>
-              </li>
-              <li>
-                <a href='#' className='hover:underline me-4 md:me-6'>
-                  Privacy Policy
-                </a>
-              </li>
-              <li>
-                <a href='#' className='hover:underline me-4 md:me-6'>
-                  Licensing
-                </a>
-              </li>
-              <li>
-                <a className='hover:underline me-4 md:me-6' href='/order/success/'>
-                  success
-                </a>
-              </li>
-              <li>
-                <a className='hover:underline me-4 md:me-6' href='/order/track/'>
-                  track
-                </a>
-              </li>
-              <li>
-                <a className='hover:underline me-4 md:me-6' href='/order-payment'>
-                  order payment
-                </a>
-              </li>
-              <li>
-                <a className='hover:underline me-4 md:me-6' href='/shopping-cart'>
-                  shopping cart
-                </a>
-              </li>
-            </ul>
+    <div className=' bg-slate-800 text-slate-300 text-sm mt-16'>
+      <div className=' container mx-auto px-5'>
+        <div className='flex flex-col md:flex-row justify-between pt-14 pb-8'>
+          <div className='flex flex-col capitalize'>
+            <h3 className='text-lg text-white mb-2'>shope categories</h3>
+            <Link to={'/'} className='hover:text-blue-600 duration-300'>Phones</Link>
+            <Link to={'/'} className='hover:text-blue-600 duration-300'>laptops</Link>
+            <Link to={'/'} className='hover:text-blue-600 duration-300'>desktop</Link>
+            <Link to={'/'} className='hover:text-blue-600 duration-300'>watches</Link>
+            <Link to={'/'} className='hover:text-blue-600 duration-300'>Tvs</Link>
+            <Link to={'/'} className='hover:text-blue-600 duration-300'>accessories</Link>
           </div>
-          <hr className='my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8' />
-          <span className='block text-sm text-gray-200 sm:text-center dark:text-gray-400'>
-            © 2023{' '}
-            <a href='https://github.com/AdarshTheki' className='hover:underline'>
-              Adarsh Verma™
-            </a>
-            . All Rights Reserved.
-          </span>
+          <div className='flex flex-col capitalize'>
+            <h3 className='text-lg text-white mb-2'>Customer service</h3>
+            <Link to={'/'} className='hover:text-blue-600 duration-300'>Contact us</Link>
+            <Link to={'/'} className='hover:text-blue-600 duration-300'>shopping police</Link>
+            <Link to={'/'} className='hover:text-blue-600 duration-300'>return & exchange</Link>
+            <Link to={'/'} className='hover:text-blue-600 duration-300'>vouchers</Link>
+            <Link to={'/'} className='hover:text-blue-600 duration-300'>FAQs</Link>
+          </div>
+          <div className='flex flex-col capitalize'>
+            <h3 className='text-lg text-white mb-2'>Customer service</h3>
+            <p className='text-slate-300 w-52'>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel fugit necessitatibus iste
+              ullam esse consectetur, excepturi unde tempora,
+            </p>
+          </div>
+          <div className='flex flex-col capitalize'>
+            <h3 className='text-lg text-white mb-2'>Follow us</h3>
+            <ul className='flex gap-2'>
+              <Link to='/'>
+                <IoLogoFacebook className='text-2xl' />
+              </Link>
+              <Link to='/'>
+                <IoLogoTwitter className='text-2xl' />
+              </Link>
+              <Link to='/'>
+                <IoLogoGithub className='text-2xl' />
+              </Link>
+              <Link to='/'>
+                <IoLogoYoutube className='text-2xl' />
+              </Link>
+            </ul>
+            <div className='sm:scale-125 mt-5 sm:mt-16'>
+              <Logo />
+            </div>
+          </div>
         </div>
-      </footer>
+      </div>
+      <p className='text-white text-center pb-2'>@{date} E-shop. Adarsh Verma All right resowed</p>
     </div>
   );
 }
