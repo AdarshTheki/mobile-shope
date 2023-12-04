@@ -31,8 +31,10 @@ Tab.Item = ({ label, index }) => {
   return (
     <div
       onClick={handleClick}
-      className={`cursor-pointer px-2 mb-2 block text-center flex-grow py-0 uppercase hover:opacity-80 rounded duration-300 ${
-        currentTab === index ? 'bg-gray-800 text-white shadow-lg' : 'text-gray-900'
+      className={`cursor-pointer block text-center flex-grow py-1 uppercase hover:opacity-80 rounded-2xl duration-300 ${
+        currentTab === index
+          ? 'bg-gray-800 text-white shadow-lg'
+          : 'text-gray-900 hover:bg-gray-300'
       }`}>
       {label}
     </div>

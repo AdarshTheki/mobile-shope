@@ -19,7 +19,7 @@ export default function CategoryList() {
   return (
     <div>
       <Tab currentTab={currentTabIndex} onChange={handleChange}>
-        <div className='my-1 bg-blue-200'>
+        <div className='my-4 bg-blue-200'>
           <Tab.HeaderContainer>
             {categories
               .filter((f) => f !== 'all')
@@ -28,18 +28,20 @@ export default function CategoryList() {
               ))}
           </Tab.HeaderContainer>
         </div>
-        <Tab.ContentContainer>
-          {categories.map((category) => (
-            <Tab.ContentItem key={category} index={category}>
-              {all_products
-                .filter((p) => p.category === category)
-                .slice(0, 8)
-                .map((item) => (
-                  <Items key={item.id} product={item} />
-                ))}
-            </Tab.ContentItem>
-          ))}
-        </Tab.ContentContainer>
+        <div className='bg-gray-200 md:px-18 sm:px-10 px-5'>
+          <Tab.ContentContainer>
+            {categories.map((category) => (
+              <Tab.ContentItem key={category} index={category}>
+                {all_products
+                  .filter((p) => p.category === category)
+                  .slice(0, 8)
+                  .map((item) => (
+                    <Items key={item.id} product={item} />
+                  ))}
+              </Tab.ContentItem>
+            ))}
+          </Tab.ContentContainer>
+        </div>
       </Tab>
     </div>
   );
