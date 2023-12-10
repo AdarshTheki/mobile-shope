@@ -12,10 +12,17 @@ export const SET_LIST_VIEW = 'SET_LIST_VIEW';
 
 // Filter Related Actions
 export const UPDATE_SORT = 'UPDATE_SORT';
+export const UPDATE_PAGE = 'UPDATE_PAGE';
 export const SORT_PRODUCTS = 'SORT_PRODUCTS';
 export const UPDATE_FILTERS = 'UPDATE_FILTERS';
 export const FILTER_PRODUCTS = 'FILTER_PRODUCTS';
 export const CLEAR_FILTERS = 'CLEAR_FILTERS';
+export const TOGGLE_CHECKBOX = 'TOGGLE_CHECKBOX';
+export const CLEAR_CATEGORY = 'CLEAR_CATEGORY';
+export const CLEAR_BATTERY = 'CLEAR_BATTERY';
+export const CLEAR_RAM_MEMORY = 'CLEAR_RAM_MEMORY';
+export const CLEAR_DISPLAY = 'CLEAR_DISPLAY';
+export const CLEAR_CAMERA = 'CLEAR_CAMERA';
 
 // Cart Related Actions
 export const ADD_TO_CART = 'ADD_TO_CART';

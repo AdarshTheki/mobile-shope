@@ -10,6 +10,12 @@ import {
   UPDATE_FILTERS,
   FILTER_PRODUCTS,
   CLEAR_FILTERS,
+  CLEAR_BATTERY,
+  CLEAR_CAMERA,
+  CLEAR_CATEGORY,
+  CLEAR_DISPLAY,
+  CLEAR_RAM_MEMORY,
+  TOGGLE_CHECKBOX,
 } from '../action';
 
 const initialState = {
@@ -19,14 +25,14 @@ const initialState = {
   sort: 'price-lowest',
   filters: {
     text: '',
-    battery: 'all',
-    camera: 'all',
-    ram: 'all',
-    rom: 'all',
-    display: 'all',
-    category: 'all',
+    selectedCategory: [],
+    selectedBattery: [],
+    selectedCamera: [],
+    selectedDisplay: [],
+    selectedRam: [],
     color: 'all',
-    stars: 'all',
+    stars: 0,
+    page: 20,
     min_price: 0,
     max_price: 0,
     price: 0,
@@ -53,30 +59,47 @@ export const FilterProvider = ({ children }) => {
     dispatch({ type: SET_LIST_VIEW });
   };
   const updateSort = (e) => {
-    // just for demonstration
-    // const name = e.target.name;
     dispatch({ type: UPDATE_SORT, payload: e.target.value });
   };
   const updateFilters = (e) => {
     let name = e.target.name;
     let value = e.target.value;
-    if (name === 'category') {
-      value = e.target.textContent;
-    }
     if (name === 'color') {
       value = e.target.dataset.color;
     }
     if (name === 'price') {
       value = Number(value);
     }
+    if (name === 'stars') {
+      value = Number(value);
+    }
     if (name === 'shipping') {
       value = e.target.checked;
     }
-    console.log(name, value, typeof value);
     dispatch({ type: UPDATE_FILTERS, payload: { name, value } });
   };
+
+  const toggleCheckbox = (category, value) => {
+    dispatch({ type: TOGGLE_CHECKBOX, payload: { category, value } });
+  };
+
   const clearFilters = () => {
     dispatch({ type: CLEAR_FILTERS });
+  };
+  const clearCategory = () => {
+    dispatch({ type: CLEAR_CATEGORY });
+  };
+  const clearCamera = () => {
+    dispatch({ type: CLEAR_CAMERA });
+  };
+  const clearDisplay = () => {
+    dispatch({ type: CLEAR_DISPLAY });
+  };
+  const clearRam = () => {
+    dispatch({ type: CLEAR_RAM_MEMORY });
+  };
+  const clearBattery = () => {
+    dispatch({ type: CLEAR_BATTERY });
   };
 
   React.useEffect(() => {
@@ -85,7 +108,20 @@ export const FilterProvider = ({ children }) => {
 
   return (
     <FilterContext.Provider
-      value={{ ...state, setGridView, setListView, updateSort, updateFilters, clearFilters }}>
+      value={{
+        ...state,
+        setGridView,
+        setListView,
+        updateSort,
+        updateFilters,
+        clearFilters,
+        toggleCheckbox,
+        clearCategory,
+        clearCamera,
+        clearDisplay,
+        clearRam,
+        clearBattery,
+      }}>
       {children}
     </FilterContext.Provider>
   );

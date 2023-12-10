@@ -7,6 +7,12 @@ import {
   UPDATE_FILTERS,
   FILTER_PRODUCTS,
   CLEAR_FILTERS,
+  CLEAR_BATTERY,
+  CLEAR_CAMERA,
+  CLEAR_CATEGORY,
+  CLEAR_DISPLAY,
+  CLEAR_RAM_MEMORY,
+  TOGGLE_CHECKBOX,
 } from '../action';
 
 const filter_reducer = (state, action) => {
@@ -33,6 +39,11 @@ const filter_reducer = (state, action) => {
     case SORT_PRODUCTS: {
       const { sort, filtered_products } = state;
       let tempProducts = [];
+      if (sort === 'id') {
+        tempProducts = filtered_products.sort((a, b) => {
+          return a.id - b.id;
+        });
+      }
       if (sort === 'price-lowest') {
         tempProducts = filtered_products.sort((a, b) => {
           return a.price - b.price;
@@ -41,6 +52,16 @@ const filter_reducer = (state, action) => {
       if (sort === 'price-highest') {
         tempProducts = filtered_products.sort((a, b) => {
           return b.price - a.price;
+        });
+      }
+      if (sort === 'ratings') {
+        tempProducts = filtered_products.sort((a, b) => {
+          return b.ratings - a.ratings;
+        });
+      }
+      if (sort === 'reviews') {
+        tempProducts = filtered_products.sort((a, b) => {
+          return b.reviews - a.reviews;
         });
       }
       if (sort === 'name-a') {
@@ -61,69 +82,103 @@ const filter_reducer = (state, action) => {
       return { ...state, filters: { ...state.filters, [name]: value } };
     }
 
+    case TOGGLE_CHECKBOX: {
+      const { category, value } = action.payload;
+      const selectedCheckbox = state.filters[`selected${category}`];
+      const updatedCheckbox = selectedCheckbox?.includes(value)
+        ? selectedCheckbox.filter((item) => item !== value)
+        : [...selectedCheckbox, value];
+
+      const updatedFilters = { ...state.filters, [`selected${category}`]: updatedCheckbox };
+      return { ...state, filters: updatedFilters };
+    }
+
     case FILTER_PRODUCTS: {
       const { all_products } = state;
-      const { text, stars, category, battery, camera, display, color, price, shipping } =
-        state.filters;
+      const {
+        text,
+        selectedCategory,
+        selectedBattery,
+        selectedCamera,
+        selectedRam,
+        selectedDisplay,
+        color,
+        stars,
+        price,
+        shipping,
+      } = state.filters;
       let tempProducts = [...all_products];
       if (text) {
-        tempProducts = tempProducts.filter((product) => product.name.toLowerCase().includes(text));
-      }
-      if (category !== 'all') {
-        tempProducts = tempProducts.filter((product) => product.category === category);
-      }
-      if (battery !== 'all') {
-        tempProducts = tempProducts.filter((product) => product.battery == battery);
-      }
-      if (camera !== 'all') {
-        tempProducts = tempProducts.filter((product) => product.camera == camera);
-      }
-      if (display !== 'all') {
-        tempProducts = tempProducts.filter((product) => product.display == display);
+        tempProducts = tempProducts.filter((p) => p.name.toLowerCase().includes(text));
       }
       if (color !== 'all') {
-        tempProducts = tempProducts.filter((product) => product.color === color);
+        tempProducts = tempProducts.filter((p) => p.color === color);
+      }
+      if (selectedCategory.length !== 0) {
+        tempProducts = tempProducts.filter((p) => selectedCategory.includes(p?.category));
+      }
+      if (selectedBattery.length !== 0) {
+        tempProducts = tempProducts.filter((p) => selectedBattery.includes(p?.battery));
+      }
+      if (selectedCamera.length !== 0) {
+        tempProducts = tempProducts.filter((p) => selectedCamera.includes(p?.camera));
+      }
+      if (selectedRam.length !== 0) {
+        tempProducts = tempProducts.filter((p) => selectedRam.includes(p?.ram));
+      }
+      if (selectedDisplay.length !== 0) {
+        tempProducts = tempProducts.filter((p) => selectedDisplay.includes(p?.display));
       }
       // filter by price
       tempProducts = tempProducts.filter((product) => product.price <= price);
-      // filter by shipping
+
       if (shipping) {
         tempProducts = tempProducts.filter((product) => product.shipping === true);
       }
-      if (stars !== 'all') {
-        tempProducts = tempProducts.filter((product) => {
-          if (stars == 4) {
-            return product.stars <= 4;
-          } else if (stars == 4.2) {
-            return product.stars > 4 && product.stars <= 4.2;
-          } else if (stars == 4.4) {
-            return product.stars > 4.2 && product.stars <= 4.4;
-          } else if (stars == 4.6) {
-            return product.stars > 4.6 && product.stars <= 5;
-          }
-        });
+
+      if (stars !== 0) {
+        tempProducts = tempProducts.filter((product) => Math.round(product?.stars) === stars);
       }
+
       return { ...state, filtered_products: tempProducts };
     }
+
     case CLEAR_FILTERS: {
       return {
         ...state,
         filters: {
           ...state.filters,
           text: '',
-          battery: 'all',
-          camera: 'all',
-          ram: 'all',
-          rom: 'all',
-          display: 'all',
-          category: 'all',
+          selectedCategory: [],
+          selectedBattery: [],
+          selectedCamera: [],
+          selectedDisplay: [],
+          selectedRam: [],
           color: 'all',
-          stars: 'all',
+          stars: 0,
+          page: 20,
           price: state.filters.max_price,
           shipping: false,
         },
       };
     }
+
+    case CLEAR_CATEGORY: {
+      return { ...state, filters: { ...state.filters, selectedCategory: [] } };
+    }
+
+    case CLEAR_BATTERY: {
+      return { ...state, filters: { ...state.filters, selectedBattery: [] } };
+    }
+
+    case CLEAR_CAMERA:
+      return { ...state, filters: { ...state.filters, selectedCamera: [] } };
+
+    case CLEAR_RAM_MEMORY:
+      return { ...state, filters: { ...state.filters, selectedRam: [] } };
+
+    case CLEAR_DISPLAY:
+      return { ...state, filters: { ...state.filters, selectedDisplay: [] } };
   }
 };
 

@@ -4,5 +4,10 @@ export default {
   theme: {
     extend: {},
   },
-  plugins: [],
+  variants: {
+    extend: {
+      display: ['group-focus'],
+    },
+  },
+  plugins: [require('tailwind-scrollbar')],
 };
