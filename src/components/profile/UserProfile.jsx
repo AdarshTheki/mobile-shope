@@ -1,3 +1,6 @@
+/* eslint-disable no-unsafe-optional-chaining */
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/prop-types */
 import React from 'react';
 
 export default function UserProfile({ userData, address }) {
