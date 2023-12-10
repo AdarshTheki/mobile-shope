@@ -9,5 +9,5 @@ export default {
       display: ['group-focus'],
     },
   },
-  plugins: [],
+  plugins: [require('tailwind-scrollbar')],
 };
