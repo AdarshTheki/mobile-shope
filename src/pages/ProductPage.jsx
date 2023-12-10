@@ -1,12 +1,12 @@
 import React from 'react';
 import ProductFilter from '../components/Product/ProductFilter';
-import ProductList from '../components/Product/ProductList';
+import ProductListing from '../components/Product/ProductListing';
 
 export default function Products() {
   return (
     <div className='w-full relative flex justify-between'>
       <ProductFilter />
-      <ProductList />
+      <ProductListing />
     </div>
   );
 }
