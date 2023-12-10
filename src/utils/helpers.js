@@ -8,9 +8,14 @@ export const formatePrice = (number, type = 'INR') => {
 };
 
 export const getUniqueValues = (data, type) => {
-  let unique = data.map((item) => item[type]);
+  let unique = data?.map((item) => item[type]);
   if (type === 'colors') {
     unique = unique.flat();
   }
   return ['all', ...new Set(unique)];
+};
+
+export const getUnique = (data, type) => {
+  const unique = data?.map((item) => item[type]);
+  return [...new Set(unique)];
 };
