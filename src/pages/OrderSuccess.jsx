@@ -11,7 +11,9 @@ export default function OrderSuccess() {
         order.
       </p>
       <p>Have a great day!</p>
-      <NavLink to='/' className=' bg-blue-600'>
+      <NavLink
+        to='/'
+        className=' bg-blue-600 text-white px-20 py-2 rounded-3xl hover:opacity-80 duration-300'>
         Home
       </NavLink>
     </div>
