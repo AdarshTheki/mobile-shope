@@ -24,7 +24,8 @@ export default function Dropdown({ label, lists }) {
           </button>
         </div>
         {isOpen && (
-          <div className='w-full absolute top-2 right-0 z-10 mt-4 origin-top-right rounded-md border border-gray-200 bg-white shadow-md'>
+          <div className='w-full absolute top-2 right-0 z-10 mt-4 origin-top-right rounded-md border border-gray-600 bg-gray-800 shadow-md'>
+            <button className='absolute -right-5 text-red-500 text-xl'>×</button>
             {lists?.map((list) => (
               <button
                 type='button'

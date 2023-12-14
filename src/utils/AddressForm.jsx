@@ -1,9 +1,8 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
-import { ID } from 'appwrite';
-import { createShippingAddress } from '../appwrite/postService';
 import Inputs from './Inputs';
+import { useCart } from '../context/Cart_Context';
 
 export default function AddressForm({ setToggle }) {
   const {
@@ -11,18 +10,12 @@ export default function AddressForm({ setToggle }) {
     handleSubmit,
     formState: { errors },
   } = useForm();
-
-  const userId = ID.unique();
+  const { changeAddress } = useCart();
 
   const submitHandler = async (data) => {
-    await createShippingAddress({ userId, ...data })
-      .then((address) => {
-        console.log(address);
-        localStorage.setItem('shippingAddress', JSON.stringify(address));
-        setToggle(false);
-        toast.success('you address successFull');
-      })
-      .catch((err) => toast.error(err.message));
+    changeAddress(data)
+    toast.success('Your Address successfully change')
+    setToggle(false)
   };
 
   return (
