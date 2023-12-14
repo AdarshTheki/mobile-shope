@@ -16,7 +16,6 @@ export default function ShippingAddress() {
 
   const formHandler = async (event) => {
     event.preventDefault();
-    // console.log(cart);
     setLoading(true);
     if (cart.length > 0) {
       const body = JSON.stringify(cart);
@@ -25,7 +24,7 @@ export default function ShippingAddress() {
           .then((data) => {
             console.log(data);
             clearCart();
-            navigation(`/order/success/${userId}`);
+            navigation(`/order-success`);
           })
           .catch((err) => toast.error(err.message));
       } else {
@@ -38,40 +37,35 @@ export default function ShippingAddress() {
   };
 
   return (
-    <div>
-      <h2 className='my-3'>Payment</h2>
-      {/* select payment option */}
-      <form className=' space-x-5'>
-        <label htmlFor='payment'>
-          <input
-            type='radio'
-            value='cash on delivery'
-            id='payment'
-            checked={paymentMethod === 'cash on delivery'}
-            onChange={(e) => setPaymentMethod(e.target.value)}
-          />{' '}
-          Cash on Delivery
-        </label>
-        <label htmlFor='payment2'>
-          <input
-            type='radio'
-            value='stripe'
-            id='payment2'
-            checked={paymentMethod === 'stripe'}
-            onChange={(e) => setPaymentMethod(e.target.value)}
-          />{' '}
-          Stripe
-        </label>
-        <br />
-        <br />
-        <button
-          onClick={formHandler}
-          type='submit'
-          className='bg-blue-600 px-6 py-1.5 rounded-3xl text-white hover:opacity-90 hover:scale-95 duration-300'>
-          {loading ? 'Loading...' : 'Place Order →'}
-        </button>
-      </form>
+    <form className='space-x-5'>
+      <h2 className='my-3 font-medium'>Payment</h2>
+      <label htmlFor='payment'>
+        <input
+          type='radio'
+          value='cash on delivery'
+          id='payment'
+          checked={paymentMethod === 'cash on delivery'}
+          onChange={(e) => setPaymentMethod(e.target.value)}
+        />{' '}
+        Cash on Delivery
+      </label>
+      <label htmlFor='payment2'>
+        <input
+          type='radio'
+          value='stripe'
+          id='payment2'
+          checked={paymentMethod === 'stripe'}
+          onChange={(e) => setPaymentMethod(e.target.value)}
+        />{' '}
+        Stripe
+      </label>
+      <button
+        onClick={formHandler}
+        type='submit'
+        className='bg-blue-600 px-6 py-1.5 rounded-3xl text-white hover:opacity-90 hover:scale-95 duration-300'>
+        {loading ? 'Loading...' : 'Place Order →'}
+      </button>
       <Toaster />
-    </div>
+    </form>
   );
 }

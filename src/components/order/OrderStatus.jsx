@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function OrderStatus({dates}) {
+export default function OrderStatus({ dates }) {
   return (
     <>
       <h2>Order Status</h2>

@@ -1,14 +1,15 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import GlobalContext from './context/useGlobalContext';
-import { getCurrentUser } from './appwrite/authService';
-import Header from './components/common/Header';
-import Footer from './components/common/Footer';
-
+import Header from './components/common/HeaderSection';
+import Footer from './components/common/FooterSection';
+import { useAuth } from './context';
+import { LoadingSpinner } from './utils';
 import {
   ProtectedRoute,
   OrderPayment,
   OrderSuccess,
+  OrderTrackDetail,
   OrderTrack,
   ShoppingCart,
   NotFound,
@@ -18,44 +19,33 @@ import {
   Login,
   Register,
   Profile,
-} from './pages/index';
-
-import Loading from './utils/LoadingSpinner';
-import toast, { Toaster } from 'react-hot-toast';
+} from './pages';
 
 const App = () => {
-  const { login, logout } = GlobalContext();
-  const [loading, setLoading] = React.useState(true);
+  const { login, loading } = useAuth();
 
   React.useEffect(() => {
-    getCurrentUser()
-      .then((user) => {
-        if (user) {
-          login(user);
-          toast.success('successfully login user');
-        } else {
-          logout();
-        }
-      })
-      .catch((err) => toast.error(err.message))
-      .finally(() => setLoading(false));
+    login();
   }, []);
 
   return (
     <div>
-      {!loading ? (
+      {loading ? (
+        <LoadingSpinner />
+      ) : (
         <BrowserRouter>
           <Header />
           <div style={{ minHeight: '90vh' }}>
             <Routes>
               <Route path='/' element={<HomePage />} />
+              <Route path='products' element={<ProductPage />} />
+              <Route path='product/:id' element={<ProductDetail />} />
+              <Route path='shopping-cart' element={<ShoppingCart />} />
               <Route element={<ProtectedRoute redirect='/login' />}>
-                <Route path='products' element={<ProductPage />} />
-                <Route path='product/:id' element={<ProductDetail />} />
-                <Route path='shopping-cart' element={<ShoppingCart />} />
                 <Route path='order-payment' element={<OrderPayment />} />
                 <Route path='order-success' element={<OrderSuccess />} />
-                <Route path='order-track/:orderId' element={<OrderTrack />} />
+                <Route path='order-track' element={<OrderTrack />} />
+                <Route path='order-track/:orderId' element={<OrderTrackDetail />} />
                 <Route path='profile' element={<Profile />} />
               </Route>
               <Route path='/register' element={<Register />} />
@@ -63,11 +53,8 @@ const App = () => {
               <Route path='*' element={<NotFound />} />
             </Routes>
           </div>
-          <Toaster />
           <Footer />
         </BrowserRouter>
-      ) : (
-        <Loading />
       )}
     </div>
   );
