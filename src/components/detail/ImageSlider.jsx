@@ -1,21 +1,17 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import React from 'react';
-import { useProducts } from '../../context/Products_Context';
 import Slider from 'react-slick';
 import { Link } from 'react-router-dom';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
-export default function MultipleVariantChoose({ url, id, name }) {
+import { useProducts } from '../../context';
+
+export default function ImageSlider({ url, name }) {
   const { products } = useProducts();
-
-  const [variants, setVariants] = React.useState([]);
-
-  React.useEffect(() => {
-    const names = name?.split(' (');
-    setVariants(products.filter((i) => i?.name.includes(names[0])));
-  }, [name, products]);
+  const names = name?.split(' (');
+  const variants = products.filter((i) => i?.name.includes(names[0]));
 
   const settings = {
     dots: true,

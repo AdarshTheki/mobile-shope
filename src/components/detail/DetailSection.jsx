@@ -2,12 +2,11 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import { BsFillBagHeartFill } from 'react-icons/bs';
-import { FaHeart } from 'react-icons/fa';
-import { formatePrice } from '../../utils/helpers';
-import Starts from '../../utils/Starts';
-import MultipleVariantChoose from './MultipleVariantChoose';
-import { useCart } from '../../context/Cart_Context';
 import toast from 'react-hot-toast';
+
+import ImageSlider from './ImageSlider';
+import { Stars, formatePrice } from '../../utils';
+import { useCart } from '../../context';
 
 export default function ProductDetailCart({ products }) {
   const {
@@ -35,12 +34,12 @@ export default function ProductDetailCart({ products }) {
   };
 
   return (
-    <div className='grid sm:grid-cols-2 gap-5 mx-auto max-w-5xl'>
-      <MultipleVariantChoose url={url} name={name} />
+    <div className='grid sm:grid-cols-2 gap-5 mx-auto max-w-5xl py-5'>
+      <ImageSlider url={url} name={name} />
       <div className='space-y-4 max-w-md mx-auto'>
         <h2 className='text-xl font-medium text-blue-700'>{name}</h2>
         <ul className='list-disc list-inside space-y-1'>
-          <Starts starts={stars} reviews={reviews} ratings={ratings} />
+          <Stars starts={stars} reviews={reviews} ratings={ratings} />
           <li>{`${ram} GB RAM | ${rom} GB ROM storage`}</li>
           <li>{`${display} Full HD+ Display`}</li>
           <li>{`${camera} MP Rear Camera`}</li>
@@ -77,9 +76,6 @@ export default function ProductDetailCart({ products }) {
           onClick={addToCartHandler}
           className='py-2 rounded-3xl inline-flex items-center gap-2 text-white bg-blue-600 text-sm font-medium px-8 mr-5 hover:opacity-90 hover:scale-95 duration-500'>
           Add to Cart <BsFillBagHeartFill />
-        </button>
-        <button className='py-2 rounded-3xl inline-flex items-center gap-2 text-gray-600 bg-transparent border border-gray-600 text-sm font-medium px-8 hover:opacity-90 hover:scale-95 duration-500'>
-          Wishlist <FaHeart />
         </button>
       </div>
     </div>
