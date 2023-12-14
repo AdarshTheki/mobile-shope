@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 
 export default function CartMissing() {
   return (
-    <div className='text-center space-y-4'>
+    <div className='text-center space-y-4 mx-auto'>
       <img src={carts} alt='carts' className='w-96 object-contain' />
       <h1 className='text-xl'>Missing Cart items?</h1>
       <div>

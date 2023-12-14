@@ -1,8 +1,8 @@
 import React from 'react';
-import { useCart } from '../../context/Cart_Context';
-import { formatePrice } from '../../utils/helpers';
 import { NavLink } from 'react-router-dom';
 import toast, { Toaster } from 'react-hot-toast';
+import { useCart } from '../../context';
+import { formatePrice } from '../../utils';
 
 export default function CheckoutCart() {
   const { total_amount, total_items, shipping_fee, couponCode, coupon_amount, coupon_code } =
@@ -36,8 +36,8 @@ export default function CheckoutCart() {
         </section>
       </div>
       <hr />
-      <form className='grid gap-1' onSubmit={handleSubmit}>
-        <label htmlFor='couponCode' className=' cursor-pointer'>
+      <form className='grid gap-1 items-center justify-start' onSubmit={handleSubmit}>
+        <label htmlFor='couponCode' className=' cursor-pointer text-sm'>
           Have a coupon code ?
         </label>
         <div className='flex items-center '>
@@ -76,7 +76,7 @@ export default function CheckoutCart() {
           </div>
         )}
         <div className='flex justify-between'>
-          <h3>Order Total</h3>
+          <h3>Total Order</h3>
           <h1 className='font-semibold text-2xl text-red-600'>
             {formatePrice(total_amount + shipping_fee - coupon_amount)}
           </h1>

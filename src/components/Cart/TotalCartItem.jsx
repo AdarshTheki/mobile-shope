@@ -1,8 +1,8 @@
 import React from 'react';
 import toast, { Toaster } from 'react-hot-toast';
 
-import { useCart } from '../../context/Cart_Context';
-import Button from '../../utils/Button';
+import { useCart } from '../../context';
+import { Button } from '../../utils';
 
 export default function TotalCartItem() {
   const { total_items, clearCart } = useCart();
