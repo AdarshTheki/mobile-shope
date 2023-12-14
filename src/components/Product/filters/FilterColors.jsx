@@ -1,7 +1,7 @@
 import React from 'react';
-import { getUniqueValues } from '../../../utils/helpers';
-import { useFilter } from '../../../context/Filter_Context';
 import { FaCheck } from 'react-icons/fa';
+import { getUniqueValues } from '../../../utils';
+import { useFilter } from '../../../context';
 
 export default function FilterColors() {
   const { updateFilters, all_products, filters } = useFilter();

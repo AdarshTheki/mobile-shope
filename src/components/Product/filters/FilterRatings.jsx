@@ -1,6 +1,6 @@
 import React from 'react';
-import { useFilter } from '../../../context/Filter_Context';
 import { BsStarFill, BsStarHalf, BsStar } from 'react-icons/bs';
+import { useFilter } from '../../../context';
 
 export default function FilterRatings() {
   const { filters, all_products, updateFilters } = useFilter();

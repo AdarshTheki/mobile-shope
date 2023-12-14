@@ -2,9 +2,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-
-import Star from '../../utils/Starts';
-import { formatePrice } from '../../utils/helpers';
+import { formatePrice, Stars } from '../../utils';
 
 export default function ProductItem({ products }) {
   const {
@@ -25,23 +23,21 @@ export default function ProductItem({ products }) {
 
   return (
     <div className='md:flex-row gap-5 flex flex-col bg-white items-center justify-center mx-2 my-4 py-4 rounded-xl'>
-      <div className='w-[180px] min-w-[160px] relative'>
+      <div className='max-w-[140px] relative'>
         <img src={url} alt={id} />
         {shipping && (
           <p className='text-white text-xs text-center w-full bg-green-700 rounded absolute bottom-2'>
-            Free Shipping Available
+            Free Shipping
           </p>
         )}
       </div>
       <div className='font-medium text-gray-800 max-w-[400px] text-sm'>
         <NavLink
           to={`/product/${id}`}
-          className='text-xl cursor-pointer underline font-semibold text-blue-600 hover:text-blue-800 line-clamp-1'>
+          className='text-lg cursor-pointer underline font-medium text-blue-600 hover:text-blue-800 line-clamp-1'>
           {name}
         </NavLink>
-        <h4 className='my-2'>
-          <Star starts={stars} reviews={reviews} ratings={ratings} className='justify-start' />
-        </h4>
+        <Stars starts={stars} reviews={reviews} ratings={ratings} className='justify-start' />
         <p>
           Storage: <span className='font-normal'>{`${ram} GB RAM | ${rom} GB ROM`}</span>
         </p>
@@ -60,9 +56,7 @@ export default function ProductItem({ products }) {
             Handset, Protective Case, Quick Start Guide, charger 22 W, Warranty Card Box Accessories
           </span>
         </p>
-        <div className='my-3'>
-          <h4>{`Price: ${formatePrice(price)}/-`}</h4>
-        </div>
+        <h4 className='text-lg'>{`Price: ${formatePrice(price)}/-`}</h4>
       </div>
     </div>
   );

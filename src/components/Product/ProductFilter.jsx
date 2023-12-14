@@ -1,9 +1,9 @@
 import React from 'react';
-import { useFilter } from '../../context/Filter_Context';
-import { formatePrice } from '../../utils/helpers';
 import FilterColors from './filters/FilterColors';
 import FilterRatings from './filters/FilterRatings';
 import FilterCheckbox from './filters/FilterCheckbox';
+import { useFilter } from '../../context';
+import { formatePrice } from '../../utils';
 
 export default function ProductFilter() {
   const { filters, updateFilters, clearFilters } = useFilter();

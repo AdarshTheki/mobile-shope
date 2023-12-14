@@ -1,6 +1,7 @@
 import React from 'react';
 import { BsFillGridFill, BsList } from 'react-icons/bs';
-import { useFilter } from '../../context/Filter_Context';
+import { useFilter } from '../../context';
+import FilterSearchBar from './FilterSearchBar';
 
 export default function ProductSort() {
   const {
@@ -32,7 +33,7 @@ export default function ProductSort() {
         </button>
       </div>
       <div>{filtered_products?.length} products Found</div>
-      <hr className='flex-grow border-gray-300' />
+      <FilterSearchBar />
       <form className='space-x-2'>
         <select
           name='sort'

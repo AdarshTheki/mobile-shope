@@ -1,5 +1,5 @@
 import React, { useId, useMemo } from 'react';
-import { useFilter } from '../../../context/Filter_Context';
+import { useFilter } from '../../../context';
 
 // eslint-disable-next-line react/prop-types
 export default function FilterComponent({ name, label, items }) {
