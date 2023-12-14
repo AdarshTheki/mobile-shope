@@ -1,7 +1,7 @@
 import React from 'react';
-import { useFilter } from '../../../context/Filter_Context';
-import { getUnique } from '../../../utils/helpers';
 import FilterComponent from './FilterComponent';
+import { useFilter } from '../../../context';
+import { getUnique } from '../../../utils';
 
 export default function FilterCheckbox() {
   const { all_products } = useFilter();

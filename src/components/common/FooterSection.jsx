@@ -22,7 +22,7 @@ export default function Footer() {
               Motorola
             </Link>
             <Link to='/' className='hover:text-blue-600 duration-300'>
-              Oneplus
+              OnePlus
             </Link>
             <Link to='/' className='hover:text-blue-600 duration-300'>
               Poco
@@ -41,9 +41,6 @@ export default function Footer() {
             </Link>
             <Link to={'/profile'} className='hover:text-blue-600 duration-300'>
               My Account
-            </Link>
-            <Link to={'/wishlist'} className='hover:text-blue-600 duration-300'>
-              Wishlist
             </Link>
             <Link to={'/shopping-cart'} className='hover:text-blue-600 duration-300'>
               My Cart
@@ -74,7 +71,7 @@ export default function Footer() {
               <p>Highway Road Ramdaspeth Nagpur - 440010</p>
             </div>
             <div>
-              <h2 className='text-lg '>Email</h2>
+              <h2 className='text-lg'>Email</h2>
               <p className='lowercase'>adarshverma549@gmail.com</p>
             </div>
             <div>
@@ -104,10 +101,10 @@ export default function Footer() {
           <span className='text-white font-medium'> Adarsh Verma E-shop</span>. All right resowed
         </h2>
         <div className='flex gap-3'>
-          <FaCcVisa className='text-2xl'/>
-          <FaCcPaypal className='text-2xl'/>
-          <FaCcMastercard className='text-2xl'/>
-          <FaCcAmazonPay className='text-2xl'/>
+          <FaCcVisa className='text-2xl' />
+          <FaCcPaypal className='text-2xl' />
+          <FaCcMastercard className='text-2xl' />
+          <FaCcAmazonPay className='text-2xl' />
         </div>
       </div>
     </div>

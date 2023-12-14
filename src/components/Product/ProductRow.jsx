@@ -1,7 +1,7 @@
 // eslint-disable-next-line no-unused-vars
 import React from 'react';
-import Starts from '../../utils/Starts';
-import { formatePrice } from '../../utils/helpers';
+import { Stars } from '../../utils';
+import { formatePrice } from '../../utils';
 import { NavLink } from 'react-router-dom';
 
 export default function Items({ product }) {
@@ -16,7 +16,7 @@ export default function Items({ product }) {
         alt={product?.name}
         className='mx-auto w-24 max-h-40 object-contain'
       />
-      <Starts
+      <Stars
         starts={product?.stars}
         ratings={product?.ratings}
         reviews={product?.reviews}

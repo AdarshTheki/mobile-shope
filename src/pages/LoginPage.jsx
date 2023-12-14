@@ -1,15 +1,17 @@
-import { useNavigate } from 'react-router-dom';
 import React from 'react';
-import Inputs from '../utils/Inputs';
+import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-import { loginAccount } from '../appwrite/authService';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import toast, { Toaster } from 'react-hot-toast';
-import GlobalContext from '../context/useGlobalContext';
+
+import { loginAccount } from '../appwrite/authService';
+import { useAuth } from '../context';
+import { Inputs } from '../utils';
 
 export default function Login() {
   const { register, handleSubmit, formState } = useForm();
   const { errors } = formState;
-  const { login } = GlobalContext();
+  const { login } = useAuth();
   const navigate = useNavigate();
 
   const [passwordShow, setPasswordShow] = React.useState(false);
@@ -60,8 +62,8 @@ export default function Login() {
           />
           <span
             onClick={() => setPasswordShow(!passwordShow)}
-            className='absolute right-5 bg-gray-400 rounded cursor-pointer hover:opacity-90 top-10'>
-            👁‍🗨
+            className='absolute text-xl right-5 rounded cursor-pointer hover:opacity-90 top-7'>
+            {passwordShow ? <FaEyeSlash /> : <FaEye />}
           </span>
           {errors.password && (
             <span className='text-red-500 text-xs'>
@@ -75,13 +77,18 @@ export default function Login() {
           value={loading ? 'Loading...' : 'Sign In'}
           className='bg-gray-800 hover:opacity-90 text-white font-medium cursor-pointer'
         />
+        <p
+          onClick={() => navigate('/register')}
+          className=' text-center text-teal-600 font-medium hover:text-teal-800 underline cursor-pointer'>
+          Register page when a user is new ?
+        </p>
         <p className='text-center'>Or continue with</p>
-        <Inputs
-          type='submit'
-          value='Dashboard Login AutoFill'
-          className='bg-orange-600 hover:opacity-90 text-white font-medium cursor-pointer'
-        />
       </form>
+      <Inputs
+        type='submit'
+        value='Dashboard Login AutoFill'
+        className='bg-orange-600 mt-5 border-white hover:opacity-90 text-white font-medium cursor-pointer'
+      />
       <Toaster />
     </div>
   );

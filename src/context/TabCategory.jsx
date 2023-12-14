@@ -15,7 +15,7 @@ export default Tab;
 // eslint-disable-next-line react/display-name, react/prop-types
 Tab.HeaderContainer = ({ children }) => {
   return (
-    <div className='flex w-8/12 py-6 flex-wrap justify-between items-center mx-auto'>
+    <div className='flex px-5 gap-2 py-6 flex-wrap justify-between items-center mx-auto'>
       {children}
     </div>
   );
@@ -31,10 +31,10 @@ Tab.Item = ({ label, index }) => {
   return (
     <div
       onClick={handleClick}
-      className={`cursor-pointer block text-center flex-grow py-1 uppercase hover:opacity-80 rounded-2xl duration-300 ${
+      className={`cursor-pointer block text-center py-1 px-5 uppercase hover:opacity-80 rounded-2xl duration-300 ${
         currentTab === index
           ? 'bg-gray-800 text-white shadow-lg'
-          : 'text-gray-900 hover:bg-gray-300'
+          : 'text-gray-900 hover:bg-gray-800 hover:text-white'
       }`}>
       {label}
     </div>

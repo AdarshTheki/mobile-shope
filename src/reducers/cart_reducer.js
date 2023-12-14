@@ -6,17 +6,18 @@ import {
   INCREASE_CART_QUANTITY,
   DECREASE_CART_QUANTITY,
   COUPON_USE_TOTALS,
+  CHANGE_ADDRESS,
 } from '../action';
 
 const cart_reducer = (state, action) => {
   switch (action.type) {
     case ADD_TO_CART: {
-      const { id, name, price } = action.payload;
+      const { id, name, price, url } = action.payload;
       return {
         ...state,
         cart: state.cart.find((cartItem) => cartItem.id === id)
           ? state.cart.map((item) => (item.id === id ? { ...item, amount: item.amount + 1 } : item))
-          : [...state.cart, { id, name, price, amount: 1 }],
+          : [...state.cart, { id, name, price, amount: 1, url }],
       };
     }
 
@@ -78,6 +79,12 @@ const cart_reducer = (state, action) => {
         coupon_code: coupon,
       };
     }
+
+    case CHANGE_ADDRESS:
+      return {
+        ...state,
+        address: action.payload,
+      };
   }
 };
 

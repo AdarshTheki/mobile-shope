@@ -2,14 +2,16 @@ import React from 'react';
 import toast, { Toaster } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
+
 import { createAccount } from '../appwrite/authService';
-import GlobalContext from '../context/useGlobalContext';
-import Inputs from '../utils/Inputs';
+import { useAuth } from '../context';
+import { Inputs } from '../utils';
 
 export default function Register() {
   const { register, handleSubmit, formState } = useForm();
   const { errors } = formState;
-  const {login} = GlobalContext()
+  const { login } = useAuth();
   const navigate = useNavigate();
 
   const [passwordShow, setPasswordShow] = React.useState(false);
@@ -21,7 +23,7 @@ export default function Register() {
     const { email, password, name } = data;
     await createAccount(email, password, name)
       .then((user) => {
-        login(user)
+        login(user);
         navigate('/');
       })
       .catch((err) => {
@@ -74,8 +76,8 @@ export default function Register() {
           />
           <span
             onClick={() => setPasswordShow(!passwordShow)}
-            className='absolute right-5 bg-gray-400 rounded cursor-pointer hover:opacity-90 top-10'>
-            👁‍🗨
+            className='absolute text-xl right-5 rounded cursor-pointer hover:opacity-90 top-7'>
+            {passwordShow ? <FaEyeSlash /> : <FaEye />}
           </span>
           {errors.password && (
             <span className='text-red-500 text-xs'>
@@ -90,6 +92,11 @@ export default function Register() {
           className='bg-gray-800 hover:opacity-90 text-white font-medium cursor-pointer'
         />
       </form>
+      <p
+        onClick={() => navigate('/login')}
+        className=' mt-5 text-center text-teal-600 font-medium hover:text-teal-800 underline cursor-pointer'>
+        You are already sign please login here ?
+      </p>
       <Toaster />
     </div>
   );

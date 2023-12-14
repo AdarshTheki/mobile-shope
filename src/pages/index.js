@@ -1,15 +1,16 @@
 import HomePage from './HomePage';
-import NotFound from './Error';
+import NotFound from './PageNotFound';
 import OrderPayment from './OrderPayment';
 import OrderSuccess from './OrderSuccess';
+import OrderTrackDetail from './OrderTrackDetail';
 import OrderTrack from './OrderTrack';
 import ShoppingCart from './ShoppingCart';
 import ProductPage from './ProductPage';
-import Login from './Login';
-import Register from './Register';
+import Login from './LoginPage';
+import Register from './RegisterPage';
 import ProductDetail from './ProductDetail';
 import ProtectedRoute from './ProtectedRoute';
-import Profile from './Profile';
+import Profile from './ProfilePage';
 
 export {
   Profile,
@@ -17,6 +18,7 @@ export {
   Login,
   Register,
   OrderPayment,
+  OrderTrackDetail,
   OrderTrack,
   OrderSuccess,
   ShoppingCart,

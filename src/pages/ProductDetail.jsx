@@ -1,9 +1,11 @@
 import React, { useMemo } from 'react';
-import { useProducts } from '../context/Products_Context';
-import ProductDetailCart from '../components/detail/ProductDetailCart';
-import ProductReviews from '../components/detail/ProductReviews.jsx';
-import Items from '../components/product/Items';
 import { useParams } from 'react-router-dom';
+
+import { useProducts } from '../context';
+import DetailSection from '../components/detail/DetailSection';
+import AddReviews from '../components/detail/AddReviews';
+import ShowReviews from '../components/detail/ShowReviews';
+import ProductRow from '../components/product/ProductRow';
 
 export default function ProductDetailPage() {
   const { products } = useProducts();
@@ -24,16 +26,21 @@ export default function ProductDetailPage() {
 
   return (
     <div className='py-5 w-full'>
-      <ProductDetailCart products={singleProduct} />
+      <DetailSection products={singleProduct} />
 
-      <hr className='my-2 border-gray-300' />
+      <div className='py-5 bg-gray-200'>
+        <h2 className='font-semibold text-gray-700 text-xl text-center mb-5'>Ratings & Reviews</h2>
+        <div className='md:grid grid-cols-2 items-start'>
+          <AddReviews {...singleProduct} />
+          <ShowReviews />
+        </div>
+      </div>
 
-      <ProductReviews {...singleProduct} />
-
-      <div className=' overflow-x-auto overflow-y-hidden scrollbar-thin  scrollbar-track-transparent scrollbar-thumb-slate-500'>
+      <div className='overflow-x-auto overflow-y-hidden scrollbar-thin bg-gray-200  scrollbar-track-transparent scrollbar-thumb-slate-500'>
+        <h2 className='font-semibold text-gray-700 text-xl text-center my-4'>Related Products</h2>
         <div className='flex'>
           {relatedProducts?.map((item) => (
-            <Items key={item?.id} product={item} />
+            <ProductRow key={item?.id} product={item} />
           ))}
         </div>
       </div>

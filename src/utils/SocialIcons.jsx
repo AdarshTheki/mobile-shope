@@ -12,19 +12,19 @@ export default function SocialIcons() {
   return (
     <section className='flex gap-2'>
       <Link to='/'>
-        <IoLogoFacebook className='text-lg text-gray-900 hover:text-blue-600' />
+        <IoLogoFacebook className='text-lg dark:text-gray-900 hover:text-blue-600' />
       </Link>
       <Link to='/'>
-        <IoLogoTwitter className='text-lg text-gray-900 hover:text-blue-600' />
+        <IoLogoTwitter className='text-lg dark:text-gray-900 hover:text-blue-600' />
       </Link>
       <Link to='/'>
-        <IoLogoGithub className='text-lg text-gray-900 hover:text-blue-600' />
+        <IoLogoGithub className='text-lg dark:text-gray-900 hover:text-blue-600' />
       </Link>
       <Link to='/'>
-        <IoLogoYoutube className='text-lg text-gray-900 hover:text-blue-600' />
+        <IoLogoYoutube className='text-lg dark:text-gray-900 hover:text-blue-600' />
       </Link>
       <Link to='/'>
-        <IoLogoInstagram className='text-lg text-gray-900 hover:text-blue-600' />
+        <IoLogoInstagram className='text-lg dark:text-gray-900 hover:text-blue-600' />
       </Link>
     </section>
   );

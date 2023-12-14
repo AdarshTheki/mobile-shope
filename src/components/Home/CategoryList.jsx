@@ -1,9 +1,9 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useMemo, useState } from 'react';
+import { getUniqueValues } from '../../utils';
+import { useFilter } from '../../context';
 import Tab from '../../context/TabCategory';
-import { useFilter } from '../../context/Filter_Context';
-import { getUniqueValues } from '../../utils/helpers';
-import Items from '../Product/Items';
+import Items from '../product/ProductRow';
 
 export default function CategoryList() {
   const { all_products } = useFilter();
@@ -19,7 +19,7 @@ export default function CategoryList() {
   return (
     <div>
       <Tab currentTab={currentTabIndex} onChange={handleChange}>
-        <div className='my-4 bg-blue-200'>
+        <div className='bg-blue-200'>
           <Tab.HeaderContainer>
             {categories
               .filter((f) => f !== 'all')
@@ -28,7 +28,7 @@ export default function CategoryList() {
               ))}
           </Tab.HeaderContainer>
         </div>
-        <div className='bg-gray-200 md:px-18 sm:px-10 px-5'>
+        <div className='bg-gray-200 md:px-18 sm:px-10 sm:py-10 py-5 px-5'>
           <Tab.ContentContainer>
             {categories.map((category) => (
               <Tab.ContentItem key={category} index={category}>
