@@ -4,7 +4,7 @@ import ProductListing from '../components/Product/ProductListing';
 
 export default function Products() {
   return (
-    <div className='w-full relative flex justify-between'>
+    <div className='w-full relative sm:flex justify-between'>
       <ProductFilter />
       <ProductListing />
     </div>

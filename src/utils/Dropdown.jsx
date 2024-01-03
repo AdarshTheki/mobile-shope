@@ -11,7 +11,7 @@ export default function Dropdown({ label, lists }) {
   };
 
   return (
-    <div className='inline-flex'>
+    <div className='sm:inline-flex hidden'>
       <div
         onClick={() => setOpen(!isOpen)}
         className='relative inline-flex text-center '>

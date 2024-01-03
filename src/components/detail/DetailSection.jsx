@@ -34,7 +34,7 @@ export default function ProductDetailCart({ products }) {
   };
 
   return (
-    <div className='grid sm:grid-cols-2 gap-5 mx-auto max-w-5xl py-5'>
+    <div className='grid sm:grid-cols-2 gap-5 mx-auto max-w-5xl px-5 py-5'>
       <ImageSlider url={url} name={name} />
       <div className='space-y-4 max-w-md mx-auto'>
         <h2 className='text-xl font-medium text-blue-700'>{name}</h2>
@@ -48,7 +48,7 @@ export default function ProductDetailCart({ products }) {
             Handset, Protective Case, Quick Start Guide, charger 22 W, Warranty Card Box Accessories
           </li>
         </ul>
-        <div className='flex gap-2 flex-wrap capitalize text-gray-600'>
+        <div className='flex gap-x-2 flex-wrap justify-between capitalize text-gray-600'>
           <p>
             SKU: <b>{`${id}ROM${rom}`}</b>
           </p>

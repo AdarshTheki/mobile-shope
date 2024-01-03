@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom';
 
 export default function SocialIcons() {
   return (
-    <section className='flex gap-2'>
+    <section className='sm:flex gap-2 hidden'>
       <Link to='/'>
         <IoLogoFacebook className='text-lg dark:text-gray-900 hover:text-blue-600' />
       </Link>

@@ -10,7 +10,7 @@ export default function ProductList() {
 
   return (
     <div className='max-h-[200vh] min-h-[150vh] bg-gray-200 w-full overflow-y-auto relative scrollbar-thin scrollbar-thumb-slate-500 '>
-      <div className=' sticky top-0 shadow shadow-white z-10'>
+      <div className='sticky top-0 shadow shadow-white z-10'>
         <ProductSort />
       </div>
       {grid_view ? (

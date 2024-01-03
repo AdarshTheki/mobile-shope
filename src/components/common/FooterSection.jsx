@@ -95,7 +95,7 @@ export default function Footer() {
           </div>
         </div>
       </div>
-      <div className='pb-4 flex items-center justify-evenly'>
+      <div className='pb-4 flex items-center px-5 justify-evenly'>
         <h2>
           @{date}
           <span className='text-white font-medium'> Adarsh Verma E-shop</span>. All right resowed

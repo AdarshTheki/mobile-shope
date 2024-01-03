@@ -11,14 +11,14 @@ import { useCart } from '../../context';
 export default function HeaderSvgIcons() {
   const { total_items } = useCart();
   return (
-    <ul className='flex capitalize flex-wrap gap-10 items-center mb-6 sm:mb-0'>
+    <ul className='flex capitalize flex-wrap sm:gap-10 gap-4 items-center'>
       <Link
         to='/'
         data-tooltip-id='IoHome'
         data-tooltip-content='Home'
         className='hover:text-blue-600 duration-300'>
         <IoHome fontSize={25} />
-        <Tooltip id='IoHome' place='top' style={{ fontSize: 12 }} />
+        <Tooltip id='IoHome' place='bottom' style={{ fontSize: 12 }} />
       </Link>
       <Link
         to='/products'
@@ -26,7 +26,7 @@ export default function HeaderSvgIcons() {
         data-tooltip-content='products'
         className='hover:text-blue-600 duration-300'>
         <FiShoppingBag fontSize={25} />
-        <Tooltip id='FiShoppingBag' place='top' style={{ fontSize: 12 }} />
+        <Tooltip id='FiShoppingBag' place='bottom' style={{ fontSize: 12 }} />
       </Link>
       <Link
         to='/shopping-cart'
@@ -39,7 +39,7 @@ export default function HeaderSvgIcons() {
             {total_items}
           </span>
         )}
-        <Tooltip id='Cart' place='top' style={{ fontSize: 12 }} />
+        <Tooltip id='Cart' place='bottom' style={{ fontSize: 12 }} />
       </Link>
       <Link
         to='/order-payment'
@@ -47,7 +47,7 @@ export default function HeaderSvgIcons() {
         data-tooltip-id='wallet'
         data-tooltip-content='payment'>
         <FaWallet fontSize={25} />
-        <Tooltip id='wallet' place='top' style={{ fontSize: 12 }} />
+        <Tooltip id='wallet' place='bottom' style={{ fontSize: 12 }} />
       </Link>
     </ul>
   );

@@ -6,9 +6,9 @@ export default function Cart({ id, name, amount, price, url }) {
   const { increaseQty, decreaseQty, removeItem } = useCart();
 
   return (
-    <div className='text-center relative grid grid-cols-5 items-center py-2 mb-2'>
+    <div className='text-center relative flex flex-col items-center p-2 bg-gray-100 rounded-xl border mb-2'>
       <img src={url} alt='' width={60} className='object-contain' />
-      <p className='text-gray-600 font-medium text-sm'>{name}</p>
+      <p className='text-gray-600 font-medium text-sm w-[60%]'>{name}</p>
       <p>{formatePrice(price)}</p>
       <div className='flex items-center'>
         <button

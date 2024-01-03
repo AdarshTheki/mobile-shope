@@ -11,7 +11,7 @@ export default function CartItem() {
   }
 
   return (
-    <div className='mx-auto max-w-2xl'>
+    <div className='mx-auto max-w-2xl sm:grid grid-cols-2 gap-4'>
       {cart && cart?.map((item) => <Cart key={item?.id} {...item} />)}
     </div>
   );
