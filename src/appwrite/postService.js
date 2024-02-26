@@ -1,30 +1,44 @@
 import { Query } from 'appwrite';
-import { databases, DATABASE_ID } from './config';
+import { databases } from './config';
 
-// This is collection ids
-const ITEM_COLLECTION_ID = '655995f4e5ed82239663';
+const ORDER_DATABASE_ID = '65dc203a459215fe42be';
+const ORDER_COLLECTION_ID = '65dc204d9287354a2b6d';
 
-const createProductItem = async ({ userId, body, payment }) => {
-  return await databases.createDocument(DATABASE_ID, ITEM_COLLECTION_ID, userId, {
-    body,
-    payment,
-  });
+const createOrderItem = async ({ user_detail, phone_detail }) => {
+    const order_id = Date.now()?.toString();
+    try {
+        await databases.createDocument(ORDER_DATABASE_ID, ORDER_COLLECTION_ID, order_id, {
+            order_id,
+            user_detail,
+            phone_detail,
+        });
+    } catch (error) {
+        console.error(error);
+    }
 };
 
-const getAllProductItems = async (queries = [Query.limit(10)]) => {
-  return await databases.listDocuments(DATABASE_ID, ITEM_COLLECTION_ID, queries);
+const getAllOrderItem = async (queries = [Query.limit(10)]) => {
+    try {
+        return await databases.listDocuments(ORDER_DATABASE_ID, ORDER_COLLECTION_ID, queries);
+    } catch (error) {
+        console.error(error);
+    }
 };
 
-const getItem = async (userId) => {
-  return await databases.getDocument(DATABASE_ID, ITEM_COLLECTION_ID, userId);
+const singleOrderItem = async (order_id) => {
+    try {
+        return await databases.getDocument(ORDER_DATABASE_ID, ORDER_COLLECTION_ID, order_id);
+    } catch (error) {
+        console.error(error);
+    }
 };
 
-const updateItem = async (userId) => {
-  return await databases.updateDocument(DATABASE_ID, ITEM_COLLECTION_ID, userId);
+const deleteOrderItem = async (order_id) => {
+    try {
+        return await databases.deleteDocument(ORDER_DATABASE_ID, ORDER_COLLECTION_ID, order_id);
+    } catch (error) {
+        console.error(error);
+    }
 };
 
-const deleteItem = async (userId) => {
-  return await databases.deleteDocument(DATABASE_ID, ITEM_COLLECTION_ID, userId);
-};
-
-export { getItem, updateItem, deleteItem, createProductItem, getAllProductItems };
+export { createOrderItem, getAllOrderItem, deleteOrderItem, singleOrderItem };
