@@ -1,48 +1,51 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useMemo, useState } from 'react';
-import { getUniqueValues } from '../../utils';
+import { getUniqueValues, Button } from '../../utils';
 import { useFilter } from '../../context';
-import Tab from '../../context/TabCategory';
-import Items from '../product/ProductRow';
+import ProductRow from '../Product/listing/ProductRow';
 
 export default function CategoryList() {
-  const { all_products } = useFilter();
+    const { all_products } = useFilter();
+    const [getCategory, setCategories] = useState('all');
+    const [loadMore, setLoadMore] = useState(10);
 
-  const categories = useMemo(() => getUniqueValues(all_products, 'category'), [all_products]);
+    const categories = useMemo(() => getUniqueValues(all_products, 'category'), [all_products]);
 
-  const [currentTabIndex, setIndex] = useState('apple');
+    const handleChange = (category) => {
+        setCategories(category);
+    };
 
-  const handleChange = (newIndex) => {
-    setIndex((prev) => (newIndex === prev ? 0 : newIndex));
-  };
+    const filterData = all_products?.filter(
+        (item) => getCategory === 'all' || item.category === getCategory
+    );
 
-  return (
-    <div>
-      <Tab currentTab={currentTabIndex} onChange={handleChange}>
-        <div className='bg-blue-200'>
-          <Tab.HeaderContainer>
-            {categories
-              .filter((f) => f !== 'all')
-              .map((c) => (
-                <Tab.Item label={c} index={c} key={c} />
-              ))}
-          </Tab.HeaderContainer>
+    return (
+        <div className='bg-gray-200 px-5 pb-5'>
+            <div className='flex flex-wrap py-5'>
+                {categories.length > 0 &&
+                    categories.map((category) => (
+                        <Button
+                            onClick={() => handleChange(category)}
+                            key={category}
+                            className='hover:bg-blue-100 hover:text-blue-600 mr-3.5 mb-1 active:bg-blue-300  hover:border-blue-500'>
+                            {category}
+                        </Button>
+                    ))}
+            </div>
+            <p>Products Found : {filterData?.length}</p>
+            <div className='grid-container'>
+                {filterData.length > 0 &&
+                    filterData
+                        ?.slice(0, loadMore)
+                        ?.map((item) => <ProductRow key={item.id} product={item} />)}
+            </div>
+            {loadMore <= filterData.length ? (
+                <Button
+                    onClick={() => setLoadMore((prev) => prev + 10)}
+                    className='hover:text-blue-600 text-sm mt-2 hover:border-blue-400 active:bg-blue-200'>
+                    load more
+                </Button>
+            ) : null}
         </div>
-        <div className='bg-gray-200 md:px-18 sm:px-10 sm:py-10 py-5 px-5'>
-          <Tab.ContentContainer>
-            {categories.map((category) => (
-              <Tab.ContentItem key={category} index={category}>
-                {all_products
-                  .filter((p) => p.category === category)
-                  .slice(0, 8)
-                  .map((item) => (
-                    <Items key={item.id} product={item} />
-                  ))}
-              </Tab.ContentItem>
-            ))}
-          </Tab.ContentContainer>
-        </div>
-      </Tab>
-    </div>
-  );
+    );
 }

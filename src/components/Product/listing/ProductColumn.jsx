@@ -2,7 +2,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { formatePrice, Stars } from '../../utils';
+import { formatePrice, Stars } from '../../../utils';
 
 export default function ProductItem({ products }) {
   const {

@@ -2,10 +2,10 @@ import React, { useMemo } from 'react';
 import { useParams } from 'react-router-dom';
 
 import { useProducts } from '../context';
-import DetailSection from '../components/detail/DetailSection';
-import AddReviews from '../components/detail/AddReviews';
-import ShowReviews from '../components/detail/ShowReviews';
-import ProductRow from '../components/product/ProductRow';
+import DetailSection from '../components/Detail/DetailSection';
+import AddReviews from '../components/Detail/AddReviews';
+import ShowReviews from '../components/Detail/ShowReviews';
+import ProductRow from '../components/Product/listing/ProductRow';
 
 export default function ProductDetailPage() {
     const { products } = useProducts();
@@ -28,31 +28,17 @@ export default function ProductDetailPage() {
     }, [id]);
 
     return (
-        <div className='py-5 w-full'>
+        <div className='py-5 w-full bg-slate-100'>
             <DetailSection products={singleProduct} />
 
-            <div className='py-5 bg-gray-200'>
-                <div className='sm:flex gap-5 justify-evenly'>
-                    <div>
-                        <h2 className='font-semibold text-gray-700 text-xl text-center mb-5'>
-                            Adding Reviews
-                        </h2>
-                        <AddReviews {...singleProduct} />
-                    </div>
-                    <div>
-                        <h2 className='font-semibold text-gray-700 text-xl text-center mb-5'>
-                            Show Reviews
-                        </h2>
-                        <ShowReviews />
-                    </div>
-                </div>
+            <div className='mx-auto max-w-[90%]'>
+                <ShowReviews />
+                <AddReviews {...singleProduct} />
             </div>
 
-            <div className='overflow-x-auto overflow-y-hidden scrollbar-thin bg-gray-200  scrollbar-track-transparent scrollbar-thumb-slate-500'>
-                <h2 className='font-semibold text-gray-700 text-xl text-center my-4'>
-                    Related Products
-                </h2>
-                <div className='flex'>
+            <div className='overflow-x-auto overflow-y-hidden scrollbar-thin bg-gray-200 scrollbar-track-transparent scrollbar-thumb-slate-500'>
+                <h2 className=' m-2 text-lg'>Related Products: {relatedProducts.length}</h2>
+                <div className='flex gap-4'>
                     {relatedProducts?.map((item) => (
                         <ProductRow key={item?.id} product={item} />
                     ))}

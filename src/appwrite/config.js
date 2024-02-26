@@ -1,8 +1,7 @@
-import { Client, Databases, Account } from 'appwrite';
+import { Client, Databases, Account,  } from 'appwrite';
 
-export const PROJECT_ID = '655436d63a9eae53dc46';
-export const DATABASE_ID = '65575d21762406508353';
-export const COLLECTION_ID = '65575d48e45f6e2282d0';
+// export const PROJECT_ID = '655436d63a9eae53dc46';
+const PROJECT_ID = '65293845b0e39c4fac26';
 
 const client = new Client();
 
