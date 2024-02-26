@@ -1,78 +1,78 @@
 /* eslint-disable react/prop-types */
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-
-import { formatePrice, LoadingSpinner, AddressDisplay } from '../utils';
-import { getItem } from '../appwrite/postService';
-import OrderStatus from '../components/order/OrderStatus';
-import RemoveOrder from '../components/order/RemoveOrder';
+import { formatePrice, LoadingSpinner, formattedDate } from '../utils';
+import { singleOrderItem } from '../appwrite/postService';
 
 export default function OrderTrack() {
-  const { orderId } = useParams();
-  const [item, setItems] = React.useState([]);
-  const [carts, setCarts] = React.useState([]);
-  const [loading, setLoading] = React.useState(false);
+    const { orderId } = useParams();
+    const [carts, setCarts] = React.useState(null);
+    const [item, setItem] = useState(null);
+    const [location, setLocation] = useState(null);
+    const [loading, setLoading] = React.useState(false);
 
-  React.useEffect(() => {
-    setLoading(true);
-    const response = async () => {
-      await getItem(orderId)
-        .then((data) => {
-          setItems(data);
-          setCarts(JSON.parse(data.body));
-        })
-        .catch((error) => console.log(error));
-      setLoading(false);
-    };
-    response();
-  }, [orderId]);
+    useEffect(() => {
+        const getOrderDetail = async () => {
+            setLoading(true);
+            try {
+                const result = await singleOrderItem(orderId);
+                setCarts(result);
+                setLocation(JSON.parse(result?.user_detail));
+                setItem(JSON.parse(result?.phone_detail));
+            } catch (error) {
+                console.error(error);
+            } finally {
+                setLoading(false);
+            }
+        };
 
-  const total = carts.reduce((total, index) => total + index.amount * index.price, 0);
-  const dates = new Date(item?.$updatedAt).toDateString();
+        getOrderDetail();
+    }, [orderId]);
 
-  if (loading) {
-    return <LoadingSpinner />;
-  }
+    if (loading) {
+        return <LoadingSpinner />;
+    }
 
-  const Items = ({ name, url, price, amount }) => {
     return (
-      <div className='py-2 mb-2 flex gap-5'>
-        <img src={url} alt='' width={60} className='object-contain' />
-        <div className='text-sm text-gray-500 font-medium'>
-          <p className='text-gray-600 font-medium'>{name}</p>
-          <p>Quantity: {amount}</p>
-          <p>Price: {formatePrice(price)}</p>
+        <div className='mx-auto container px-5'>
+            <h2 className='border-b py-2 mb-2'>Order Detail</h2>
+            <div className='sm:flex gap-2 text-sm items-start justify-between'>
+                <h4 className='font-medium'>
+                    Order Id : <span className='text-blue-600'>{orderId}</span>
+                </h4>
+                <div className='max-w-[30%]'>
+                    <h4 className='font-medium'>Shipping Address</h4>
+                    <p>{location?.name}</p>
+                    <p>{location?.location}</p>
+                </div>
+                <div>
+                    <h4 className='font-medium'>Payment Method</h4>
+                    <p>BHIM UPI</p>
+                </div>
+            </div>
+            <div className='border-b py-2 mb-2'>
+                <h2 className='text-green-600 '>
+                    Deliver At {formattedDate(carts?.$updatedAt?.toString())}
+                </h2>
+                <div>
+                    {item?.map((item) => (
+                        <Items key={item?.id} {...item} />
+                    ))}
+                </div>
+            </div>
         </div>
-      </div>
     );
-  };
+}
 
-  return (
-    <div className='container mx-auto py-10 px-5 space-y-5'>
-      <div className='sm:flex justify-between font-medium uppercase text-blue-600'>
-        <h1>#{orderId}</h1>
-        <h1>Order placed:- {dates}</h1>
-      </div>
-      <div className='grid sm:grid-cols-2 justify-between gap-4'>
-        <div>
-          <h2 className='font-medium'>Products Purchased:</h2>
-          {carts && carts.map((cart) => <Items key={cart.id} {...cart} />)}
+function Items({ id, name, url, price, amount }) {
+    return (
+        <div key={id} className='py-2 mb-2 flex gap-5'>
+            <img src={url} alt='' width={60} className='object-contain' />
+            <div className='text-sm text-gray-500 font-medium'>
+                <p className='text-gray-600 font-medium'>{name}</p>
+                <p>Quantity: {amount}</p>
+                <p>Price: {formatePrice(price)}</p>
+            </div>
         </div>
-        <div className='space-y-4'>
-          <AddressDisplay />
-          <div>
-            <h2 className='font-medium mb-2'>Billing Summary:</h2>
-            <p>
-              Total Price : <span className='text-red-600 font-medium'>{formatePrice(total)}</span>
-            </p>
-            <p>Payment Method : {item.payment}</p>
-          </div>
-        </div>
-      </div>
-      <div className='h-[100px]'>
-        <OrderStatus dates={dates} />
-      </div>
-      <RemoveOrder id={orderId} />
-    </div>
-  );
+    );
 }
