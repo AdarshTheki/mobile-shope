@@ -1,58 +1,92 @@
 import React from 'react';
+
+import { useFilter } from '../../context';
+import { formatePrice, getUnique, Button } from '../../utils';
 import FilterColors from './filters/FilterColors';
 import FilterRatings from './filters/FilterRatings';
-import FilterCheckbox from './filters/FilterCheckbox';
-import { useFilter } from '../../context';
-import { formatePrice } from '../../utils';
+import FilterComponent from './filters/FilterComponent';
 
 export default function ProductFilter() {
-  const { filters, updateFilters, clearFilters } = useFilter();
-  const { min_price, price, max_price, shipping } = filters;
+    const { filters, updateFilters, clearFilters, all_products } = useFilter();
+    const { min_price, price, max_price, shipping } = filters;
 
-  return (
-      <div className='sm:min-w-[210px] sm:max-w-[250px] bg-slate-200 p-2'>
-          <form
-              onSubmit={(e) => e.preventDefault()}
-              className='space-y-2 grid grid-cols-2 sm:block capitalize'>
-              {/* Category, Ram, Camera, Battery, Display filters in multi-checkboxes */}
-              <FilterCheckbox />
-              <FilterRatings />
-              <FilterColors />
-              <div className='bg-white pl-4 py-2 rounded-lg'>
-                  {/* price */}
-                  <label htmlFor='priceRange' className='text-gray-800 text-sm'>
-                      {formatePrice(price)}
-                  </label>
-                  <input
-                      type='range'
-                      name='price'
-                      id='priceRange'
-                      min={min_price}
-                      max={max_price}
-                      step={(min_price + max_price) / 10}
-                      value={price}
-                      onChange={updateFilters}
-                  />
-                  {/* shipping */}
-                  <div className='mt-2 space-x-2'>
-                      <label htmlFor='shipping'>free shipping: </label>
-                      <input
-                          type='checkbox'
-                          name='shipping'
-                          id='shipping'
-                          checked={shipping}
-                          onChange={updateFilters}
-                      />
-                  </div>
-              </div>
-          </form>
+    const batteries = getUnique(all_products, 'battery');
+    const categories = getUnique(all_products, 'category');
+    const camera = getUnique(all_products, 'camera');
+    const display = getUnique(all_products, 'display');
+    const ram = getUnique(all_products, 'ram');
 
-          {/* Clear all filters */}
-          <button
-              className='bg-red-600 hover:bg-red-800 block mx-auto py-1 px-8 rounded mt-2 text-white capitalize text-sm font-medium'
-              onClick={() => clearFilters()}>
-              clear all
-          </button>
-      </div>
-  );
+    return (
+        <div className='overflow-y-auto lg:w-[250px] sm:w-[200px]'>
+            <ul className='list-none text-sm'>
+                <li className='border-b pl-4 py-4 text-lg text-gray-800 uppercase font-normal'>
+                    Filters
+                </li>
+                <li className='border-b p-1 py-2'>
+                    <FilterComponent items={categories} name={'Category'} label={''} />
+                </li>
+                <li className='border-b p-1 py-2'>
+                    <FilterComponent items={batteries} name={'Battery'} label={'mAh'} />
+                </li>
+                <li className='border-b p-1 py-2'>
+                    <FilterComponent items={ram} name={'Ram'} label={'GB'} />
+                </li>
+                <li className='border-b p-1 py-2'>
+                    <FilterComponent items={display} name={'Display'} label={''} />
+                </li>
+                <li className='border-b p-1 py-2'>
+                    <FilterComponent items={camera} name={'Camera'} label={'Rear MP'} />
+                </li>
+                <li className='border-b p-1 py-2'>
+                    <FilterRatings />
+                </li>
+                <li className='border-b p-1 py-2'>
+                    <FilterColors />
+                </li>
+                <li className='border-b p-1 py-2'>
+                    <div className='pl-4'>
+                        {/* price */}
+                        <label
+                            htmlFor='priceRange'
+                            className='text-gray-800 text-sm uppercase font-normal'>
+                            Price: <span className='text-xs'>{formatePrice(price)}</span>
+                        </label>
+                        <input
+                            type='range'
+                            name='price'
+                            id='priceRange'
+                            min={min_price}
+                            max={max_price}
+                            step={(min_price + max_price) / 10}
+                            value={price}
+                            onChange={updateFilters}
+                        />
+                    </div>
+                </li>
+                <li className='border-b p-1 py-2'>
+                    {/* shipping */}
+                    <div className='pl-4 capitalize space-x-2'>
+                        <label
+                            htmlFor='shipping'
+                            className='text-gray-800 text-sm uppercase font-normal'>
+                            free shipping:
+                        </label>
+                        <input
+                            type='checkbox'
+                            name='shipping'
+                            id='shipping'
+                            checked={shipping}
+                            onChange={updateFilters}
+                        />
+                    </div>
+                </li>
+            </ul>
+            {/* Clear all filters */}
+            <Button
+                className='mx-auto block my-2 text-sm bg-red-500 text-white active:bg-red-700 hover:bg-red-600'
+                onClick={() => clearFilters()}>
+                clear all
+            </Button>
+        </div>
+    );
 }
