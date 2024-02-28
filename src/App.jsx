@@ -3,7 +3,6 @@ import React from 'react';
 import { useAuth } from './context';
 import { LoadingSpinner } from './utils';
 import Layout from './Layout';
-import { Outlet } from 'react-router-dom';
 
 const App = () => {
     const { loading, getUser } = useAuth();
@@ -12,6 +11,6 @@ const App = () => {
         getUser();
     }, []);
 
-    return <Outlet>{loading ? <LoadingSpinner /> : <Layout />}</Outlet>;
+    return <div>{loading ? <LoadingSpinner /> : <Layout />}</div>;
 };
 export default App;
