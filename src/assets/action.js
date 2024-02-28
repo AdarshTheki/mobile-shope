@@ -34,6 +34,11 @@ export const DECREASE_CART_QUANTITY = 'DECREASE_CART_QUANTITY';
 export const COUPON_USE_TOTALS = 'COUPON_USE_TOTALS';
 export const CHANGE_ADDRESS = 'CHANGE_ADDRESS';
 
+export const ADD_ADDRESS = 'ADD_ADDRESS';
+export const REMOVE_ADDRESS = 'REMOVE_ADDRESS';
+export const SELECTED_ADDRESS = 'UPDATE_ADDRESS';
+
+
 // Reviews Options
 export const ADD_REVIEW = 'ADD_REVIEW';
 export const ADD_LIKE = 'ADD_LIKE';

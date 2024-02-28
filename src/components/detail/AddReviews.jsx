@@ -1,105 +1,104 @@
 /* eslint-disable react/prop-types */
-import React, { useState, useId } from 'react';
-import toast, { Toaster } from 'react-hot-toast';
+import React, { useState } from 'react';
+import { FaStar } from 'react-icons/fa';
+import { useReview } from '../../context';
 
-import { Stars } from '../../utils';
-import { useAuth, useReview } from '../../context';
-
-const ratings = [
-    { value: 1, label: 'unacceptable' },
-    { value: 2, label: 'weak' },
-    { value: 3, label: 'acceptable' },
-    { value: 4, label: 'good' },
-    { value: 5, label: 'excellent' },
-];
-
-export default function AddReviews({ name, url, id }) {
-    const [message, setMessage] = useState({ label: '', content: '' });
-    const [loading, setLoading] = useState(false);
-    const { user } = useAuth();
-    const { addReview } = useReview();
-
-    const onSubmitHandler = (e) => {
-        e.preventDefault();
-        if (!message.label) return alert('Please select Ratings ⭐⭐⭐');
-        if (!message.content) return alert('Please write a review message with 500 char');
-        setLoading(true);
-        let value;
-        if (message.label === 'unacceptable') {
-            value = 1;
-        } else if (message.label === 'weak') {
-            value = 2;
-        } else if (message.label === 'acceptable') {
-            value = 3;
-        } else if (message.label === 'good') {
-            value = 4;
-        } else if (message.label === 'excellent') {
-            value = 5;
-        } else {
-            value = null;
-        }
-        const payload = {
-            user_name: user?.name,
-            label: message.label,
-            body: message.content,
-            stars: value,
-            name,
-            url,
-            id,
-        };
-        addReview(payload);
-        toast.success('Reviews Add successfully...');
-        setMessage({ label: '', content: '' });
-        setLoading(false);
-    };
-
-    const RadioInputs = ({ label, value }) => {
-        const Ids = useId();
-        return (
-            <label className='flex gap-5 items-center cursor-pointer' htmlFor={Ids}>
-                <input
-                    type='radio'
-                    value={label}
-                    checked={message.label === label}
-                    onChange={(e) => setMessage({ ...message, label: e.target.value })}
-                    name='ratings'
-                    id={Ids}
-                />
-                <Stars starts={value} /> {label}
-            </label>
-        );
-    };
-
+export default function AddReviews({ name, url }) {
+    const [show, setShow] = useState(false);
     return (
-        <div className='bg-white space-y-4 p-5'>
-            <div className='flex space-x-4 items-center'>
-                <img src={url} alt='product' width={60} />
-                <h2 className='text-gray-700 font-medium'>{name}</h2>
-            </div>
-            <form className='capitalize' onSubmit={onSubmitHandler}>
-                <p className='text-blue-500'>Ratings: </p>
-                {ratings.map((input) => (
-                    <RadioInputs key={input.value} {...input} />
-                ))}
-                <label htmlFor='reviews' className='block my-2'>
-                    <span className='text-blue-500'>Reviews:</span>
-                    <textarea
-                        name='reviews'
-                        value={message.content}
-                        onChange={(e) => setMessage({ ...message, content: e.target.value })}
-                        id='reviews'
-                        maxLength={500}
-                        minLength={10}
-                        placeholder='write a reviews ...'
-                        className='w-full h-28 border text-sm border-gray-300 outline-none shadow-lg rounded-lg p-3'></textarea>
-                </label>
-                <button
-                    type='submit'
-                    className='block mx-auto hover:opacity-80 duration-300 bg-blue-600 px-10 py-2 text-sm text-white rounded-2xl'>
-                    {loading ? 'loading...' : 'Add Review'}
-                </button>
-            </form>
-            <Toaster position='top-right' />
+        <div className='p-5'>
+            {show && <ModalDialog name={name} url={url} onClose={() => setShow(false)} />}
+            <button
+                onClick={() => setShow(true)}
+                type='submit'
+                className='block mx-auto hover:opacity-80 duration-300 bg-blue-600 font-light px-10 py-2 text-sm text-white rounded'>
+                Write Review
+            </button>
         </div>
     );
 }
+
+const ModalDialog = ({ onClose, name, url }) => {
+    const [textarea, setTextarea] = useState('');
+    const [rating, setRating] = useState(0);
+    const [hover, setHover] = useState(0);
+
+    const { addReview } = useReview();
+
+    function handleClick(getCurrentIndex) {
+        setRating(getCurrentIndex);
+    }
+    function handleMouseEnter(getCurrentIndex) {
+        setHover(getCurrentIndex);
+    }
+    function handleMouseLeave() {
+        setHover(rating);
+    }
+
+    function handleSubmit() {
+        if (textarea.length < 10) return;
+        if (!rating) return;
+        const review = {
+            body: textarea,
+            stars: rating,
+            likes: 0,
+            dislikes: 0,
+            name,
+            url,
+        };
+        addReview(review);
+        onClose();
+    }
+
+    return (
+        <div className='fixed z-50 inset-0 overflow-auto flex items-center justify-center bg-slate-800/30'>
+            <div className='relative bg-white mx-auto rounded-lg p-10 flex flex-col items-center justify-center gap-2 border w-[400px]'>
+                <p>Write your Review</p>
+                <p className='text-gray-500 text-xs'>Are you satisfied with the service</p>
+                <div className='flex gap-2 items-center'>
+                    {[...Array(5)].map((_, index) => {
+                        index += 1;
+                        return (
+                            <FaStar
+                                key={index}
+                                className={
+                                    index <= (hover || rating)
+                                        ? 'hover:text-yellow-500 text-yellow-500 cursor-pointer'
+                                        : 'hover:text-yellow-500 text-gray-300 cursor-pointer'
+                                }
+                                onClick={() => handleClick(index)}
+                                onMouseEnter={() => handleMouseEnter(index)}
+                                onMouseLeave={handleMouseLeave}
+                                size={30}
+                            />
+                        );
+                    })}
+                </div>
+                <textarea
+                    value={textarea}
+                    onChange={(e) => setTextarea(e.target.value)}
+                    name='textareaRating'
+                    id='textareaRating'
+                    cols='30'
+                    rows='3'
+                    minLength={10}
+                    maxLength={200}
+                    required
+                    placeholder='Describe Your Experiences...'
+                    className='border border-gray-800 outline-none text-xs p-5'></textarea>
+                <div className='flex gap-2'>
+                    <button
+                        onClick={onClose}
+                        className='block mx-auto hover:opacity-80 duration-300 border border-blue-600 p-2 text-xs text-blue-600 font-medium rounded'>
+                        Not Now
+                    </button>
+                    <button
+                        onClick={handleSubmit}
+                        className='block mx-auto hover:opacity-80 duration-300 bg-blue-600 font-light px-10 py-2 text-sm text-white rounded'>
+                        Write Review
+                    </button>
+                </div>
+            </div>
+        </div>
+    );
+};

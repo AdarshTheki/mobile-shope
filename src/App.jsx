@@ -5,10 +5,10 @@ import { LoadingSpinner } from './utils';
 import Routes from './Routes';
 
 const App = () => {
-    const { login, loading } = useAuth();
+    const { loading, getUser } = useAuth();
 
     React.useEffect(() => {
-        login();
+        getUser();
     }, []);
 
     return <>{loading ? <LoadingSpinner /> : <Routes />}</>;

@@ -1,6 +1,5 @@
 import { Client, Databases, Account,  } from 'appwrite';
 
-// export const PROJECT_ID = '655436d63a9eae53dc46';
 const PROJECT_ID = '65293845b0e39c4fac26';
 
 const client = new Client();

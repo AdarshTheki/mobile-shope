@@ -7,39 +7,35 @@ import toast from 'react-hot-toast';
 import ImageSlider from './ImageSlider';
 import { Stars, formatePrice } from '../../utils';
 import { useCart } from '../../context';
-import { Button } from '../../utils';
 
-export default function ProductDetailCart({ products }) {
-    const {
-        id,
-        name,
-        url,
-        stars,
-        ratings,
-        reviews,
-        ram,
-        rom,
-        display,
-        camera,
-        battery,
-        price,
-        shipping,
-        category,
-    } = products;
-
+export default function ProductDetailCart({
+    name,
+    url,
+    stars = 2,
+    ratings = 100,
+    reviews = 120,
+    ram,
+    rom,
+    display,
+    camera,
+    battery,
+    price,
+    shipping,
+    id,
+}) {
     const { addToCart } = useCart();
 
     const addToCartHandler = () => {
-        addToCart(products);
+        addToCart({ id, name, price, url });
         toast.success('Add to Cart success 👏', { duration: 3000, position: 'top-right' });
     };
 
     return (
-        <div className='grid sm:grid-cols-2 gap-5 mx-auto max-w-5xl px-5 py-5'>
+        <div className='grid sm:grid-cols-2 gap-5 justify-between'>
             <ImageSlider url={url} name={name} />
             <div className='space-y-4 max-w-md mx-auto'>
                 <h2 className='text-xl font-medium text-blue-700'>{name}</h2>
-                <ul className='list-disc list-inside space-y-1'>
+                <ul className='list-disc text-sm list-inside space-y-1'>
                     <Stars starts={stars} reviews={reviews} ratings={ratings} />
                     <li>{`${ram} GB RAM | ${rom} GB ROM storage`}</li>
                     <li>{`${display} Full HD+ Display`}</li>
@@ -50,15 +46,9 @@ export default function ProductDetailCart({ products }) {
                         Accessories
                     </li>
                 </ul>
-                <div className='flex gap-x-2 flex-wrap justify-between capitalize text-gray-600'>
+                <div className='flex gap-x-2 flex-wrap capitalize text-gray-600'>
                     <p>
-                        SKU: <b>{`${id}ROM${rom}`}</b>
-                    </p>
-                    <p>
-                        Brand: <b>{category}</b>
-                    </p>
-                    <p>
-                        Delivery:{' '}
+                        Delivery:
                         <span
                             className={`px-2 py-1 rounded font-medium text-xs ${
                                 shipping ? 'text-green-700 bg-green-200' : 'text-red-700 bg-red-200'
@@ -74,12 +64,12 @@ export default function ProductDetailCart({ products }) {
                     </p>
                 </div>
                 <h2 className='text-2xl font-medium'>{`Price: ${formatePrice(price)}/-`}</h2>
-                <Button
-                    rightIcon={<BsFillBagHeartFill fontSize={14} />}
+                <button
                     onClick={addToCartHandler}
-                    className='inline-flex gap-4 items-center text-white bg-blue-600 hover:bg-blue-700 duration-500'>
+                    className='inline-flex gap-2 items-center hover:opacity-80 duration-300 bg-blue-600 font-light px-10 py-2 text-sm text-white rounded'>
                     Add to Cart
-                </Button>
+                    <BsFillBagHeartFill fontSize={14} />
+                </button>
             </div>
         </div>
     );

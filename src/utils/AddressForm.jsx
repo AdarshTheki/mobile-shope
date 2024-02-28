@@ -1,19 +1,24 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import Inputs from './Inputs';
+import { useCart } from '../context';
 
-export default function AddressForm({ setAddress, setToggle }) {
+export default function AddressForm({ setToggle }) {
+    const { addAddress } = useCart();
     const { register, handleSubmit, formState } = useForm();
 
     const submitHandler = async (data) => {
         const { name, address, city, country, postal_code, phone, deliveryAt } = data;
-        const newLocation = Object.values({ address, city, country, postal_code, phone })?.join(
-            ', '
-        );
-        setAddress((prev) => [
-            ...prev,
-            { name, deliveryAt, location: newLocation, id: Date.now().toString() },
-        ]);
+        addAddress({
+            id: Date.now(),
+            name,
+            address,
+            city,
+            state: country,
+            zip: postal_code,
+            deliveryAt,
+            phone,
+        });
         setToggle(true);
     };
 

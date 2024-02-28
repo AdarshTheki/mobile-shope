@@ -7,6 +7,7 @@ import {
     FilterProvider,
     CartProvider,
     ReviewProvider,
+    OrderProvider,
 } from './context';
 
 import App from './App';
@@ -14,7 +15,7 @@ import App from './App';
 import './assets/style/index.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-    <React.StrictMode>
+    <OrderProvider>
         <AuthProvider>
             <ProductsProvider>
                 <FilterProvider>
@@ -26,5 +27,5 @@ ReactDOM.createRoot(document.getElementById('root')).render(
                 </FilterProvider>
             </ProductsProvider>
         </AuthProvider>
-    </React.StrictMode>
+    </OrderProvider>
 );

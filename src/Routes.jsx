@@ -6,6 +6,7 @@ import Protected from './pages/ProtectedRoute';
 import NoFound from './pages/PageNotFound';
 import Header from './components/Common/HeaderSection';
 import Footer from './components/Common/FooterSection';
+import { LoadingSpinner } from './utils';
 
 const ProductDetail = React.lazy(() => import('./pages/ProductDetail'));
 const OrderSuccess = React.lazy(() => import('./pages/OrderSuccess'));
@@ -19,7 +20,7 @@ const Profile = React.lazy(() => import('./pages/ProfilePage'));
 
 export default function Routers() {
     return (
-        <React.Suspense fallback={<>loading...</>}>
+        <React.Suspense fallback={<LoadingSpinner />}>
             <BrowserRouter>
                 <Header />
                 <div className='min-h-[80vh]'>
