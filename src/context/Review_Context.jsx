@@ -1,67 +1,83 @@
 /* eslint-disable react/prop-types */
-import React from 'react';
-import { ADD_REVIEW, ADD_LIKE, ADD_DISLIKE, DELETE_REVIEW } from '../assets/action';
-import { reviews_reducer } from './reviews_reducer';
-import { useProducts } from './index';
+import React, { useEffect, useState } from 'react';
+import { Permission, Role, Query } from 'appwrite';
+import { databases } from '../appwrite/config';
+import { useAuth } from './index';
 
-export const ReviewContext = React.createContext();
+const ReviewContext = React.createContext({
+    reviews: [],
+    loading: true,
+    addReview: () => {},
+    addLike: () => {},
+    addDislike: () => {},
+    deleteReview: () => {},
+});
 
-const data = [
-    {
-        user_name: 'Anil Gupta',
-        label: 'excellent',
-        body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt, itaque?\n\n',
-        stars: 5,
-        name: 'SAMSUNG Galaxy F04 (Jade Purple, 64 GB)',
-        url: 'https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/3/g/1/-original-imaguechpztrxtgh.jpeg?q=70',
-        id: 37,
-        likes: 14,
-        dislikes: 6,
-        timestamp: 'Dec 13, 2023, 11:03:34 AM',
-    },
-    {
-        user_name: 'Adarsh Verma',
-        label: 'weak',
-        body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt, itaque?\nLorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt, itaque?\n\n\n',
-        stars: 2,
-        name: 'SAMSUNG Galaxy A14 5G (Dark Red, 128 GB)',
-        url: 'https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/6/c/5/-original-imagmefcgvntdtha.jpeg?q=70',
-        id: 63,
-        likes: 2,
-        dislikes: 8,
-        timestamp: 'Dec 13, 2023, 11:03:44 AM',
-    },
-];
+const ReviewProvider = ({ children }) => {
+    const [reviews, setReviews] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const { user } = useAuth();
 
-export const ReviewProvider = ({ children }) => {
-    const { products } = useProducts();
-    const [state, dispatch] = React.useReducer(reviews_reducer, { products, reviews: data });
+    const DATABASE = '65dc203a459215fe42be';
+    const COLLECTION = '65de27efadf0302dfc6d';
 
-    // functions
-    const addReview = (review) => {
-        dispatch({ type: ADD_REVIEW, payload: review });
+    const init = async (queries = [Query.limit(10)]) => {
+        try {
+            const result = await databases.listDocuments(DATABASE, COLLECTION, queries);
+            setReviews(result.documents);
+            setLoading(false);
+        } catch (error) {
+            console.error(error);
+        }
     };
 
-    const addLike = (reviewId) => {
-        dispatch({ type: ADD_LIKE, payload: reviewId });
+    useEffect(() => {
+        init();
+    }, []);
+
+    const addReview = async (review) => {
+        let permissions = [Permission.write(Role.user(user?.$id))];
+        let payload = {
+            user_name: user?.name,
+            ...review,
+        };
+        const newReview = await databases.createDocument(
+            DATABASE,
+            COLLECTION,
+            Date.now().toString(),
+            payload,
+            permissions
+        );
+        setReviews([...reviews, newReview]);
     };
 
-    const addDislike = (reviewId) => {
-        dispatch({ type: ADD_DISLIKE, payload: reviewId });
+    const addLike = async (reviewId) => {
+        const review = reviews.find((r) => r.$id === reviewId);
+        if (review) {
+            review.likes += 1;
+            await databases.updateDocument(DATABASE, COLLECTION, reviewId, review);
+        }
     };
 
-    const deleteReview = (reviewId) => {
-        dispatch({ type: DELETE_REVIEW, payload: reviewId });
+    const addDislike = async (reviewId) => {
+        const review = reviews.find((r) => r.$id === reviewId);
+        if (review) {
+            review.dislikes += 1;
+            await databases.updateDocument(DATABASE, COLLECTION, reviewId, review);
+        }
     };
 
-    React.useEffect(() => {
-        // save to localStorage with reviews change
-        localStorage.setItem('reviews', JSON.stringify(state.reviews));
-    }, [state.reviews]);
+    const deleteReview = async (reviewId) => {
+        await databases.deleteDocument(DATABASE, COLLECTION, reviewId);
+        setReviews(reviews.filter((r) => r.$id !== reviewId));
+    };
 
     return (
-        <ReviewContext.Provider value={{ ...state, addReview, addLike, addDislike, deleteReview }}>
+        <ReviewContext.Provider
+            value={{ reviews, loading, addReview, addLike, addDislike, deleteReview }}>
             {children}
         </ReviewContext.Provider>
     );
 };
+
+export { ReviewContext, ReviewProvider };

@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import Reducer from './filter_reducer';
 import { useProducts } from './index';
@@ -41,7 +42,19 @@ const initialState = {
     },
 };
 
-export const FilterContext = React.createContext();
+export const FilterContext = React.createContext({
+    setGridView: () => {},
+    setListView: () => {},
+    updateSort: () => {},
+    updateFilters: () => {},
+    clearFilters: () => {},
+    toggleCheckbox: () => {},
+    clearCategory: () => {},
+    clearCamera: () => {},
+    clearDisplay: () => {},
+    clearRam: () => {},
+    clearBattery: () => {},
+});
 
 export const FilterProvider = ({ children }) => {
     const { products } = useProducts();

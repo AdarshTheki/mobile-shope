@@ -5,7 +5,9 @@ import {
     COUNT_CART_TOTALS,
     INCREASE_CART_QUANTITY,
     DECREASE_CART_QUANTITY,
-    CHANGE_ADDRESS,
+    ADD_ADDRESS,
+    REMOVE_ADDRESS,
+    SELECTED_ADDRESS,
 } from '../assets/action';
 
 const cart_reducer = (state, action) => {
@@ -14,7 +16,7 @@ const cart_reducer = (state, action) => {
             const { id, name, price, url } = action.payload;
             return {
                 ...state,
-                cart: state.cart.find((cartItem) => cartItem.id === id)
+                cart: state.cart.some((cartItem) => cartItem.id === id)
                     ? state.cart.map((item) =>
                           item.id === id ? { ...item, amount: item.amount + 1 } : item
                       )
@@ -56,19 +58,30 @@ const cart_reducer = (state, action) => {
             const { id } = action.payload;
             return {
                 ...state,
-                cart: state.cart.map((item) =>
-                    item.id === id
-                        ? { ...item, amount: item.amount > 1 ? item.amount - 1 : 1 }
-                        : item
-                ),
+                cart: state.cart
+                    .map((item) => (item.id === id ? { ...item, amount: item.amount - 1 } : item))
+                    .filter((item) => item.amount > 0),
             };
         }
 
-        case CHANGE_ADDRESS:
+        case ADD_ADDRESS:
+            return {
+                ...state,
+                addresses: [...state.addresses, action.payload],
+            };
+
+        case REMOVE_ADDRESS:
+            return {
+                ...state,
+                addresses: state.addresses.filter((address) => address.id !== action.payload.id),
+            };
+
+        case SELECTED_ADDRESS: {
             return {
                 ...state,
                 address: action.payload,
             };
+        }
     }
 };
 

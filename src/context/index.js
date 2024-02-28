@@ -4,8 +4,24 @@ import { CartContext, CartProvider } from './Cart_Context';
 import { FilterContext, FilterProvider } from './Filter_Context';
 import { ProductsContext, ProductsProvider } from './Products_Context';
 import { ReviewContext, ReviewProvider } from './Review_Context';
+import { OrderContext, OrderProvider } from './Order_Context';
 
-export { AuthProvider, CartProvider, FilterProvider, ProductsProvider, ReviewProvider };
+export {
+    AuthProvider,
+    CartProvider,
+    FilterProvider,
+    ProductsProvider,
+    ReviewProvider,
+    OrderProvider,
+};
+
+export const useOrder = () => {
+    const context = React.useContext(OrderContext);
+    if (context === undefined) {
+        throw new Error('useOrder must be used within a OrderProvider');
+    }
+    return context;
+};
 
 export const useReview = () => {
     const context = React.useContext(ReviewContext);
