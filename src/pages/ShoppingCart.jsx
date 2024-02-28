@@ -4,14 +4,14 @@ import { useNavigate } from 'react-router-dom';
 import CartItem from '../components/cart/CartItem';
 import CartPriceDetail from '../components/Cart/CartPriceDetail';
 import CartAddress from '../components/Cart/CartAddress';
-import { createOrderItem } from '../appwrite/postService';
-import { useCart } from '../context';
+import { useCart,useOrder } from '../context';
 import { Button } from '../utils';
 
 export default function ShoppingCart() {
-    const { cart, address, clearCart } = useCart();
-    const [page, setPage] = useState(1);
     const Navigate = useNavigate();
+    const { cart, address, clearCart } = useCart();
+    const { createOrderItem } = useOrder();
+    const [page, setPage] = useState(1);
 
     const navigateHandle = () => {
         if (address?.name) {
