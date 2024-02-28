@@ -1,7 +1,6 @@
 // eslint-disable-next-line no-unused-vars
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FaShoppingCart } from 'react-icons/fa';
 import { IoHome } from 'react-icons/io5';
 import { Tooltip } from 'react-tooltip';
 import { FiShoppingBag } from 'react-icons/fi';

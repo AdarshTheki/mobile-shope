@@ -4,8 +4,8 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Home from './pages/HomePage';
 import Protected from './pages/ProtectedRoute';
 import NoFound from './pages/PageNotFound';
-import Header from './components/Common/HeaderSection';
-import Footer from './components/Common/FooterSection';
+import Header from './components/Header/HeaderSection';
+import Footer from './components/Header/FooterSection';
 import { LoadingSpinner } from './utils';
 
 const ProductDetail = React.lazy(() => import('./pages/ProductDetail'));
