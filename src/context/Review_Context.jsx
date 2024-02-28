@@ -36,6 +36,7 @@ const ReviewProvider = ({ children }) => {
     }, []);
 
     const addReview = async (review) => {
+        if (!user) return;
         let permissions = [Permission.write(Role.user(user?.$id))];
         let payload = {
             user_name: user?.name,

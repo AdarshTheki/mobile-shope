@@ -23,7 +23,7 @@ export default function Banner() {
                     <Button
                         onClick={() => Navigate('/products')}
                         rightIcon={<FaArrowRight />}
-                        className=' inline-flex items-center gap-2 text-white bg-blue-600 hover:bg-blue-700'>
+                        className='text-white bg-blue-600 hover:bg-blue-700'>
                         Shop Now
                     </Button>
                 </div>

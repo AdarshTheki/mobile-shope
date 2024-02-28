@@ -9,10 +9,8 @@ export const AuthContext = React.createContext({
     login: () => {},
     logout: () => {},
     loggedIn: () => {},
-    loggedOut: () => {},
     register: () => {},
     getUser: () => {},
-    verifyEmail: () => {},
     updateUser: () => {},
 });
 
@@ -22,55 +20,54 @@ export const AuthProvider = ({ children }) => {
 
     const getUser = async () => {
         setLoading(true);
-        await account
-            .get()
-            .then((data) => setUser(data))
-            .catch((err) => console.error(err))
-            .finally(() => setLoading(false));
+        try {
+            const data = await account.get();
+            setUser(data);
+        } catch (err) {
+            setUser(null);
+            console.error(err);
+        } finally {
+            setLoading(false);
+        }
     };
 
     const logout = async () => {
-        await account
-            .deleteSessions()
-            .then(() => setUser(null))
-            .catch((err) => console.error(err));
+        try {
+            await account.deleteSessions();
+            setUser(null);
+        } catch (err) {
+            console.error(err);
+        }
     };
 
-    const loggedIn = () => {
-        return user !== null ? true : false;
-    };
-
-    const loggedOut = () => {
-        return user === null ? true : false;
-    };
+    const loggedIn = () => user !== null;
 
     const register = async (email, password, name) => {
-        await account.create(ID.unique(), email, password, name);
-        await login(email, password);
-        // await verifyEmail();
+        try {
+            await account.create(ID.unique(), email, password, name);
+            await login(email, password);
+        } catch (err) {
+            console.error(err);
+        }
     };
 
     const login = async (email, password) => {
-        await account.createEmailSession(email, password);
-        await getUser();
-    };
-
-    const verifyEmail = async () => {
-        if (loggedIn()) {
-            await account.createVerification(user?.$id, 'http://localhost:5173');
+        try {
+            await account.createEmailSession(email, password);
+            await getUser();
+        } catch (err) {
+            console.error(err);
         }
     };
 
     const updateUser = async (name, password, phone) => {
         if (loggedIn()) {
-            if (name) {
-                await account.updateName(name);
-            }
-            if (password) {
-                await account.updatePassword(password);
-            }
-            if (phone) {
-                await account.updatePhone(phone);
+            try {
+                if (name) await account.updateName(name);
+                if (password) await account.updatePassword(password);
+                if (phone) await account.updatePhone(phone);
+            } catch (err) {
+                console.error(err);
             }
         }
     };
@@ -85,7 +82,6 @@ export const AuthProvider = ({ children }) => {
                 getUser,
                 register,
                 loggedIn,
-                loggedOut,
                 updateUser,
             }}>
             {children}

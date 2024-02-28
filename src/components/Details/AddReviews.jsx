@@ -2,18 +2,16 @@
 import React, { useState } from 'react';
 import { FaStar } from 'react-icons/fa';
 import { useReview } from '../../context';
+import { Button } from '../../utils';
 
 export default function AddReviews({ name, url }) {
     const [show, setShow] = useState(false);
     return (
         <div className='p-5'>
             {show && <ModalDialog name={name} url={url} onClose={() => setShow(false)} />}
-            <button
-                onClick={() => setShow(true)}
-                type='submit'
-                className='block mx-auto hover:opacity-80 duration-300 bg-blue-600 font-light px-10 py-2 text-sm text-white rounded'>
+            <Button onClick={() => setShow(true)} className='text-white bg-blue-600'>
                 Write Review
-            </button>
+            </Button>
         </div>
     );
 }
@@ -86,17 +84,17 @@ const ModalDialog = ({ onClose, name, url }) => {
                     required
                     placeholder='Describe Your Experiences...'
                     className='border border-gray-800 outline-none text-xs p-5'></textarea>
-                <div className='flex gap-2'>
-                    <button
+                <div className='flex gap-2 items-center'>
+                    <Button
                         onClick={onClose}
-                        className='block mx-auto hover:opacity-80 duration-300 border border-blue-600 p-2 text-xs text-blue-600 font-medium rounded'>
+                        className='border border-blue-600 text-blue-600 hover:bg-blue-300'>
                         Not Now
-                    </button>
-                    <button
+                    </Button>
+                    <Button
                         onClick={handleSubmit}
-                        className='block mx-auto hover:opacity-80 duration-300 bg-blue-600 font-light px-10 py-2 text-sm text-white rounded'>
+                        className='bg-blue-600 text-white hover:bg-blue-500'>
                         Write Review
-                    </button>
+                    </Button>
                 </div>
             </div>
         </div>

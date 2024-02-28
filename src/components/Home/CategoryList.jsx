@@ -27,7 +27,7 @@ export default function CategoryList() {
                         <Button
                             onClick={() => handleChange(category)}
                             key={category}
-                            className='hover:bg-blue-100 hover:text-blue-600 mr-3.5 mb-1 active:bg-blue-300  hover:border-blue-500'>
+                            className='hover:bg-gray-500 bg-gray-600 text-white mr-2 font-medium mb-2'>
                             {category}
                         </Button>
                     ))}

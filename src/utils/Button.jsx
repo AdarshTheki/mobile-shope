@@ -1,13 +1,13 @@
 import React from 'react';
 
-const Button = ({ onClick, children, leftIcon, rightIcon, className = '' }, props) => {
+const Button = ({ onClick, children, loading, leftIcon, rightIcon, className = '', props }) => {
     return (
         <button
             {...props}
             onClick={onClick}
-            className={`px-2.5 py-2 sm:text-sm text-xs capitalize rounded-lg shadow-lg border border-gray-400 ${className}`}>
+            className={`inline-flex gap-2 capitalize items-center hover:opacity-90 duration-300 px-6 py-2 text-sm rounded ${className}`}>
             {!!leftIcon && leftIcon}
-            {children}
+            {!loading ? children : 'loading...'}
             {!!rightIcon && rightIcon}
         </button>
     );

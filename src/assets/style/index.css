@@ -4,6 +4,27 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+    --primary-color: #0061ff;
+}
+[type='text']:focus,
+[type='email']:focus,
+[type='url']:focus,
+[type='password']:focus,
+[type='number']:focus,
+[type='date']:focus,
+[type='search']:focus,
+[type='checkbox']:focus,
+[type='radio']:focus,
+[multiple]:focus,
+textarea:focus,
+button:focus,
+a:focus,
+select:focus {
+    border-color: var(--primary-color);
+    outline-color: var(--primary-color);
+}
+
 @layer base {
     body {
         font-family: 'Poppins', sans-serif;

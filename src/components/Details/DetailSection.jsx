@@ -5,7 +5,7 @@ import { BsFillBagHeartFill } from 'react-icons/bs';
 import toast from 'react-hot-toast';
 
 import ImageSlider from './ImageSlider';
-import { Stars, formatePrice } from '../../utils';
+import { Stars, formatePrice, Button } from '../../utils';
 import { useCart } from '../../context';
 
 export default function ProductDetailCart({
@@ -64,12 +64,12 @@ export default function ProductDetailCart({
                     </p>
                 </div>
                 <h2 className='text-2xl font-medium'>{`Price: ${formatePrice(price)}/-`}</h2>
-                <button
+                <Button
+                    rightIcon={<BsFillBagHeartFill fontSize={14} />}
                     onClick={addToCartHandler}
-                    className='inline-flex gap-2 items-center hover:opacity-80 duration-300 bg-blue-600 font-light px-10 py-2 text-sm text-white rounded'>
+                    className='text-white bg-blue-600'>
                     Add to Cart
-                    <BsFillBagHeartFill fontSize={14} />
-                </button>
+                </Button>
             </div>
         </div>
     );

@@ -36,17 +36,17 @@ export default function ShoppingCart() {
             </div>
             <div className='flex items-center justify-center gap-4'>
                 {page !== 1 ? (
-                    <Button onClick={() => setPage(1)} className='my-2 px-4 bg-blue-600 text-white'>
+                    <Button onClick={() => setPage(1)} className='bg-blue-600 text-white'>
                         Previous
                     </Button>
                 ) : null}
                 {cart.length && page === 1 ? (
-                    <Button onClick={() => setPage(2)} className='my-2 px-4 bg-blue-600 text-white'>
+                    <Button onClick={() => setPage(2)} className='bg-blue-600 text-white'>
                         Next
                     </Button>
                 ) : null}
                 {cart.length && page === 2 ? (
-                    <Button onClick={navigateHandle} className='my-2 px-4 bg-blue-600 text-white'>
+                    <Button onClick={navigateHandle} className='bg-blue-600 text-white'>
                         Place Order
                     </Button>
                 ) : null}
