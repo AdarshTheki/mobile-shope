@@ -3,9 +3,9 @@ import React, { useMemo } from 'react';
 import { useParams } from 'react-router-dom';
 
 import { useProducts } from '../context';
-import DetailSection from '../components/Detail/DetailSection';
-import AddReviews from '../components/Detail/AddReviews';
-import ShowReviews from '../components/Detail/ShowReviews';
+import DetailSection from '../components/Details/DetailSection';
+import AddReviews from '../components/Details/AddReviews';
+import ShowReviews from '../components/Details/ShowReviews';
 import ProductRow from '../components/Product/listing/ProductRow';
 
 export default function ProductDetailPage() {
