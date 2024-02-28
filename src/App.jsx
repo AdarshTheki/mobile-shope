@@ -2,7 +2,7 @@
 import React from 'react';
 import { useAuth } from './context';
 import { LoadingSpinner } from './utils';
-import Routes from './Routes';
+import Layout from './Layout';
 
 const App = () => {
     const { loading, getUser } = useAuth();
@@ -11,6 +11,6 @@ const App = () => {
         getUser();
     }, []);
 
-    return <>{loading ? <LoadingSpinner /> : <Routes />}</>;
+    return <>{loading ? <LoadingSpinner /> : <Layout />}</>;
 };
 export default App;

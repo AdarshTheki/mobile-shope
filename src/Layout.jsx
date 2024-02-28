@@ -18,7 +18,7 @@ const Login = React.lazy(() => import('./pages/LoginPage'));
 const Register = React.lazy(() => import('./pages/RegisterPage'));
 const Profile = React.lazy(() => import('./pages/ProfilePage'));
 
-export default function Routers() {
+export default function Layout() {
     return (
         <React.Suspense fallback={<LoadingSpinner />}>
             <BrowserRouter>
